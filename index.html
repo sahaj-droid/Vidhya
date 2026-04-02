@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>FF2 - RealTrade Academy</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+        :root { --primary: #34d399; --bg: #0b111a; --card: #161e2e; --accent: #3b82f6; --text: #e2e8f0; }
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', sans-serif; padding: 10px; margin: 0; }
+        .container { max-width: 500px; margin: auto; padding-bottom: 30px; }
+        
+        .note-section { background: rgba(59, 130, 246, 0.1); border: 1px solid var(--accent); padding: 12px; border-radius: 10px; font-size: 12px; margin-bottom: 15px; }
+        .card { background: var(--card); border-radius: 15px; padding: 16px; margin-bottom: 15px; border: 1px solid #1e293b; }
+        
+        /* Search Box */
+        .search-box { display: flex; gap: 8px; margin-bottom: 15px; }
+        .search-input { flex: 1; background: #0f172a; border: 1px solid var(--accent); color: white; padding: 12px; border-radius: 10px; outline: none; }
+        
+        /* Input Grid */
+        .input-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 15px 0; }
+        .input-field { display: flex; flex-direction: column; }
+        label { font-size: 10px; color: #94a3b8; margin-bottom: 4px; text-transform: uppercase; }
+        input { background: #0f172a; border: 1px solid #334155; color: white; padding: 10px; border-radius: 8px; outline: none; font-size: 13px; }
+
+        .btn { background: var(--primary); color: #064e3b; border: none; padding: 14px; border-radius: 10px; cursor: pointer; font-weight: bold; width: 100%; font-size: 15px; margin-top: 10px; }
+        
+        /* Results Area */
+        .result-box { background: #0f172a; padding: 15px; border-radius: 12px; margin-top: 15px; border-left: 4px solid var(--primary); display: none; }
+        .result-item { display: flex; align-items: center; margin-bottom: 12px; font-size: 14px; justify-content: space-between; border-bottom: 1px solid #1e293b; padding-bottom: 8px; }
+        .info-btn { background: #1e293b; border: 1px solid var(--primary); color: var(--primary); border-radius: 50%; width: 24px; height: 24px; cursor: pointer; font-weight: bold; }
+        
+        .dot { height: 8px; width: 8px; border-radius: 50%; display: inline-block; margin-right: 5px; }
+        .dot-green { background: #22c55e; }
+        .dot-red { background: #ef4444; }
+
+        /* Modal */
+        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); align-items: center; justify-content: center; padding: 20px; }
+        .modal-content { background: var(--card); border: 1px solid var(--accent); border-radius: 15px; padding: 20px; width: 100%; max-width: 380px; position: relative; }
+        .close-btn { position: absolute; top: 10px; right: 15px; color: #94a3b8; font-size: 24px; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1 style="color: var(--primary); text-align: center;">🎓 FF2 Academy</h1>
+    
+    <div class="note-section">
+        <p style="margin:0;">📌 <b>सूचना:</b> सभी आंकड़े करोड़ (Cr) में भरें। गणनाएं लगभग (≈) हैं।</p>
+    </div>
+
+    <div class="card" style="border-color: var(--accent);">
+        <div class="search-box">
+            <input type="text" id="stockSearch" class="search-input" placeholder="कंपनी का नाम (e.g. RELIANCE)">
+            <button class="btn" style="width:auto; margin:0; padding:0 20px;" onclick="fetchStockData()">Search</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2 style="font-size: 16px; color: var(--primary); margin-top:0;">📊 फंडामेंटल डेटा एंट्री</h2>
+        <div class="input-grid">
+            <div class="input-field"><label>Net Profit (Cr)</label><input type="number" id="p_profit"></div>
+            <div class="input-field"><label>Total Equity (Cr)</label><input type="number" id="p_equity"></div>
+            <div class="input-field"><label>Total Shares (Cr)</label><input type="number" id="p_shares"></div>
+            <div class="input-field"><label>EBIT (Cr)</label><input type="number" id="p_ebit"></div>
+            <div class="input-field"><label>Cap. Employed (Cr)</label><input type="number" id="p_ce"></div>
+            <div class="input-field"><label>Share Price</label><input type="number" id="p_price"></div>
+            <div class="input-field"><label>Total Debt (Cr)</label><input type="number" id="p_debt"></div>
+            <div class="input-field"><label>Dividend (Cr)</label><input type="number" id="p_div"></div>
+            <div class="input-field"><label>Curr. Assets (Cr)</label><input type="number" id="p_assets"></div>
+            <div class="input-field"><label>Curr. Liab. (Cr)</label><input type="number" id="p_liab"></div>
+            <div class="input-field" style="grid-column: span 2;"><label>Promoter Shares (Cr)</label><input type="number" id="p_prom"></div>
+        </div>
+        <button class="btn" onclick="runFF2()">एनालिसिस शुरू करें</button>
+        
+        <div id="resultBox" class="result-box"></div>
+        <button id="pdfBtn" class="btn" style="display:none; background:#3b82f6; color:white;" onclick="downloadPDF()">📥 Download PDF Report</button>
+    </div>
+</div>
+
+<div id="infoModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <h3 id="modalTitle" style="color: var(--primary); margin:0 0 10px 0;"></h3>
+        <div id="modalBody" style="line-height: 1.5; font-size:14px; color: #cbd5e1;"></div>
+    </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
