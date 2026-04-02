@@ -1,4 +1,4 @@
-const GAS_URL = "https://script.google.com/macros/s/AKfycbzTJ6FudrONmpve-CPxSy0Hb9HGKOE5pFFecKHDLd2Otb8DzR6SHYeWeS1EbUb2dICb/exec"; 
+const GAS_URL = "https://script.google.com/macros/s/AKfycbxcIGFZp7IWBSMJVsMIgpPR5oVmiEJbapQyknKrJ8iVpn9ahM6z9hc_QfiDKhhSMGNgiw/exec"; 
 
 // fetchStockData ફંક્શન - આની આગળ async હોવું જ જોઈએ
 async function fetchStockData() {
