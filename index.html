@@ -469,6 +469,8 @@ var CHAPTERS = [{
     {id:"2.7", title:"Making Angles",                     type:"Concept + Visual + Practice"},
     {id:"2.8", title:"Special Types of Angles",           type:"Concept + Visual + Practice"},
     {id:"2.9", title:"Measuring Angles",                  type:"Concept + Visual + Practice"},
+    {id:"2.10", title:"Using a Protractor",               type:"Concept + Steps + Practice"},
+    {id:"2.11", title:"Types of Angles and their Measures",type:"Concept + Visual + Practice"},
   ]
 }];
 
@@ -557,7 +559,8 @@ function buildContent(id){
   var map={
     '1.1':sec11,'1.2':sec12,'1.3':sec13,'1.4':sec14,'1.5':sec15,'1.6':sec16,
     '2.1':sec21,'2.2':sec22,'2.3':sec23,'2.4':sec24,'2.5':sec25,
-    '2.6':sec26,'2.7':sec27,'2.8':sec28,'2.9':sec29
+    '2.6':sec26,'2.7':sec27,'2.8':sec28,'2.9':sec29,
+    '2.10':sec210,'2.11':sec211
   };
   return map[id]?map[id]():'<p style="padding:40px;text-align:center;color:#94a3b8">Coming soon!</p>';
 }
@@ -1325,6 +1328,147 @@ function sec29(){return `
   <div class="practice-q"><div class="pq-text">Q4. An angle of 75° is:</div><div class="answer-choices"><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">Acute (less than 90°)</button><button class="choice-btn" onclick="checkAnswer(this,false)">Right (= 90°)</button><button class="choice-btn" onclick="checkAnswer(this,false)">Obtuse (90°-180°)</button><button class="choice-btn" onclick="checkAnswer(this,false)">Straight (= 180°)</button></div><div class="feedback"></div></div>
 </div>
 <div class="math-talk">&#x1F4A1; <strong>Chapter 2 Complete!</strong>&nbsp; You now know: Point, Line Segment, Line, Ray, Angle, Comparing Angles, Making Angles, Special Types and Measuring in Degrees. Chapter 2 done! &#x1F3C6;</div>`;}
+
+function sec210(){return `
+<div class="sec-heading" style="color:#0d9488">&#x1F4D0; 2.10 Using a Protractor</div>
+<p>We know angles are measured in degrees. But how do we actually <strong>measure</strong> or <strong>draw</strong> an exact angle? We use a tool called a <strong>protractor</strong>!</p>
+<div class="concept-box">
+  <div class="cb-title">What is a Protractor?</div>
+  <p>A protractor is a semicircular tool divided into <strong>180 equal parts</strong>. Each part = 1°. It has two scales — inner and outer — both starting from 0° but going in opposite directions.</p>
+</div>
+<div class="india-example">
+  <div class="ie-label">&#x1F1EE;&#x1F1F3; Indian Example</div>
+  <p>The <strong>Ashoka Chakra</strong> on our national flag has 24 spokes. Each spoke divides the circle equally. The angle between two spokes = 360° ÷ 24 = <strong>15°</strong>! A protractor helps us measure and draw such precise angles.</p>
+</div>
+<div class="visual-wrap">
+<svg viewBox="0 0 340 150" xmlns="http://www.w3.org/2000/svg">
+  <text x="170" y="16" text-anchor="middle" font-family="Baloo 2,cursive" font-size="12" font-weight="700" fill="#1e293b">How to Measure an Angle with Protractor</text>
+  <rect x="10" y="26" width="148" height="110" rx="8" fill="#ccfbf1"/>
+  <text x="84" y="44" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" font-weight="700" fill="#0f766e">Step 1</text>
+  <text x="84" y="56" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" fill="#065f46">Place centre of</text>
+  <text x="84" y="68" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" fill="#065f46">protractor on</text>
+  <text x="84" y="80" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" fill="#065f46">the vertex</text>
+  <circle cx="84" cy="110" r="8" fill="#0d9488"/>
+  <text x="84" y="114" text-anchor="middle" font-family="Nunito,sans-serif" font-size="8" font-weight="700" fill="white">O</text>
+  <rect x="182" y="26" width="148" height="110" rx="8" fill="#ccfbf1"/>
+  <text x="256" y="44" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" font-weight="700" fill="#0f766e">Step 2</text>
+  <text x="256" y="56" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" fill="#065f46">Align one arm</text>
+  <text x="256" y="68" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" fill="#065f46">with the 0° line</text>
+  <text x="256" y="80" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" fill="#065f46">of protractor</text>
+  <line x1="210" y1="118" x2="302" y2="118" stroke="#0d9488" stroke-width="2.5"/>
+  <circle cx="210" cy="118" r="5" fill="#0d9488"/>
+  <text x="256" y="135" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" fill="#065f46">0° aligned here</text>
+  <text x="170" y="145" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" font-weight="700" fill="#0d9488">Step 3: Read the degree where the other arm crosses the scale!</text>
+</svg>
+</div>
+<div class="concept-box">
+  <div class="cb-title">How to Draw an Angle of given degrees</div>
+  <p>1. Draw a ray IN.<br/>
+  2. Place protractor centre on I, align IN with 0°.<br/>
+  3. Mark point T at the required degree on the scale.<br/>
+  4. Join I to T — angle TIN is your required angle!</p>
+</div>
+<div class="fig-out">
+  <div class="fo-hdr">&#x2699; Figure it Out</div>
+  <ol>
+    <li>Use your protractor to measure angles of 30°, 90°, 120°, 180°.</li>
+    <li>Draw angles of: 40°, 75°, 110°, 134°.</li>
+    <li>The Ashoka Chakra has 24 spokes. What is the angle between adjacent spokes?</li>
+  </ol>
+</div>
+<div class="practice-section">
+  <div class="ps-hdr">&#x1F3AF; Practice Time!</div>
+  <div class="practice-q"><div class="pq-text">Q1. A protractor is shaped like a:</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">Full circle</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">Semicircle (half circle)</button><button class="choice-btn" onclick="checkAnswer(this,false)">Triangle</button><button class="choice-btn" onclick="checkAnswer(this,false)">Square</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q2. When measuring an angle with protractor, we place its centre on the angle's:</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">Arm</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">Vertex</button><button class="choice-btn" onclick="checkAnswer(this,false)">Midpoint</button><button class="choice-btn" onclick="checkAnswer(this,false)">Endpoint</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q3. Ashoka Chakra has 24 spokes equally spaced. Angle between 2 spokes = ?</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">24°</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">15°</button><button class="choice-btn" onclick="checkAnswer(this,false)">20°</button><button class="choice-btn" onclick="checkAnswer(this,false)">30°</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q4. A protractor has how many equal divisions?</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">90</button><button class="choice-btn" onclick="checkAnswer(this,false)">360</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">180</button><button class="choice-btn" onclick="checkAnswer(this,false)">270</button></div><div class="feedback"></div></div>
+</div>`;}
+
+function sec211(){return `
+<div class="sec-heading" style="color:#0d9488">&#x2606; 2.11 Types of Angles and their Measures</div>
+<p>Let us bring together <strong>all types of angles</strong> with their exact degree ranges — the complete picture!</p>
+<div class="india-example">
+  <div class="ie-label">&#x1F1EE;&#x1F1F3; Indian Example</div>
+  <p>A <strong>kite</strong> (patang) has both acute and obtuse angles. The <strong>Eiffel Tower-like structures</strong> in Indian bridges use reflex angles in their design. When you open a <strong>door fully flat against a wall</strong> — that is a reflex angle (more than 180°)!</p>
+</div>
+<div class="visual-wrap">
+<svg viewBox="0 0 340 200" xmlns="http://www.w3.org/2000/svg">
+  <text x="170" y="16" text-anchor="middle" font-family="Baloo 2,cursive" font-size="12" font-weight="700" fill="#1e293b">All 5 Types of Angles</text>
+  <rect x="6" y="24" width="62" height="78" rx="8" fill="#dbeafe"/>
+  <line x1="37" y1="88" x2="61" y2="88" stroke="#2563eb" stroke-width="2"/>
+  <line x1="37" y1="88" x2="37" y2="62" stroke="#2563eb" stroke-width="2"/>
+  <rect x="37" y="76" width="9" height="12" fill="none" stroke="#2563eb" stroke-width="1.5"/>
+  <circle cx="37" cy="88" r="3" fill="#2563eb"/>
+  <text x="37" y="108" text-anchor="middle" font-family="Baloo 2,cursive" font-size="11" font-weight="800" fill="#2563eb">Right</text>
+  <text x="37" y="120" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" font-weight="700" fill="#1d4ed8">= 90°</text>
+
+  <rect x="74" y="24" width="62" height="78" rx="8" fill="#fef3c7"/>
+  <line x1="105" y1="88" x2="129" y2="88" stroke="#d97706" stroke-width="2"/>
+  <line x1="105" y1="88" x2="122" y2="65" stroke="#d97706" stroke-width="2"/>
+  <path d="M 119 88 A 14 14 0 0 1 114 76" fill="none" stroke="#d97706" stroke-width="1.5"/>
+  <circle cx="105" cy="88" r="3" fill="#d97706"/>
+  <text x="105" y="108" text-anchor="middle" font-family="Baloo 2,cursive" font-size="11" font-weight="800" fill="#d97706">Acute</text>
+  <text x="105" y="120" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" font-weight="700" fill="#92400e">0°–90°</text>
+
+  <rect x="142" y="24" width="62" height="78" rx="8" fill="#fee2e2"/>
+  <line x1="173" y1="88" x2="197" y2="88" stroke="#ef4444" stroke-width="2"/>
+  <line x1="173" y1="88" x2="178" y2="58" stroke="#ef4444" stroke-width="2"/>
+  <path d="M 189 88 A 16 16 0 0 1 178 73" fill="none" stroke="#ef4444" stroke-width="1.5"/>
+  <circle cx="173" cy="88" r="3" fill="#ef4444"/>
+  <text x="173" y="108" text-anchor="middle" font-family="Baloo 2,cursive" font-size="11" font-weight="800" fill="#ef4444">Obtuse</text>
+  <text x="173" y="120" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" font-weight="700" fill="#b91c1c">90°–180°</text>
+
+  <rect x="210" y="24" width="62" height="78" rx="8" fill="#dcfce7"/>
+  <line x1="241" y1="75" x2="265" y2="75" stroke="#16a34a" stroke-width="2"/>
+  <line x1="217" y1="75" x2="241" y2="75" stroke="#16a34a" stroke-width="2"/>
+  <circle cx="241" cy="75" r="3" fill="#16a34a"/>
+  <path d="M 252 75 A 11 11 0 0 1 241 64" fill="none" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="241" y="108" text-anchor="middle" font-family="Baloo 2,cursive" font-size="11" font-weight="800" fill="#16a34a">Straight</text>
+  <text x="241" y="120" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" font-weight="700" fill="#15803d">= 180°</text>
+
+  <rect x="278" y="24" width="56" height="78" rx="8" fill="#f3e8ff"/>
+  <circle cx="306" cy="70" r="3" fill="#7c3aed"/>
+  <line x1="306" y1="70" x2="328" y2="70" stroke="#7c3aed" stroke-width="2"/>
+  <path d="M 322 70 A 16 16 0 1 0 306 54" fill="none" stroke="#7c3aed" stroke-width="2"/>
+  <text x="306" y="108" text-anchor="middle" font-family="Baloo 2,cursive" font-size="11" font-weight="800" fill="#7c3aed">Reflex</text>
+  <text x="306" y="120" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" font-weight="700" fill="#6d28d9">180°–360°</text>
+
+  <rect x="6" y="136" width="328" height="56" rx="10" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+  <text x="170" y="154" text-anchor="middle" font-family="Baloo 2,cursive" font-size="11" font-weight="800" fill="#1e293b">Complete Order: Acute &lt; Right &lt; Obtuse &lt; Straight &lt; Reflex</text>
+  <text x="170" y="169" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" font-weight="700" fill="#475569">0° ........... 90° ........... 180° ........... 360°</text>
+  <text x="37" y="184" text-anchor="middle" font-family="Nunito,sans-serif" font-size="9" fill="#d97706">Acute</text>
+  <text x="105" y="184" text-anchor="middle" font-family="Nunito,sans-serif" font-size="9" fill="#2563eb">Right</text>
+  <text x="173" y="184" text-anchor="middle" font-family="Nunito,sans-serif" font-size="9" fill="#ef4444">Obtuse</text>
+  <text x="241" y="184" text-anchor="middle" font-family="Nunito,sans-serif" font-size="9" fill="#16a34a">Straight</text>
+  <text x="306" y="184" text-anchor="middle" font-family="Nunito,sans-serif" font-size="9" fill="#7c3aed">Reflex</text>
+</svg>
+</div>
+<div class="num-table" style="background:#f5f3ff; border-color:#c4b5fd;">
+  <div class="nt-title" style="color:#5b21b6;">All Angle Types — Quick Summary</div>
+  <div class="seq-row"><span class="seq-nums">Acute angle</span><span class="seq-name" style="background:#ede9fe;color:#5b21b6;">0° to 90° (not including)</span></div>
+  <div class="seq-row"><span class="seq-nums">Right angle</span><span class="seq-name" style="background:#ede9fe;color:#5b21b6;">exactly 90°</span></div>
+  <div class="seq-row"><span class="seq-nums">Obtuse angle</span><span class="seq-name" style="background:#ede9fe;color:#5b21b6;">90° to 180° (not including)</span></div>
+  <div class="seq-row"><span class="seq-nums">Straight angle</span><span class="seq-name" style="background:#ede9fe;color:#5b21b6;">exactly 180°</span></div>
+  <div class="seq-row"><span class="seq-nums">Reflex angle</span><span class="seq-name" style="background:#ede9fe;color:#5b21b6;">180° to 360° (not including)</span></div>
+  <div class="seq-row"><span class="seq-nums">Full turn</span><span class="seq-name" style="background:#ede9fe;color:#5b21b6;">exactly 360°</span></div>
+</div>
+<div class="fig-out">
+  <div class="fo-hdr">&#x2699; Figure it Out</div>
+  <ol>
+    <li>A door opened past 180° — what type of angle does it make?</li>
+    <li>Name the type of angle: 45°, 90°, 135°, 180°, 270°.</li>
+    <li>Can a triangle have a reflex angle? Why or why not?</li>
+    <li>Puzzle: I am an acute angle. Double me = still acute. Triple me = still acute. Quadruple me = still acute. But 5 times me = obtuse! What could I be?</li>
+  </ol>
+</div>
+<div class="practice-section">
+  <div class="ps-hdr">&#x1F3AF; Practice Time!</div>
+  <div class="practice-q"><div class="pq-text">Q1. A reflex angle is:</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">Less than 90°</button><button class="choice-btn" onclick="checkAnswer(this,false)">Exactly 180°</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">Between 180° and 360°</button><button class="choice-btn" onclick="checkAnswer(this,false)">Exactly 90°</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q2. An angle of 200° is a:</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">Obtuse angle</button><button class="choice-btn" onclick="checkAnswer(this,false)">Straight angle</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">Reflex angle</button><button class="choice-btn" onclick="checkAnswer(this,false)">Right angle</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q3. A kite (patang) has a sharp tip angle of 35°. This is a:</div><div class="answer-choices"><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">Acute angle</button><button class="choice-btn" onclick="checkAnswer(this,false)">Right angle</button><button class="choice-btn" onclick="checkAnswer(this,false)">Obtuse angle</button><button class="choice-btn" onclick="checkAnswer(this,false)">Reflex angle</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q4. Which angle type comes between Obtuse and Reflex?</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">Acute</button><button class="choice-btn" onclick="checkAnswer(this,false)">Right</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">Straight (180°)</button><button class="choice-btn" onclick="checkAnswer(this,false)">Full turn</button></div><div class="feedback"></div></div>
+</div>
+<div class="math-talk">&#x1F3C6; <strong>Chapter 2 — 100% Complete!</strong>&nbsp; Point, Line Segment, Line, Ray, Angle, Comparing, Making, Special Types, Measuring, Protractor, All Angle Types — badhu cover thayu! Chapter 2 done! &#x1F4AF;</div>`;}
 
 function sec16(){return `
 <div class="sec-heading" style="color:#2563eb">&#x1F9E9; 1.6 Relation to Number Sequences</div>
