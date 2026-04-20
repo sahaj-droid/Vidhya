@@ -465,6 +465,10 @@ var CHAPTERS = [{
     {id:"2.3", title:"Line",                              type:"Concept + Visual + Practice"},
     {id:"2.4", title:"Ray",                               type:"Concept + Visual + Practice"},
     {id:"2.5", title:"Angle",                             type:"Concept + Visual + Practice"},
+    {id:"2.6", title:"Comparing Angles",                  type:"Concept + Visual + Practice"},
+    {id:"2.7", title:"Making Angles",                     type:"Concept + Visual + Practice"},
+    {id:"2.8", title:"Special Types of Angles",           type:"Concept + Visual + Practice"},
+    {id:"2.9", title:"Measuring Angles",                  type:"Concept + Visual + Practice"},
   ]
 }];
 
@@ -552,7 +556,8 @@ window.addEventListener('load', function(){
 function buildContent(id){
   var map={
     '1.1':sec11,'1.2':sec12,'1.3':sec13,'1.4':sec14,'1.5':sec15,'1.6':sec16,
-    '2.1':sec21,'2.2':sec22,'2.3':sec23,'2.4':sec24,'2.5':sec25
+    '2.1':sec21,'2.2':sec22,'2.3':sec23,'2.4':sec24,'2.5':sec25,
+    '2.6':sec26,'2.7':sec27,'2.8':sec28,'2.9':sec29
   };
   return map[id]?map[id]():'<p style="padding:40px;text-align:center;color:#94a3b8">Coming soon!</p>';
 }
@@ -1082,6 +1087,244 @@ function sec25(){return `
   <div class="practice-q"><div class="pq-text">Q4. The size of an angle depends on:</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">Length of arms</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">Amount of rotation</button><button class="choice-btn" onclick="checkAnswer(this,false)">Colour of arms</button><button class="choice-btn" onclick="checkAnswer(this,false)">Name of vertex</button></div><div class="feedback"></div></div>
 </div>
 <div class="math-talk">&#x1F4A1; <strong>Sections 2.1–2.5 Complete!</strong>&nbsp; You now know: Point, Line Segment, Line, Ray and Angle — the building blocks of geometry!</div>`;}
+
+function sec26(){return `
+<div class="sec-heading" style="color:#0d9488">&#x2194; 2.6 Comparing Angles</div>
+<p>How do we know which angle is <strong>bigger</strong>? Just like we compare lengths, we can compare angles too!</p>
+<div class="india-example">
+  <div class="ie-label">&#x1F1EE;&#x1F1F3; Indian Example</div>
+  <p>Look at animals opening their mouths — a <strong>crocodile</strong> opens its mouth very wide (big angle!), a <strong>fish</strong> opens it a little (small angle!). The more the jaws open, the bigger the angle — just like a <strong>compass</strong> opened wide vs barely open!</p>
+</div>
+<div class="concept-box">
+  <div class="cb-title">Two ways to compare angles</div>
+  <p><strong>1. By looking:</strong> Sometimes it is easy to just see which is bigger.<br/>
+  <strong>2. By superimposition:</strong> Place one angle exactly over the other — match the vertices and one arm. The angle whose other arm sticks out more is the bigger angle!</p>
+</div>
+<div class="visual-wrap">
+<svg viewBox="0 0 340 150" xmlns="http://www.w3.org/2000/svg">
+  <text x="170" y="18" text-anchor="middle" font-family="Baloo 2,cursive" font-size="12" font-weight="700" fill="#1e293b">Comparing by Superimposition</text>
+  <text x="60" y="38" text-anchor="middle" font-family="Nunito,sans-serif" font-size="11" font-weight="700" fill="#0d9488">Angle ABC</text>
+  <circle cx="30" cy="100" r="5" fill="#0d9488"/>
+  <text x="22" y="115" font-family="Baloo 2,cursive" font-size="12" font-weight="800" fill="#0d9488">B</text>
+  <line x1="30" y1="100" x2="90" y2="55" stroke="#0d9488" stroke-width="2.5"/>
+  <text x="94" y="52" font-family="Baloo 2,cursive" font-size="12" font-weight="800" fill="#0d9488">A</text>
+  <line x1="30" y1="100" x2="100" y2="100" stroke="#0d9488" stroke-width="2.5"/>
+  <text x="104" y="104" font-family="Baloo 2,cursive" font-size="12" font-weight="800" fill="#0d9488">C</text>
+  <path d="M 50 100 A 20 20 0 0 1 52 83" fill="none" stroke="#0d9488" stroke-width="1.5"/>
+  <text x="170" y="90" text-anchor="middle" font-family="Baloo 2,cursive" font-size="22" font-weight="800" fill="#94a3b8">vs</text>
+  <text x="270" y="38" text-anchor="middle" font-family="Nunito,sans-serif" font-size="11" font-weight="700" fill="#f97316">Angle PQR</text>
+  <circle cx="240" cy="100" r="5" fill="#f97316"/>
+  <text x="232" y="115" font-family="Baloo 2,cursive" font-size="12" font-weight="800" fill="#f97316">Q</text>
+  <line x1="240" y1="100" x2="270" y2="45" stroke="#f97316" stroke-width="2.5"/>
+  <text x="274" y="42" font-family="Baloo 2,cursive" font-size="12" font-weight="800" fill="#f97316">P</text>
+  <line x1="240" y1="100" x2="320" y2="100" stroke="#f97316" stroke-width="2.5"/>
+  <text x="324" y="104" font-family="Baloo 2,cursive" font-size="12" font-weight="800" fill="#f97316">R</text>
+  <path d="M 260 100 A 20 20 0 0 1 263 80" fill="none" stroke="#f97316" stroke-width="1.5"/>
+  <text x="170" y="135" text-anchor="middle" font-family="Nunito,sans-serif" font-size="11" font-weight="700" fill="#1e293b">Superimpose both — whichever arm sticks out more = bigger angle!</text>
+  <text x="170" y="150" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" fill="#64748b">Here angle PQR is bigger than angle ABC</text>
+</svg>
+</div>
+<div class="concept-box">
+  <div class="cb-title">Equal Angles</div>
+  <p>If you superimpose two angles and BOTH arms overlap perfectly — the angles are <strong>equal in size</strong>! The length of the arms does NOT matter — only the rotation matters.</p>
+</div>
+<div class="fig-out">
+  <div class="fo-hdr">&#x2699; Figure it Out</div>
+  <ol>
+    <li>Draw two angles. By looking, guess which is bigger. Then superimpose to check!</li>
+    <li>Open your compass to two different positions. Which angle is bigger? How can you tell?</li>
+    <li>Can two angles be equal even if their arms have different lengths? Think and discuss.</li>
+  </ol>
+</div>
+<div class="practice-section">
+  <div class="ps-hdr">&#x1F3AF; Practice Time!</div>
+  <div class="practice-q"><div class="pq-text">Q1. To compare two angles by superimposition, we must match the:</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">Arms only</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">Vertices first, then one arm</button><button class="choice-btn" onclick="checkAnswer(this,false)">Arm lengths</button><button class="choice-btn" onclick="checkAnswer(this,false)">Names of angles</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q2. A crocodile opens its mouth wider than a fish. So the crocodile's jaw angle is:</div><div class="answer-choices"><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">Bigger</button><button class="choice-btn" onclick="checkAnswer(this,false)">Smaller</button><button class="choice-btn" onclick="checkAnswer(this,false)">Equal</button><button class="choice-btn" onclick="checkAnswer(this,false)">Cannot say</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q3. Two angles are equal when superimposed. This means their:</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">Arms have same length</button><button class="choice-btn" onclick="checkAnswer(this,false)">Names are same</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">Rotation amount is same</button><button class="choice-btn" onclick="checkAnswer(this,false)">Vertices are same point</button></div><div class="feedback"></div></div>
+</div>`;}
+
+function sec27(){return `
+<div class="sec-heading" style="color:#0d9488">&#x270F; 2.7 Making Angles</div>
+<p>We can make angles and compare them using simple tools — even a <strong>piece of paper</strong>!</p>
+<div class="india-example">
+  <div class="ie-label">&#x1F1EE;&#x1F1F3; Indian Example</div>
+  <p>When you fold a <strong>roti</strong> in half, the fold creates a straight angle (180°)! When you fold it again into quarters, you get a right angle (90°)! A folded <strong>paper boat</strong> has many angles you can compare by superimposition.</p>
+</div>
+<div class="concept-box">
+  <div class="cb-title">Comparing without superimposition — using a circle!</div>
+  <p>Place a transparent circle so its <strong>centre is at the vertex</strong> of an angle. Mark where each arm crosses the circle edge. Now move the circle to another angle the same way. Compare the arc lengths — the bigger arc = bigger angle!</p>
+</div>
+<div class="visual-wrap">
+<svg viewBox="0 0 340 130" xmlns="http://www.w3.org/2000/svg">
+  <text x="170" y="16" text-anchor="middle" font-family="Baloo 2,cursive" font-size="12" font-weight="700" fill="#1e293b">Using a circle to compare angles</text>
+  <circle cx="85" cy="80" r="45" fill="none" stroke="#0d9488" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <circle cx="85" cy="80" r="4" fill="#0d9488"/>
+  <text x="78" y="94" font-family="Baloo 2,cursive" font-size="11" font-weight="700" fill="#0d9488">O</text>
+  <line x1="85" y1="80" x2="118" y2="38" stroke="#0d9488" stroke-width="2"/>
+  <line x1="85" y1="80" x2="130" y2="80" stroke="#0d9488" stroke-width="2"/>
+  <circle cx="118" cy="38" r="3" fill="#f97316"/>
+  <text x="122" y="36" font-family="Baloo 2,cursive" font-size="10" font-weight="700" fill="#f97316">B</text>
+  <circle cx="130" cy="80" r="3" fill="#f97316"/>
+  <text x="134" y="84" font-family="Baloo 2,cursive" font-size="10" font-weight="700" fill="#f97316">A</text>
+  <path d="M 130 80 A 45 45 0 0 1 118 38" fill="none" stroke="#f97316" stroke-width="2.5"/>
+  <text x="85" y="118" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" fill="#64748b">Arc AB shows size of angle</text>
+  <text x="255" y="60" text-anchor="middle" font-family="Nunito,sans-serif" font-size="11" font-weight="700" fill="#1e293b">Bigger arc</text>
+  <text x="255" y="74" text-anchor="middle" font-family="Nunito,sans-serif" font-size="11" font-weight="700" fill="#f97316">= Bigger angle!</text>
+  <text x="255" y="90" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" fill="#64748b">Smaller arc</text>
+  <text x="255" y="104" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" fill="#0d9488">= Smaller angle</text>
+</svg>
+</div>
+<div class="fig-out">
+  <div class="fo-hdr">&#x2699; Figure it Out</div>
+  <ol>
+    <li>Fold a rectangular paper in half. What angle does the fold make?</li>
+    <li>Fold it in half again. What angle do you get now? How does it compare to the first fold?</li>
+    <li>Make 3 different angles by folding paper. Put them in order from smallest to largest.</li>
+  </ol>
+</div>
+<div class="practice-section">
+  <div class="ps-hdr">&#x1F3AF; Practice Time!</div>
+  <div class="practice-q"><div class="pq-text">Q1. When comparing using a circle, the centre of the circle must be at the angle's:</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">Arm</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">Vertex</button><button class="choice-btn" onclick="checkAnswer(this,false)">Midpoint</button><button class="choice-btn" onclick="checkAnswer(this,false)">Edge</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q2. Folding a roti in half gives a fold angle of:</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">90°</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">180° (straight angle)</button><button class="choice-btn" onclick="checkAnswer(this,false)">360°</button><button class="choice-btn" onclick="checkAnswer(this,false)">45°</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q3. A bigger arc on the circle means the angle is:</div><div class="answer-choices"><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">Bigger</button><button class="choice-btn" onclick="checkAnswer(this,false)">Smaller</button><button class="choice-btn" onclick="checkAnswer(this,false)">Equal</button><button class="choice-btn" onclick="checkAnswer(this,false)">Zero</button></div><div class="feedback"></div></div>
+</div>`;}
+
+function sec28(){return `
+<div class="sec-heading" style="color:#0d9488">&#x26D4; 2.8 Special Types of Angles</div>
+<p>Some angles are so important and so common that we give them <strong>special names</strong>!</p>
+<div class="india-example">
+  <div class="ie-label">&#x1F1EE;&#x1F1F3; Indian Example</div>
+  <p>The corner of your <strong>notebook</strong> is a right angle (90°)! The edges of a <strong>door frame</strong> make right angles. A <strong>straight road</strong> going left and right is a straight angle (180°). When you stand straight — your body makes a right angle with the ground!</p>
+</div>
+<div class="visual-wrap">
+<svg viewBox="0 0 340 175" xmlns="http://www.w3.org/2000/svg">
+  <text x="170" y="16" text-anchor="middle" font-family="Baloo 2,cursive" font-size="12" font-weight="700" fill="#1e293b">4 Special Types of Angles</text>
+  <rect x="8" y="26" width="74" height="68" rx="8" fill="#dbeafe"/>
+  <line x1="45" y1="82" x2="75" y2="82" stroke="#2563eb" stroke-width="2.5"/>
+  <line x1="45" y1="82" x2="45" y2="50" stroke="#2563eb" stroke-width="2.5"/>
+  <circle cx="45" cy="82" r="3" fill="#2563eb"/>
+  <rect x="45" y="70" width="10" height="12" fill="none" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="45" y="106" text-anchor="middle" font-family="Baloo 2,cursive" font-size="13" font-weight="800" fill="#2563eb">Right</text>
+  <text x="45" y="118" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" font-weight="700" fill="#1d4ed8">= 90°</text>
+  <text x="45" y="130" text-anchor="middle" font-family="Nunito,sans-serif" font-size="9" fill="#64748b">like 'L' shape</text>
+
+  <rect x="90" y="26" width="74" height="68" rx="8" fill="#dcfce7"/>
+  <line x1="127" y1="82" x2="157" y2="82" stroke="#16a34a" stroke-width="2.5"/>
+  <line x1="97" y1="82" x2="127" y2="82" stroke="#16a34a" stroke-width="2.5"/>
+  <path d="M 137 82 A 10 10 0 0 1 127 72" fill="none" stroke="#16a34a" stroke-width="1.5"/>
+  <circle cx="127" cy="82" r="3" fill="#16a34a"/>
+  <text x="127" y="106" text-anchor="middle" font-family="Baloo 2,cursive" font-size="13" font-weight="800" fill="#16a34a">Straight</text>
+  <text x="127" y="118" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" font-weight="700" fill="#15803d">= 180°</text>
+  <text x="127" y="130" text-anchor="middle" font-family="Nunito,sans-serif" font-size="9" fill="#64748b">flat line</text>
+
+  <rect x="172" y="26" width="74" height="68" rx="8" fill="#fef3c7"/>
+  <line x1="209" y1="82" x2="239" y2="82" stroke="#d97706" stroke-width="2.5"/>
+  <line x1="209" y1="82" x2="230" y2="58" stroke="#d97706" stroke-width="2.5"/>
+  <path d="M 225 82 A 16 16 0 0 1 218 68" fill="none" stroke="#d97706" stroke-width="1.5"/>
+  <circle cx="209" cy="82" r="3" fill="#d97706"/>
+  <text x="209" y="106" text-anchor="middle" font-family="Baloo 2,cursive" font-size="13" font-weight="800" fill="#d97706">Acute</text>
+  <text x="209" y="118" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" font-weight="700" fill="#92400e">less than 90°</text>
+  <text x="209" y="130" text-anchor="middle" font-family="Nunito,sans-serif" font-size="9" fill="#64748b">sharp!</text>
+
+  <rect x="254" y="26" width="78" height="68" rx="8" fill="#fee2e2"/>
+  <line x1="293" y1="82" x2="325" y2="82" stroke="#ef4444" stroke-width="2.5"/>
+  <line x1="293" y1="82" x2="302" y2="48" stroke="#ef4444" stroke-width="2.5"/>
+  <path d="M 315 82 A 22 22 0 0 1 303 62" fill="none" stroke="#ef4444" stroke-width="1.5"/>
+  <circle cx="293" cy="82" r="3" fill="#ef4444"/>
+  <text x="293" y="106" text-anchor="middle" font-family="Baloo 2,cursive" font-size="13" font-weight="800" fill="#ef4444">Obtuse</text>
+  <text x="293" y="118" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" font-weight="700" fill="#b91c1c">90° to 180°</text>
+  <text x="293" y="130" text-anchor="middle" font-family="Nunito,sans-serif" font-size="9" fill="#64748b">blunt!</text>
+
+  <text x="170" y="152" text-anchor="middle" font-family="Nunito,sans-serif" font-size="11" font-weight="700" fill="#1e293b">Acute &lt; 90° &lt; Right = 90° &lt; Obtuse &lt; 180° = Straight</text>
+  <text x="170" y="168" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" fill="#64748b">Two right angles = one straight angle. Perpendicular lines meet at 90°.</text>
+</svg>
+</div>
+<div class="concept-box">
+  <div class="cb-title">Key Words</div>
+  <p><strong>Acute</strong> means "sharp" in Latin — acute angles are sharp/small.<br/>
+  <strong>Obtuse</strong> means "blunt" — obtuse angles are wider/blunt.<br/>
+  <strong>Perpendicular</strong> lines meet at exactly 90° (right angle).</p>
+</div>
+<div class="fig-out">
+  <div class="fo-hdr">&#x2699; Figure it Out</div>
+  <ol>
+    <li>Find 3 right angles in your classroom right now.</li>
+    <li>The hands of a clock at 3 o'clock — what type of angle?</li>
+    <li>Acute means sharp, obtuse means blunt. Why are these good names for these angles?</li>
+    <li>A triangle has 3 angles — can it have 2 obtuse angles? Try drawing it!</li>
+  </ol>
+</div>
+<div class="practice-section">
+  <div class="ps-hdr">&#x1F3AF; Practice Time!</div>
+  <div class="practice-q"><div class="pq-text">Q1. The corner of a notebook is a:</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">Acute angle</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">Right angle (90°)</button><button class="choice-btn" onclick="checkAnswer(this,false)">Obtuse angle</button><button class="choice-btn" onclick="checkAnswer(this,false)">Straight angle</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q2. An angle of 120° is called:</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">Acute</button><button class="choice-btn" onclick="checkAnswer(this,false)">Right</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">Obtuse</button><button class="choice-btn" onclick="checkAnswer(this,false)">Straight</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q3. A straight angle = how many right angles?</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">1</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">2</button><button class="choice-btn" onclick="checkAnswer(this,false)">3</button><button class="choice-btn" onclick="checkAnswer(this,false)">4</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q4. Two lines meeting at 90° are called:</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">Parallel lines</button><button class="choice-btn" onclick="checkAnswer(this,false)">Equal lines</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">Perpendicular lines</button><button class="choice-btn" onclick="checkAnswer(this,false)">Straight lines</button></div><div class="feedback"></div></div>
+</div>`;}
+
+function sec29(){return `
+<div class="sec-heading" style="color:#0d9488">&#x1F4D0; 2.9 Measuring Angles</div>
+<p>We can compare angles, but can we give them an exact <strong>number</strong>? Yes! We use <strong>degrees</strong>!</p>
+<div class="concept-box">
+  <div class="cb-title">What is a Degree?</div>
+  <p>Mathematicians divided a full circle (one full turn) into <strong>360 equal parts</strong>. Each part is called <strong>1 degree</strong>, written as <strong>1°</strong>. The measure of an angle = how many of these 1° parts fit inside it.</p>
+</div>
+<div class="india-example">
+  <div class="ie-label">&#x1F1EE;&#x1F1F3; Indian Example</div>
+  <p>The <strong>clock</strong> makes a full circle in 12 hours. At 3 o'clock, the minute and hour hand make a <strong>90° angle</strong> (quarter turn). At 6 o'clock they make <strong>180°</strong> (half turn). A full turn of a <strong>chakkar (merry-go-round)</strong> = 360°!</p>
+</div>
+<div class="visual-wrap">
+<svg viewBox="0 0 340 170" xmlns="http://www.w3.org/2000/svg">
+  <text x="170" y="16" text-anchor="middle" font-family="Baloo 2,cursive" font-size="12" font-weight="700" fill="#1e293b">Key Angle Measures in Degrees</text>
+  <circle cx="55" cy="95" r="38" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5"/>
+  <line x1="55" y1="95" x2="93" y2="95" stroke="#2563eb" stroke-width="2.5"/>
+  <line x1="55" y1="95" x2="93" y2="95" stroke="#2563eb" stroke-width="2.5"/>
+  <line x1="55" y1="95" x2="55" y2="57" stroke="#f97316" stroke-width="2.5"/>
+  <circle cx="55" cy="95" r="4" fill="#2563eb"/>
+  <rect x="55" y="83" width="10" height="12" fill="none" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="55" y="148" text-anchor="middle" font-family="Baloo 2,cursive" font-size="13" font-weight="800" fill="#2563eb">90°</text>
+  <text x="55" y="162" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" fill="#64748b">Right angle</text>
+
+  <circle cx="170" cy="95" r="38" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5"/>
+  <line x1="132" y1="95" x2="208" y2="95" stroke="#16a34a" stroke-width="2.5"/>
+  <circle cx="170" cy="95" r="4" fill="#16a34a"/>
+  <path d="M 185 95 A 15 15 0 0 1 170 80" fill="none" stroke="#16a34a" stroke-width="2"/>
+  <text x="170" y="148" text-anchor="middle" font-family="Baloo 2,cursive" font-size="13" font-weight="800" fill="#16a34a">180°</text>
+  <text x="170" y="162" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" fill="#64748b">Straight angle</text>
+
+  <circle cx="285" cy="95" r="38" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+  <circle cx="285" cy="95" r="4" fill="#d97706"/>
+  <line x1="285" y1="95" x2="323" y2="95" stroke="#d97706" stroke-width="2.5"/>
+  <path d="M 323 95 A 38 38 0 1 1 322 94" fill="none" stroke="#f97316" stroke-width="2" stroke-dasharray="3,2"/>
+  <text x="285" y="148" text-anchor="middle" font-family="Baloo 2,cursive" font-size="13" font-weight="800" fill="#d97706">360°</text>
+  <text x="285" y="162" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" fill="#64748b">Full turn</text>
+</svg>
+</div>
+<div class="num-table" style="background:#f0fdf4; border-color:#86efac;">
+  <div class="nt-title" style="color:#15803d;">Important Angle Measures</div>
+  <div class="seq-row"><span class="seq-nums">Full turn (chakkar)</span><span class="seq-name" style="background:#bbf7d0;color:#15803d;">360°</span></div>
+  <div class="seq-row"><span class="seq-nums">Straight angle (flat line)</span><span class="seq-name" style="background:#bbf7d0;color:#15803d;">180°</span></div>
+  <div class="seq-row"><span class="seq-nums">Right angle (corner of notebook)</span><span class="seq-name" style="background:#bbf7d0;color:#15803d;">90°</span></div>
+  <div class="seq-row"><span class="seq-nums">Acute angle</span><span class="seq-name" style="background:#bbf7d0;color:#15803d;">less than 90°</span></div>
+  <div class="seq-row"><span class="seq-nums">Obtuse angle</span><span class="seq-name" style="background:#bbf7d0;color:#15803d;">90° to 180°</span></div>
+</div>
+<div class="fig-out">
+  <div class="fo-hdr">&#x2699; Figure it Out</div>
+  <ol>
+    <li>A full turn = 360°. A straight angle = half turn. So straight angle = how many degrees?</li>
+    <li>A right angle = half of straight angle. So right angle = how many degrees?</li>
+    <li>Clock at 3 o'clock — what is the angle between the hands?</li>
+    <li>Clock at 6 o'clock — what is the angle between the hands?</li>
+  </ol>
+</div>
+<div class="practice-section">
+  <div class="ps-hdr">&#x1F3AF; Practice Time!</div>
+  <div class="practice-q"><div class="pq-text">Q1. A full turn (chakkar) = how many degrees?</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">90°</button><button class="choice-btn" onclick="checkAnswer(this,false)">180°</button><button class="choice-btn" onclick="checkAnswer(this,false)">270°</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">360°</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q2. A straight angle = ?</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">90°</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">180°</button><button class="choice-btn" onclick="checkAnswer(this,false)">270°</button><button class="choice-btn" onclick="checkAnswer(this,false)">360°</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q3. Clock hands at 3 o'clock make an angle of:</div><div class="answer-choices"><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">90°</button><button class="choice-btn" onclick="checkAnswer(this,false)">180°</button><button class="choice-btn" onclick="checkAnswer(this,false)">45°</button><button class="choice-btn" onclick="checkAnswer(this,false)">360°</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q4. An angle of 75° is:</div><div class="answer-choices"><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">Acute (less than 90°)</button><button class="choice-btn" onclick="checkAnswer(this,false)">Right (= 90°)</button><button class="choice-btn" onclick="checkAnswer(this,false)">Obtuse (90°-180°)</button><button class="choice-btn" onclick="checkAnswer(this,false)">Straight (= 180°)</button></div><div class="feedback"></div></div>
+</div>
+<div class="math-talk">&#x1F4A1; <strong>Chapter 2 Complete!</strong>&nbsp; You now know: Point, Line Segment, Line, Ray, Angle, Comparing Angles, Making Angles, Special Types and Measuring in Degrees. Chapter 2 done! &#x1F3C6;</div>`;}
 
 function sec16(){return `
 <div class="sec-heading" style="color:#2563eb">&#x1F9E9; 1.6 Relation to Number Sequences</div>
