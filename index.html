@@ -415,7 +415,12 @@ body { font-family: 'Nunito', sans-serif; background: #f0f9ff; color: #1e293b; m
         <div class="ch-name">Number Play</div>
         <span class="ch-badge">&#x2705; Available</span>
       </div>
-      <div class="chapter-card ch-4 locked"><span class="ch-icon">&#x1F4CA;</span><div class="ch-num">4</div><div class="ch-name">Data Handling</div><span class="ch-badge">&#x1F512; Soon</span></div>
+      <div class="chapter-card ch-4" onclick="openChapter(4)">
+        <span class="ch-icon">&#x1F4CA;</span>
+        <div class="ch-num">4</div>
+        <div class="ch-name">Data Handling and Presentation</div>
+        <span class="ch-badge">&#x2705; Available</span>
+      </div>
       <div class="chapter-card ch-5 locked"><span class="ch-icon">&#x1F31F;</span><div class="ch-num">5</div><div class="ch-name">Prime Time</div><span class="ch-badge">&#x1F512; Soon</span></div>
       <div class="chapter-card ch-6 locked"><span class="ch-icon">&#x25A1;</span><div class="ch-num">6</div><div class="ch-name">Perimeter and Area</div><span class="ch-badge">&#x1F512; Soon</span></div>
       <div class="chapter-card ch-7 locked"><span class="ch-icon">&#xBD;</span><div class="ch-num">7</div><div class="ch-name">Fractions</div><span class="ch-badge">&#x1F512; Soon</span></div>
@@ -493,6 +498,17 @@ var CHAPTERS = [{
     {id:"3.9",  title:"Playing with Number Patterns",    type:"Concept + Collatz + Practice"},
     {id:"3.10", title:"Playing with Number Patterns 2",  type:"Concept + Pattern + Practice"},
     {id:"3.11", title:"Simple Estimation",               type:"Concept + Indian Examples + Practice"},
+  ]
+},{
+  id:4, title:"Data Handling and Presentation",
+  color:"#7c3aed", bg:"linear-gradient(135deg,#5b21b6,#7c3aed)",
+  available:true,
+  sections:[
+    {id:"4.1", title:"Collecting and Organising Data",    type:"Concept + Tally + Practice"},
+    {id:"4.2", title:"Pictographs",                       type:"Concept + Visual + Practice"},
+    {id:"4.3", title:"Bar Graphs",                        type:"Concept + Visual + Practice"},
+    {id:"4.4", title:"Drawing a Bar Graph",               type:"Steps + Visual + Practice"},
+    {id:"4.5", title:"Artistic and Aesthetic Considerations", type:"Concept + Visual + Practice"},
   ]
 }];
 
@@ -584,7 +600,8 @@ function buildContent(id){
     '2.6':sec26,'2.7':sec27,'2.8':sec28,'2.9':sec29,
     '2.10':sec210,'2.11':sec211,
     '3.1':sec31,'3.2':sec32,'3.3':sec33,'3.4':sec34,'3.5':sec35,
-    '3.6':sec36,'3.7':sec37,'3.8':sec38,'3.9':sec39,'3.10':sec310,'3.11':sec311
+    '3.6':sec36,'3.7':sec37,'3.8':sec38,'3.9':sec39,'3.10':sec310,'3.11':sec311,
+    '4.1':sec41,'4.2':sec42,'4.3':sec43,'4.4':sec44,'4.5':sec45
   };
   return map[id]?map[id]():'<p style="padding:40px;text-align:center;color:#94a3b8">Coming soon!</p>';
 }
@@ -1933,6 +1950,296 @@ function sec311(){return `
   <div class="practice-q"><div class="pq-text">Q3. We estimate when:</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">Exact answer is needed</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">Approximate answer is enough</button><button class="choice-btn" onclick="checkAnswer(this,false)">Numbers are small</button><button class="choice-btn" onclick="checkAnswer(this,false)">We have a calculator</button></div><div class="feedback"></div></div>
 </div>
 <div class="math-talk">&#x1F3C6; <strong>Chapter 3 — Complete!</strong>&nbsp; Numbers that tell stories, supercells, number lines, digit play, palindromes, Kaprekar magic, clock patterns, mental math, Collatz, and estimation — badhu cover thayu! &#x1F4AF;</div>`;}
+
+// ── CHAPTER 4 ──
+
+function sec41(){return `
+<div class="sec-heading" style="color:#7c3aed">&#x1F4CB; 4.1 Collecting and Organising Data</div>
+<p><strong>Data</strong> is any collection of facts, numbers, or observations that give us information about something!</p>
+<div class="india-example">
+  <div class="ie-label">&#x1F1EE;&#x1F1F3; Indian Example</div>
+  <p>A <strong>sweet shop owner in Surat</strong> (like Shri Nilesh) asks students: "Which sweet do you prefer — Jalebi, Gulab Jamun, Gujiya, Barfi, or Rasgulla?" The answers form <strong>data</strong>. A <strong>cricket team coach</strong> collects data on each player's runs — that is data too!</p>
+</div>
+<div class="concept-box">
+  <div class="cb-title">Tally Marks — Easy way to count!</div>
+  <p>We use tally marks to count quickly:<br/>
+  | = 1 &nbsp;&nbsp; || = 2 &nbsp;&nbsp; ||| = 3 &nbsp;&nbsp; |||| = 4 &nbsp;&nbsp; <strong>||||&#x0338; = 5</strong> (fifth mark crosses the four!)<br/>
+  The count of how many times something occurs is called its <strong>frequency</strong>.</p>
+</div>
+<div class="visual-wrap">
+<svg viewBox="0 0 340 130" xmlns="http://www.w3.org/2000/svg">
+  <text x="170" y="16" text-anchor="middle" font-family="Baloo 2,cursive" font-size="12" font-weight="700" fill="#1e293b">Frequency Table — Sweet Preferences</text>
+  <rect x="10" y="24" width="320" height="100" rx="8" fill="#f5f3ff" stroke="#7c3aed" stroke-width="1.5"/>
+  <rect x="10" y="24" width="320" height="22" rx="8" fill="#7c3aed"/>
+  <text x="80" y="39" text-anchor="middle" font-family="Nunito,sans-serif" font-size="11" font-weight="700" fill="white">Sweet</text>
+  <text x="200" y="39" text-anchor="middle" font-family="Nunito,sans-serif" font-size="11" font-weight="700" fill="white">Tally</text>
+  <text x="300" y="39" text-anchor="middle" font-family="Nunito,sans-serif" font-size="11" font-weight="700" fill="white">Frequency</text>
+  <line x1="10" y1="46" x2="330" y2="46" stroke="#7c3aed" stroke-width="0.5"/>
+  <text x="80" y="62" text-anchor="middle" font-family="Nunito,sans-serif" font-size="11" fill="#1e293b">Jalebi</text>
+  <text x="200" y="62" text-anchor="middle" font-family="Nunito,sans-serif" font-size="11" fill="#5b21b6">|||| |</text>
+  <text x="300" y="62" text-anchor="middle" font-family="Baloo 2,cursive" font-size="13" font-weight="700" fill="#7c3aed">6</text>
+  <text x="80" y="78" text-anchor="middle" font-family="Nunito,sans-serif" font-size="11" fill="#1e293b">Gulab Jamun</text>
+  <text x="200" y="78" text-anchor="middle" font-family="Nunito,sans-serif" font-size="11" fill="#5b21b6">|||| ||||</text>
+  <text x="300" y="78" text-anchor="middle" font-family="Baloo 2,cursive" font-size="13" font-weight="700" fill="#7c3aed">9</text>
+  <text x="80" y="94" text-anchor="middle" font-family="Nunito,sans-serif" font-size="11" fill="#1e293b">Gujiya</text>
+  <text x="200" y="94" text-anchor="middle" font-family="Nunito,sans-serif" font-size="11" fill="#5b21b6">|||| |||| |||</text>
+  <text x="300" y="94" text-anchor="middle" font-family="Baloo 2,cursive" font-size="13" font-weight="700" fill="#7c3aed">13</text>
+  <text x="80" y="110" text-anchor="middle" font-family="Nunito,sans-serif" font-size="11" fill="#1e293b">Barfi</text>
+  <text x="200" y="110" text-anchor="middle" font-family="Nunito,sans-serif" font-size="11" fill="#5b21b6">|||</text>
+  <text x="300" y="110" text-anchor="middle" font-family="Baloo 2,cursive" font-size="13" font-weight="700" fill="#7c3aed">3</text>
+</svg>
+</div>
+<div class="fig-out">
+  <div class="fo-hdr">&#x2699; Figure it Out</div>
+  <ol>
+    <li>Collect data from 10 classmates: what is their favourite sport? Make a tally table.</li>
+    <li>Shoe sizes of 27 students: 3,3,3,4,4,4,4,4,4,4,4,4,4,5,5,5,5,5,5,5,5,5,6,6,6,6,7. Make a frequency table.</li>
+    <li>Which shoe size is most common? Which is least common?</li>
+  </ol>
+</div>
+<div class="practice-section">
+  <div class="ps-hdr">&#x1F3AF; Practice Time!</div>
+  <div class="practice-q"><div class="pq-text">Q1. "Data" means:</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">Only numbers</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">Any collection of facts or observations that give information</button><button class="choice-btn" onclick="checkAnswer(this,false)">Only graphs</button><button class="choice-btn" onclick="checkAnswer(this,false)">Only measurements</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q2. In tally marks, the 5th mark is drawn:</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">Vertical like the others</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">Crossing diagonally over the 4</button><button class="choice-btn" onclick="checkAnswer(this,false)">Horizontal below</button><button class="choice-btn" onclick="checkAnswer(this,false)">As a dot</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q3. In Shri Nilesh's sweet shop, Gujiya had frequency 13. This means:</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">13 types of Gujiya</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">13 students prefer Gujiya</button><button class="choice-btn" onclick="checkAnswer(this,false)">Gujiya costs ₹13</button><button class="choice-btn" onclick="checkAnswer(this,false)">13 kg of Gujiya</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q4. A cricket coach records runs: 45, 23, 67, 45, 23, 45. What is the frequency of 45?</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">1</button><button class="choice-btn" onclick="checkAnswer(this,false)">2</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">3</button><button class="choice-btn" onclick="checkAnswer(this,false)">6</button></div><div class="feedback"></div></div>
+</div>`;}
+
+function sec42(){return `
+<div class="sec-heading" style="color:#7c3aed">&#x1F5BC; 4.2 Pictographs</div>
+<p>A <strong>pictograph</strong> uses pictures or symbols to show data — it makes data easy and fun to read!</p>
+<div class="india-example">
+  <div class="ie-label">&#x1F1EE;&#x1F1F3; Indian Example</div>
+  <p>In Indian newspapers during <strong>election results</strong>, seats won by each party are shown as pictographs with party symbols! During <strong>IPL season</strong>, newspapers show runs scored using bat symbols. India's first <strong>census pictographs</strong> showed population using human figures!</p>
+</div>
+<div class="concept-box">
+  <div class="cb-title">How to read a Pictograph</div>
+  <p>Each symbol represents a fixed number (called the <strong>key</strong>). Count the symbols for each item, multiply by the key value to get the actual count.<br/>
+  <strong>Example:</strong> If &#x1F600; = 10 students, then 4 faces = 40 students.</p>
+</div>
+<div class="visual-wrap">
+<svg viewBox="0 0 340 145" xmlns="http://www.w3.org/2000/svg">
+  <text x="170" y="16" text-anchor="middle" font-family="Baloo 2,cursive" font-size="12" font-weight="700" fill="#1e293b">Students absent in each class (&#x1F600; = 1 student)</text>
+  <text x="30" y="38" font-family="Nunito,sans-serif" font-size="10" font-weight="700" fill="#5b21b6">Class I</text>
+  <text x="90" y="38" font-family="Nunito,sans-serif" font-size="14">&#x1F600;&#x1F600;&#x1F600;</text>
+  <text x="30" y="58" font-family="Nunito,sans-serif" font-size="10" font-weight="700" fill="#5b21b6">Class II</text>
+  <text x="90" y="58" font-family="Nunito,sans-serif" font-size="14">&#x1F600;&#x1F600;&#x1F600;&#x1F600;&#x1F600;</text>
+  <text x="30" y="78" font-family="Nunito,sans-serif" font-size="10" font-weight="700" fill="#5b21b6">Class III</text>
+  <text x="90" y="78" font-family="Nunito,sans-serif" font-size="14">&#x1F600;&#x1F600;&#x1F600;&#x1F600;</text>
+  <text x="30" y="98" font-family="Nunito,sans-serif" font-size="10" font-weight="700" fill="#5b21b6">Class IV</text>
+  <text x="90" y="98" font-family="Nunito,sans-serif" font-size="14">&#x1F600;&#x1F600;</text>
+  <text x="30" y="118" font-family="Nunito,sans-serif" font-size="10" font-weight="700" fill="#5b21b6">Class V</text>
+  <text x="90" y="118" font-family="Nunito,sans-serif" font-size="10" fill="#94a3b8">0 absent</text>
+  <text x="30" y="138" font-family="Nunito,sans-serif" font-size="10" font-weight="700" fill="#5b21b6">Class VI</text>
+  <text x="90" y="138" font-family="Nunito,sans-serif" font-size="14">&#x1F600;</text>
+  <rect x="240" y="24" width="90" height="110" rx="8" fill="#ede9fe" stroke="#7c3aed" stroke-width="1"/>
+  <text x="285" y="42" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" font-weight="700" fill="#5b21b6">Reading:</text>
+  <text x="285" y="58" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" fill="#3b0764">Class I = 3</text>
+  <text x="285" y="74" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" fill="#3b0764">Class II = 5</text>
+  <text x="285" y="90" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" fill="#3b0764">Class III = 4</text>
+  <text x="285" y="106" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" fill="#3b0764">Class IV = 2</text>
+  <text x="285" y="122" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" fill="#3b0764">Class V = 0</text>
+  <text x="285" y="130" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" fill="#3b0764">Class VI = 1</text>
+</svg>
+</div>
+<div class="fig-out">
+  <div class="fo-hdr">&#x2699; Figure it Out</div>
+  <ol>
+    <li>Draw a pictograph for: Cricket=15, Football=10, Hockey=5, Kabaddi=20 students. Use &#x26BD;= 5 students.</li>
+    <li>If &#x1F600; = 10 children and a row shows 4&#x1F600; + half &#x1F600;, how many children does it represent?</li>
+    <li>Why are pictographs easier to understand than tables?</li>
+  </ol>
+</div>
+<div class="practice-section">
+  <div class="ps-hdr">&#x1F3AF; Practice Time!</div>
+  <div class="practice-q"><div class="pq-text">Q1. In a pictograph, if &#x1F600; = 10 students and Class 7 has 3 faces, how many students?</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">3</button><button class="choice-btn" onclick="checkAnswer(this,false)">13</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">30</button><button class="choice-btn" onclick="checkAnswer(this,false)">300</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q2. A pictograph shows kites sold: Rani=3&#x1F426;, Jasmeet=5&#x1F426;, Chaman=4&#x1F426; where &#x1F426;=100 kites. Who sold most?</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">Rani</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">Jasmeet</button><button class="choice-btn" onclick="checkAnswer(this,false)">Chaman</button><button class="choice-btn" onclick="checkAnswer(this,false)">All equal</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q3. Why do we use a "key" in a pictograph?</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">To make it colourful</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">To show what each symbol represents</button><button class="choice-btn" onclick="checkAnswer(this,false)">To lock the data</button><button class="choice-btn" onclick="checkAnswer(this,false)">For decoration</button></div><div class="feedback"></div></div>
+</div>`;}
+
+function sec43(){return `
+<div class="sec-heading" style="color:#7c3aed">&#x1F4CA; 4.3 Bar Graphs</div>
+<p>A <strong>bar graph</strong> uses rectangular bars to show data. The taller the bar, the bigger the value!</p>
+<div class="india-example">
+  <div class="ie-label">&#x1F1EE;&#x1F1F3; Indian Example</div>
+  <p>Indian <strong>TV news channels</strong> show bar graphs for election results — number of seats won by each party. <strong>BCCI cricket stats</strong> use bar graphs to show runs scored by each batsman. India's <strong>state-wise population</strong> bar graph shows UP with the tallest bar!</p>
+</div>
+<div class="concept-box">
+  <div class="cb-title">Bar Graph vs Pictograph</div>
+  <p><strong>Pictograph:</strong> Uses pictures. Good for small data. Hard when numbers are large.<br/>
+  <strong>Bar graph:</strong> Uses bars of different heights. Works for ANY size of data! Much faster to draw and read.</p>
+</div>
+<div class="visual-wrap">
+<svg viewBox="0 0 340 160" xmlns="http://www.w3.org/2000/svg">
+  <text x="170" y="16" text-anchor="middle" font-family="Baloo 2,cursive" font-size="12" font-weight="700" fill="#1e293b">Bar Graph — Students absent per class</text>
+  <line x1="40" y1="130" x2="310" y2="130" stroke="#1e293b" stroke-width="2"/>
+  <line x1="40" y1="20" x2="40" y2="130" stroke="#1e293b" stroke-width="2"/>
+  <line x1="40" y1="110" x2="310" y2="110" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3,3"/>
+  <line x1="40" y1="90" x2="310" y2="90" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3,3"/>
+  <line x1="40" y1="70" x2="310" y2="70" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3,3"/>
+  <line x1="40" y1="50" x2="310" y2="50" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3,3"/>
+  <line x1="40" y1="30" x2="310" y2="30" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3,3"/>
+  <text x="32" y="113" text-anchor="end" font-family="Nunito,sans-serif" font-size="9" fill="#64748b">1</text>
+  <text x="32" y="93" text-anchor="end" font-family="Nunito,sans-serif" font-size="9" fill="#64748b">2</text>
+  <text x="32" y="73" text-anchor="end" font-family="Nunito,sans-serif" font-size="9" fill="#64748b">3</text>
+  <text x="32" y="53" text-anchor="end" font-family="Nunito,sans-serif" font-size="9" fill="#64748b">4</text>
+  <text x="32" y="33" text-anchor="end" font-family="Nunito,sans-serif" font-size="9" fill="#64748b">5</text>
+  <rect x="55" y="70" width="28" height="60" fill="#7c3aed" rx="3"/>
+  <text x="69" y="143" text-anchor="middle" font-family="Nunito,sans-serif" font-size="9" fill="#1e293b">I</text>
+  <rect x="95" y="30" width="28" height="100" fill="#7c3aed" rx="3"/>
+  <text x="109" y="143" text-anchor="middle" font-family="Nunito,sans-serif" font-size="9" fill="#1e293b">II</text>
+  <rect x="135" y="50" width="28" height="80" fill="#7c3aed" rx="3"/>
+  <text x="149" y="143" text-anchor="middle" font-family="Nunito,sans-serif" font-size="9" fill="#1e293b">III</text>
+  <rect x="175" y="110" width="28" height="20" fill="#7c3aed" rx="3"/>
+  <text x="189" y="143" text-anchor="middle" font-family="Nunito,sans-serif" font-size="9" fill="#1e293b">IV</text>
+  <rect x="215" y="128" width="28" height="2" fill="#7c3aed" rx="1"/>
+  <text x="229" y="143" text-anchor="middle" font-family="Nunito,sans-serif" font-size="9" fill="#1e293b">V</text>
+  <rect x="255" y="110" width="28" height="20" fill="#7c3aed" rx="3"/>
+  <text x="269" y="143" text-anchor="middle" font-family="Nunito,sans-serif" font-size="9" fill="#1e293b">VI</text>
+  <text x="170" y="158" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" fill="#64748b">Tallest bar = most absent. Easy to compare!</text>
+</svg>
+</div>
+<div class="fig-out">
+  <div class="fo-hdr">&#x2699; Figure it Out</div>
+  <ol>
+    <li>From the bar graph above: which class had most absences? Least?</li>
+    <li>When would you use a pictograph over a bar graph? When would you prefer a bar graph?</li>
+    <li>India's population by decade: 1971=548M, 1981=683M, 1991=838M, 2001=1029M, 2011=1210M. Draw a bar graph!</li>
+  </ol>
+</div>
+<div class="practice-section">
+  <div class="ps-hdr">&#x1F3AF; Practice Time!</div>
+  <div class="practice-q"><div class="pq-text">Q1. In a bar graph, the height of a bar represents:</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">The category name</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">The frequency or value of that category</button><button class="choice-btn" onclick="checkAnswer(this,false)">The colour chosen</button><button class="choice-btn" onclick="checkAnswer(this,false)">The width of paper</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q2. Which is better for very large numbers (like India's population)?</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">Pictograph</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">Bar graph</button><button class="choice-btn" onclick="checkAnswer(this,false)">Tally marks</button><button class="choice-btn" onclick="checkAnswer(this,false)">Table only</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q3. In IPL bar graph, Mumbai Indians bar = 8 units, scale = 1 unit = 10 runs. Runs scored = ?</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">8</button><button class="choice-btn" onclick="checkAnswer(this,false)">18</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">80</button><button class="choice-btn" onclick="checkAnswer(this,false)">800</button></div><div class="feedback"></div></div>
+</div>`;}
+
+function sec44(){return `
+<div class="sec-heading" style="color:#7c3aed">&#x270F; 4.4 Drawing a Bar Graph</div>
+<p>Drawing a bar graph is easy if you follow the steps carefully!</p>
+<div class="india-example">
+  <div class="ie-label">&#x1F1EE;&#x1F1F3; Indian Example</div>
+  <p>Let us draw a bar graph for Shri Nilesh's sweet shop data from Surat! Sweets: Jalebi=6, Gulab Jamun=9, Gujiya=13, Barfi=3, Rasgulla=7. This will help him order the right amount of each sweet for the next time!</p>
+</div>
+<div class="concept-box">
+  <div class="cb-title">5 Steps to Draw a Bar Graph</div>
+  <p><strong>Step 1:</strong> Draw a horizontal line (X-axis) and a vertical line (Y-axis).<br/>
+  <strong>Step 2:</strong> Write category names equally spaced on the X-axis.<br/>
+  <strong>Step 3:</strong> Choose a scale for the Y-axis (e.g., 1 unit = 1 student).<br/>
+  <strong>Step 4:</strong> Mark the scale values on Y-axis.<br/>
+  <strong>Step 5:</strong> Draw bars of correct heights for each category. All bars same width!</p>
+</div>
+<div class="visual-wrap">
+<svg viewBox="0 0 340 165" xmlns="http://www.w3.org/2000/svg">
+  <text x="170" y="14" text-anchor="middle" font-family="Baloo 2,cursive" font-size="11" font-weight="700" fill="#1e293b">Sweet Shop Bar Graph (Shri Nilesh, Surat)</text>
+  <line x1="45" y1="135" x2="320" y2="135" stroke="#1e293b" stroke-width="2"/>
+  <line x1="45" y1="25" x2="45" y2="135" stroke="#1e293b" stroke-width="2"/>
+  <text x="38" y="129" text-anchor="end" font-size="8" font-family="Nunito,sans-serif" fill="#64748b">0</text>
+  <line x1="45" y1="117" x2="320" y2="117" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="2,2"/>
+  <text x="38" y="120" text-anchor="end" font-size="8" font-family="Nunito,sans-serif" fill="#64748b">2</text>
+  <line x1="45" y1="105" x2="320" y2="105" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="2,2"/>
+  <text x="38" y="108" text-anchor="end" font-size="8" font-family="Nunito,sans-serif" fill="#64748b">4</text>
+  <line x1="45" y1="93" x2="320" y2="93" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="2,2"/>
+  <text x="38" y="96" text-anchor="end" font-size="8" font-family="Nunito,sans-serif" fill="#64748b">6</text>
+  <line x1="45" y1="81" x2="320" y2="81" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="2,2"/>
+  <text x="38" y="84" text-anchor="end" font-size="8" font-family="Nunito,sans-serif" fill="#64748b">8</text>
+  <line x1="45" y1="69" x2="320" y2="69" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="2,2"/>
+  <text x="38" y="72" text-anchor="end" font-size="8" font-family="Nunito,sans-serif" fill="#64748b">10</text>
+  <line x1="45" y1="57" x2="320" y2="57" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="2,2"/>
+  <text x="38" y="60" text-anchor="end" font-size="8" font-family="Nunito,sans-serif" fill="#64748b">12</text>
+  <line x1="45" y1="45" x2="320" y2="45" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="2,2"/>
+  <text x="38" y="48" text-anchor="end" font-size="8" font-family="Nunito,sans-serif" fill="#64748b">14</text>
+  <rect x="58" y="93" width="36" height="42" fill="#7c3aed" rx="3"/>
+  <text x="76" y="148" text-anchor="middle" font-size="8" font-family="Nunito,sans-serif" fill="#1e293b">Jalebi</text>
+  <text x="76" y="90" text-anchor="middle" font-size="9" font-family="Baloo 2,cursive" font-weight="700" fill="#7c3aed">6</text>
+  <rect x="106" y="81" width="36" height="54" fill="#9333ea" rx="3"/>
+  <text x="124" y="148" text-anchor="middle" font-size="8" font-family="Nunito,sans-serif" fill="#1e293b">G.Jamun</text>
+  <text x="124" y="78" text-anchor="middle" font-size="9" font-family="Baloo 2,cursive" font-weight="700" fill="#9333ea">9</text>
+  <rect x="154" y="57" width="36" height="78" fill="#a855f7" rx="3"/>
+  <text x="172" y="148" text-anchor="middle" font-size="8" font-family="Nunito,sans-serif" fill="#1e293b">Gujiya</text>
+  <text x="172" y="54" text-anchor="middle" font-size="9" font-family="Baloo 2,cursive" font-weight="700" fill="#a855f7">13</text>
+  <rect x="202" y="117" width="36" height="18" fill="#7c3aed" rx="3"/>
+  <text x="220" y="148" text-anchor="middle" font-size="8" font-family="Nunito,sans-serif" fill="#1e293b">Barfi</text>
+  <text x="220" y="114" text-anchor="middle" font-size="9" font-family="Baloo 2,cursive" font-weight="700" fill="#7c3aed">3</text>
+  <rect x="250" y="93" width="36" height="42" fill="#9333ea" rx="3"/>
+  <text x="268" y="148" text-anchor="middle" font-size="8" font-family="Nunito,sans-serif" fill="#1e293b">Rasgulla</text>
+  <text x="268" y="90" text-anchor="middle" font-size="9" font-family="Baloo 2,cursive" font-weight="700" fill="#9333ea">7</text>
+  <text x="170" y="162" text-anchor="middle" font-family="Nunito,sans-serif" font-size="9" fill="#64748b">Gujiya is most popular — Shri Nilesh should order more!</text>
+</svg>
+</div>
+<div class="fig-out">
+  <div class="fo-hdr">&#x2699; Figure it Out</div>
+  <ol>
+    <li>Draw a bar graph for insects: Mites=6, Caterpillars=10, Beetles=5, Butterflies=3, Grasshoppers=2.</li>
+    <li>Railway tickets sold: Vidisha=24, Jabalpur=20, Seoni=16, Indore=28, Sagar=16. Draw a bar graph. Which city has most tickets?</li>
+    <li>What scale would you choose for the railway ticket data? Why?</li>
+  </ol>
+</div>
+<div class="practice-section">
+  <div class="ps-hdr">&#x1F3AF; Practice Time!</div>
+  <div class="practice-q"><div class="pq-text">Q1. In Shri Nilesh's data, which sweet is LEAST popular?</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">Jalebi</button><button class="choice-btn" onclick="checkAnswer(this,false)">Rasgulla</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">Barfi</button><button class="choice-btn" onclick="checkAnswer(this,false)">Gulab Jamun</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q2. Which sweet should Shri Nilesh order the MOST of?</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">Jalebi</button><button class="choice-btn" onclick="checkAnswer(this,false)">Rasgulla</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">Gujiya</button><button class="choice-btn" onclick="checkAnswer(this,false)">Barfi</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q3. All bars in a bar graph should have the same:</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">Height</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">Width</button><button class="choice-btn" onclick="checkAnswer(this,false)">Colour</text></button><button class="choice-btn" onclick="checkAnswer(this,false)">Label</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q4. Scale: 1 unit = 2 students. Bar height for 14 students = ?</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">14 units</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">7 units</button><button class="choice-btn" onclick="checkAnswer(this,false)">28 units</button><button class="choice-btn" onclick="checkAnswer(this,false)">2 units</button></div><div class="feedback"></div></div>
+</div>`;}
+
+function sec45(){return `
+<div class="sec-heading" style="color:#7c3aed">&#x1F3A8; 4.5 Artistic and Aesthetic Considerations</div>
+<p>A good data presentation is not just <strong>correct</strong> — it should also be <strong>clear, beautiful, and not misleading</strong>!</p>
+<div class="india-example">
+  <div class="ie-label">&#x1F1EE;&#x1F1F3; Indian Example</div>
+  <p>Mount <strong>Everest</strong> (Asia, 8848m) vs Mount Koscuiszko (Australia, 2228m) — a good bar graph shows how much taller Everest is at a glance! Indian news channels sometimes use <strong>misleading graphs</strong> during elections — starting Y-axis from 50 instead of 0 makes small differences look huge. We must be careful!</p>
+</div>
+<div class="concept-box">
+  <div class="cb-title">Rules for a Good Graph</div>
+  <p>&#x2705; Start Y-axis from 0 (unless justified)<br/>
+  &#x2705; Choose a scale that fits the data well<br/>
+  &#x2705; Label both axes clearly<br/>
+  &#x2705; Give the graph a clear title<br/>
+  &#x274C; Never start Y-axis from a large number to exaggerate differences<br/>
+  &#x274C; Never use unequal bar widths</p>
+</div>
+<div class="visual-wrap">
+<svg viewBox="0 0 340 155" xmlns="http://www.w3.org/2000/svg">
+  <text x="170" y="14" text-anchor="middle" font-family="Baloo 2,cursive" font-size="11" font-weight="700" fill="#1e293b">Highest Mountain on Each Continent</text>
+  <line x1="70" y1="130" x2="320" y2="130" stroke="#1e293b" stroke-width="1.5"/>
+  <line x1="70" y1="20" x2="70" y2="130" stroke="#1e293b" stroke-width="1.5"/>
+  <rect x="80" y="21" width="28" height="109" fill="#7c3aed" rx="2"/>
+  <text x="94" y="140" text-anchor="middle" font-size="8" font-family="Nunito,sans-serif" fill="#1e293b">Everest</text>
+  <text x="94" y="18" text-anchor="middle" font-size="8" font-family="Baloo 2,cursive" font-weight="700" fill="#7c3aed">8848</text>
+  <rect x="118" y="37" width="28" height="93" fill="#9333ea" rx="2"/>
+  <text x="132" y="140" text-anchor="middle" font-size="8" font-family="Nunito,sans-serif" fill="#1e293b">Aconcagua</text>
+  <text x="132" y="34" text-anchor="middle" font-size="8" font-family="Baloo 2,cursive" font-weight="700" fill="#9333ea">6962</text>
+  <rect x="156" y="54" width="28" height="76" fill="#7c3aed" rx="2"/>
+  <text x="170" y="140" text-anchor="middle" font-size="8" font-family="Nunito,sans-serif" fill="#1e293b">Denali</text>
+  <text x="170" y="51" text-anchor="middle" font-size="8" font-family="Baloo 2,cursive" font-weight="700" fill="#7c3aed">6194</text>
+  <rect x="194" y="57" width="28" height="73" fill="#a855f7" rx="2"/>
+  <text x="208" y="140" text-anchor="middle" font-size="8" font-family="Nunito,sans-serif" fill="#1e293b">Kilimanjaro</text>
+  <text x="208" y="54" text-anchor="middle" font-size="8" font-family="Baloo 2,cursive" font-weight="700" fill="#a855f7">5895</text>
+  <rect x="232" y="62" width="28" height="68" fill="#7c3aed" rx="2"/>
+  <text x="246" y="140" text-anchor="middle" font-size="8" font-family="Nunito,sans-serif" fill="#1e293b">Elbrus</text>
+  <text x="246" y="59" text-anchor="middle" font-size="8" font-family="Baloo 2,cursive" font-weight="700" fill="#7c3aed">5642</text>
+  <rect x="270" y="103" width="28" height="27" fill="#9333ea" rx="2"/>
+  <text x="284" y="140" text-anchor="middle" font-size="8" font-family="Nunito,sans-serif" fill="#1e293b">Koscuiszko</text>
+  <text x="284" y="100" text-anchor="middle" font-size="8" font-family="Baloo 2,cursive" font-weight="700" fill="#9333ea">2228</text>
+  <text x="170" y="153" text-anchor="middle" font-family="Nunito,sans-serif" font-size="9" fill="#64748b">Everest is clearly MUCH taller — visible at a glance!</text>
+</svg>
+</div>
+<div class="fig-out">
+  <div class="fo-hdr">&#x2699; Figure it Out</div>
+  <ol>
+    <li>A news channel shows a bar graph of party seats: starts Y-axis at 240 instead of 0. Why is this misleading?</li>
+    <li>From the mountain graph: how much taller is Everest than Koscuiszko?</li>
+    <li>Design your own bar graph topic — what data would you collect from your class?</li>
+  </ol>
+</div>
+<div class="practice-section">
+  <div class="ps-hdr">&#x1F3AF; Practice Time!</div>
+  <div class="practice-q"><div class="pq-text">Q1. A good bar graph Y-axis should start from:</div><div class="answer-choices"><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">0</button><button class="choice-btn" onclick="checkAnswer(this,false)">The smallest value</button><button class="choice-btn" onclick="checkAnswer(this,false)">The largest value</button><button class="choice-btn" onclick="checkAnswer(this,false)">Any number</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q2. Which mountain is tallest in the world?</div><div class="answer-choices"><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">Mount Everest (Asia, 8848m)</button><button class="choice-btn" onclick="checkAnswer(this,false)">Aconcagua (South America)</button><button class="choice-btn" onclick="checkAnswer(this,false)">Denali (North America)</button><button class="choice-btn" onclick="checkAnswer(this,false)">Elbrus (Europe)</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q3. A graph that makes small differences look very large is called:</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">A good graph</button><button class="choice-btn" onclick="checkAnswer(this,false)">An artistic graph</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">A misleading graph</button><button class="choice-btn" onclick="checkAnswer(this,false)">A bar graph</button></div><div class="feedback"></div></div>
+</div>
+<div class="math-talk">&#x1F3C6; <strong>Chapter 4 — Complete!</strong>&nbsp; Data, Tally marks, Frequency, Pictographs, Bar Graphs, Drawing graphs, and Aesthetic considerations — badhu cover thayu! &#x1F4AF;</div>`;}
 
 function sec16(){return `
 <div class="sec-heading" style="color:#2563eb">&#x1F9E9; 1.6 Relation to Number Sequences</div>
