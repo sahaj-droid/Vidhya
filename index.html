@@ -409,7 +409,12 @@ body { font-family: 'Nunito', sans-serif; background: #f0f9ff; color: #1e293b; m
         <div class="ch-name">Lines and Angles</div>
         <span class="ch-badge">&#x2705; Available</span>
       </div>
-      <div class="chapter-card ch-3 locked"><span class="ch-icon">&#x1F3B2;</span><div class="ch-num">3</div><div class="ch-name">Number Play</div><span class="ch-badge">&#x1F512; Soon</span></div>
+      <div class="chapter-card ch-3" onclick="openChapter(3)">
+        <span class="ch-icon">&#x1F3B2;</span>
+        <div class="ch-num">3</div>
+        <div class="ch-name">Number Play</div>
+        <span class="ch-badge">&#x2705; Available</span>
+      </div>
       <div class="chapter-card ch-4 locked"><span class="ch-icon">&#x1F4CA;</span><div class="ch-num">4</div><div class="ch-name">Data Handling</div><span class="ch-badge">&#x1F512; Soon</span></div>
       <div class="chapter-card ch-5 locked"><span class="ch-icon">&#x1F31F;</span><div class="ch-num">5</div><div class="ch-name">Prime Time</div><span class="ch-badge">&#x1F512; Soon</span></div>
       <div class="chapter-card ch-6 locked"><span class="ch-icon">&#x25A1;</span><div class="ch-num">6</div><div class="ch-name">Perimeter and Area</div><span class="ch-badge">&#x1F512; Soon</span></div>
@@ -471,6 +476,23 @@ var CHAPTERS = [{
     {id:"2.9", title:"Measuring Angles",                  type:"Concept + Visual + Practice"},
     {id:"2.10", title:"Using a Protractor",               type:"Concept + Steps + Practice"},
     {id:"2.11", title:"Types of Angles and their Measures",type:"Concept + Visual + Practice"},
+  ]
+},{
+  id:3, title:"Number Play",
+  color:"#f97316", bg:"linear-gradient(135deg,#c2410c,#f97316)",
+  available:true,
+  sections:[
+    {id:"3.1",  title:"Numbers can Tell us Things",      type:"Concept + Puzzle + Practice"},
+    {id:"3.2",  title:"Supercells",                      type:"Concept + Table + Practice"},
+    {id:"3.3",  title:"Patterns on the Number Line",     type:"Concept + Visual + Practice"},
+    {id:"3.4",  title:"Playing with Digits",             type:"Concept + Activity + Practice"},
+    {id:"3.5",  title:"Pretty Palindromic Patterns",     type:"Concept + Pattern + Practice"},
+    {id:"3.6",  title:"The Magic Number of Kaprekar",    type:"Indian Maths + Activity + Practice"},
+    {id:"3.7",  title:"Clock and Calendar Numbers",      type:"Concept + Activity + Practice"},
+    {id:"3.8",  title:"Mental Math",                     type:"Concept + Activity + Practice"},
+    {id:"3.9",  title:"Playing with Number Patterns",    type:"Concept + Collatz + Practice"},
+    {id:"3.10", title:"Playing with Number Patterns 2",  type:"Concept + Pattern + Practice"},
+    {id:"3.11", title:"Simple Estimation",               type:"Concept + Indian Examples + Practice"},
   ]
 }];
 
@@ -560,7 +582,9 @@ function buildContent(id){
     '1.1':sec11,'1.2':sec12,'1.3':sec13,'1.4':sec14,'1.5':sec15,'1.6':sec16,
     '2.1':sec21,'2.2':sec22,'2.3':sec23,'2.4':sec24,'2.5':sec25,
     '2.6':sec26,'2.7':sec27,'2.8':sec28,'2.9':sec29,
-    '2.10':sec210,'2.11':sec211
+    '2.10':sec210,'2.11':sec211,
+    '3.1':sec31,'3.2':sec32,'3.3':sec33,'3.4':sec34,'3.5':sec35,
+    '3.6':sec36,'3.7':sec37,'3.8':sec38,'3.9':sec39,'3.10':sec310,'3.11':sec311
   };
   return map[id]?map[id]():'<p style="padding:40px;text-align:center;color:#94a3b8">Coming soon!</p>';
 }
@@ -1469,6 +1493,446 @@ function sec211(){return `
   <div class="practice-q"><div class="pq-text">Q4. Which angle type comes between Obtuse and Reflex?</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">Acute</button><button class="choice-btn" onclick="checkAnswer(this,false)">Right</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">Straight (180°)</button><button class="choice-btn" onclick="checkAnswer(this,false)">Full turn</button></div><div class="feedback"></div></div>
 </div>
 <div class="math-talk">&#x1F3C6; <strong>Chapter 2 — 100% Complete!</strong>&nbsp; Point, Line Segment, Line, Ray, Angle, Comparing, Making, Special Types, Measuring, Protractor, All Angle Types — badhu cover thayu! Chapter 2 done! &#x1F4AF;</div>`;}
+
+// ── CHAPTER 3 ──
+
+function sec31(){return `
+<div class="sec-heading" style="color:#f97316">&#x1F4AC; 3.1 Numbers can Tell us Things</div>
+<p>Numbers are not just for counting — they <strong>tell us information</strong> about the world around us!</p>
+<div class="india-example">
+  <div class="ie-label">&#x1F1EE;&#x1F1F3; Indian Example</div>
+  <p>Think of a <strong>cricket scorecard</strong> — 10/2 means 10 runs, 2 wickets. The jersey number of a <strong>cricket player</strong> identifies who they are. A <strong>PIN code</strong> like 395001 tells us the area in Surat! Numbers give meaning beyond just counting.</p>
+</div>
+<p>In this activity, children stand in a line. Each child says a number based on how many taller neighbours they have:</p>
+<div class="concept-box">
+  <div class="cb-title">The Rule</div>
+  <p>A child says <strong>0</strong> if neither neighbour is taller.<br/>
+  A child says <strong>1</strong> if exactly one neighbour is taller.<br/>
+  A child says <strong>2</strong> if both neighbours are taller.</p>
+</div>
+<div class="visual-wrap">
+<svg viewBox="0 0 340 110" xmlns="http://www.w3.org/2000/svg">
+  <text x="170" y="16" text-anchor="middle" font-family="Baloo 2,cursive" font-size="12" font-weight="700" fill="#1e293b">Children in line — numbers show taller neighbours</text>
+  <rect x="15" y="55" width="28" height="40" rx="4" fill="#fed7aa" stroke="#f97316" stroke-width="1.5"/>
+  <text x="29" y="75" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" fill="#1e293b">h=5</text>
+  <text x="29" y="50" text-anchor="middle" font-family="Baloo 2,cursive" font-size="16" font-weight="800" fill="#f97316">0</text>
+
+  <rect x="58" y="40" width="28" height="55" rx="4" fill="#fed7aa" stroke="#f97316" stroke-width="1.5"/>
+  <text x="72" y="62" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" fill="#1e293b">h=7</text>
+  <text x="72" y="35" text-anchor="middle" font-family="Baloo 2,cursive" font-size="16" font-weight="800" fill="#f97316">0</text>
+
+  <rect x="101" y="60" width="28" height="35" rx="4" fill="#fed7aa" stroke="#f97316" stroke-width="1.5"/>
+  <text x="115" y="80" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" fill="#1e293b">h=4</text>
+  <text x="115" y="55" text-anchor="middle" font-family="Baloo 2,cursive" font-size="16" font-weight="800" fill="#f97316">2</text>
+
+  <rect x="144" y="35" width="28" height="60" rx="4" fill="#fed7aa" stroke="#f97316" stroke-width="1.5"/>
+  <text x="158" y="58" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" fill="#1e293b">h=8</text>
+  <text x="158" y="30" text-anchor="middle" font-family="Baloo 2,cursive" font-size="16" font-weight="800" fill="#f97316">1</text>
+
+  <rect x="187" y="50" width="28" height="45" rx="4" fill="#fed7aa" stroke="#f97316" stroke-width="1.5"/>
+  <text x="201" y="70" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" fill="#1e293b">h=6</text>
+  <text x="201" y="45" text-anchor="middle" font-family="Baloo 2,cursive" font-size="16" font-weight="800" fill="#f97316">1</text>
+
+  <text x="170" y="105" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" font-weight="700" fill="#64748b">Each number = count of taller neighbours on left/right</text>
+</svg>
+</div>
+<div class="fig-out">
+  <div class="fo-hdr">&#x2699; Figure it Out</div>
+  <ol>
+    <li>Can children arrange themselves so that ALL say 0? When would that happen?</li>
+    <li>Can the end children ever say 2? Why or why not?</li>
+    <li>Think of 3 other situations in daily life where numbers tell us something meaningful.</li>
+  </ol>
+</div>
+<div class="practice-section">
+  <div class="ps-hdr">&#x1F3AF; Practice Time!</div>
+  <div class="practice-q"><div class="pq-text">Q1. In cricket, what does 10/2 on the scoreboard mean?</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">10 players, 2 overs</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">10 runs, 2 wickets fallen</button><button class="choice-btn" onclick="checkAnswer(this,false)">10 overs, 2 runs</button><button class="choice-btn" onclick="checkAnswer(this,false)">10 balls, 2 fours</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q2. A child in the middle of the line has both neighbours taller. They say:</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">0</button><button class="choice-btn" onclick="checkAnswer(this,false)">1</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">2</button><button class="choice-btn" onclick="checkAnswer(this,false)">3</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q3. The tallest child in any arrangement will always say:</div><div class="answer-choices"><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">0</button><button class="choice-btn" onclick="checkAnswer(this,false)">1</button><button class="choice-btn" onclick="checkAnswer(this,false)">2</button><button class="choice-btn" onclick="checkAnswer(this,false)">Depends</button></div><div class="feedback"></div></div>
+</div>`;}
+
+function sec32(){return `
+<div class="sec-heading" style="color:#f97316">&#x1F7E7; 3.2 Supercells</div>
+<p>In a row of numbers, a cell is a <strong>supercell</strong> if its number is <strong>greater than all its neighbours</strong>!</p>
+<div class="india-example">
+  <div class="ie-label">&#x1F1EE;&#x1F1F3; Indian Example</div>
+  <p>Think of cricket batting scores in a row: 45, <strong>78</strong>, 32, <strong>91</strong>, 60, 15, <strong>88</strong>. The bolded scores — 78, 91, 88 — are "supercell" scores! Each is bigger than both its neighbours. In a <strong>mango market</strong>, the stall with the highest price compared to neighbours on both sides is a "supercell stall"!</p>
+</div>
+<div class="concept-box">
+  <div class="cb-title">Supercell Rule</div>
+  <p>A number is a supercell if it is <strong>greater than all its adjacent (neighbouring) cells</strong>. End cells only have one neighbour, so they just need to beat that one neighbour!</p>
+</div>
+<div class="visual-wrap">
+<svg viewBox="0 0 340 90" xmlns="http://www.w3.org/2000/svg">
+  <text x="170" y="16" text-anchor="middle" font-family="Baloo 2,cursive" font-size="12" font-weight="700" fill="#1e293b">Supercells are highlighted (bigger than neighbours)</text>
+  <rect x="10" y="28" width="44" height="32" rx="4" fill="#fff7ed" stroke="#f97316" stroke-width="1.5"/>
+  <text x="32" y="49" text-anchor="middle" font-family="Baloo 2,cursive" font-size="14" font-weight="700" fill="#1e293b">43</text>
+  <rect x="58" y="22" width="44" height="38" rx="4" fill="#f97316"/>
+  <text x="80" y="45" text-anchor="middle" font-family="Baloo 2,cursive" font-size="14" font-weight="800" fill="white">79</text>
+  <text x="80" y="72" text-anchor="middle" font-family="Nunito,sans-serif" font-size="9" font-weight="700" fill="#f97316">supercell!</text>
+  <rect x="106" y="28" width="44" height="32" rx="4" fill="#fff7ed" stroke="#f97316" stroke-width="1.5"/>
+  <text x="128" y="49" text-anchor="middle" font-family="Baloo 2,cursive" font-size="14" font-weight="700" fill="#1e293b">75</text>
+  <rect x="154" y="28" width="44" height="32" rx="4" fill="#fff7ed" stroke="#f97316" stroke-width="1.5"/>
+  <text x="176" y="49" text-anchor="middle" font-family="Baloo 2,cursive" font-size="14" font-weight="700" fill="#1e293b">10</text>
+  <rect x="202" y="22" width="44" height="38" rx="4" fill="#f97316"/>
+  <text x="224" y="45" text-anchor="middle" font-family="Baloo 2,cursive" font-size="14" font-weight="800" fill="white">29</text>
+  <text x="224" y="72" text-anchor="middle" font-family="Nunito,sans-serif" font-size="9" font-weight="700" fill="#f97316">supercell!</text>
+  <rect x="250" y="28" width="44" height="32" rx="4" fill="#fff7ed" stroke="#f97316" stroke-width="1.5"/>
+  <text x="272" y="49" text-anchor="middle" font-family="Baloo 2,cursive" font-size="14" font-weight="700" fill="#1e293b">28</text>
+  <rect x="298" y="22" width="38" height="38" rx="4" fill="#f97316"/>
+  <text x="317" y="45" text-anchor="middle" font-family="Baloo 2,cursive" font-size="14" font-weight="800" fill="white">34</text>
+  <text x="317" y="72" text-anchor="middle" font-family="Nunito,sans-serif" font-size="9" font-weight="700" fill="#f97316">end cell!</text>
+</svg>
+</div>
+<div class="fig-out">
+  <div class="fo-hdr">&#x2699; Figure it Out</div>
+  <ol>
+    <li>Mark supercells: 6828, 670, 9435, 3780, 3708, 7308, 8000, 5583, 52</li>
+    <li>Can a table have NO supercells? Try to fill one!</li>
+    <li>Can the smallest number in a table be a supercell? Why or why not?</li>
+  </ol>
+</div>
+<div class="practice-section">
+  <div class="ps-hdr">&#x1F3AF; Practice Time!</div>
+  <div class="practice-q"><div class="pq-text">Q1. In the row 45, 78, 32, 91, 60 — which is a supercell?</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">45</button><button class="choice-btn" onclick="checkAnswer(this,false)">78</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">91</button><button class="choice-btn" onclick="checkAnswer(this,false)">60</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q2. In row: 5, 3, 8, 6, 9 — how many supercells are there?</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">1</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">2</button><button class="choice-btn" onclick="checkAnswer(this,false)">3</button><button class="choice-btn" onclick="checkAnswer(this,false)">4</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q3. The largest number in a row is always a supercell. True or false?</div><div class="answer-choices"><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">True — it beats all neighbours</button><button class="choice-btn" onclick="checkAnswer(this,false)">False — it depends</button><button class="choice-btn" onclick="checkAnswer(this,false)">Only if it is at the end</button><button class="choice-btn" onclick="checkAnswer(this,false)">Never true</button></div><div class="feedback"></div></div>
+</div>`;}
+
+function sec33(){return `
+<div class="sec-heading" style="color:#f97316">&#x2194; 3.3 Patterns on the Number Line</div>
+<p>A <strong>number line</strong> helps us see the order and position of numbers visually. Every number has exactly one position on the number line!</p>
+<div class="india-example">
+  <div class="ie-label">&#x1F1EE;&#x1F1F3; Indian Example</div>
+  <p>Think of <strong>house numbers on a street</strong> in Surat — they go in order. Or <strong>km markers on a highway</strong> — each marker is at a specific position. A number line works exactly like this!</p>
+</div>
+<div class="visual-wrap">
+<svg viewBox="0 0 340 90" xmlns="http://www.w3.org/2000/svg">
+  <text x="170" y="16" text-anchor="middle" font-family="Baloo 2,cursive" font-size="12" font-weight="700" fill="#1e293b">Number Line: 1000 to 10,000</text>
+  <line x1="20" y1="50" x2="320" y2="50" stroke="#f97316" stroke-width="2.5"/>
+  <polygon points="314,46 324,50 314,54" fill="#f97316"/>
+  <polygon points="26,46 16,50 26,54" fill="#f97316"/>
+  <line x1="53" y1="44" x2="53" y2="56" stroke="#1e293b" stroke-width="1.5"/>
+  <text x="53" y="68" text-anchor="middle" font-family="Nunito,sans-serif" font-size="9" fill="#1e293b">1000</text>
+  <line x1="86" y1="44" x2="86" y2="56" stroke="#1e293b" stroke-width="1.5"/>
+  <text x="86" y="68" text-anchor="middle" font-family="Nunito,sans-serif" font-size="9" fill="#1e293b">2000</text>
+  <line x1="119" y1="44" x2="119" y2="56" stroke="#1e293b" stroke-width="1.5"/>
+  <text x="119" y="68" text-anchor="middle" font-family="Nunito,sans-serif" font-size="9" fill="#1e293b">3000</text>
+  <line x1="152" y1="44" x2="152" y2="56" stroke="#1e293b" stroke-width="1.5"/>
+  <text x="152" y="68" text-anchor="middle" font-family="Nunito,sans-serif" font-size="9" fill="#1e293b">4000</text>
+  <line x1="185" y1="44" x2="185" y2="56" stroke="#1e293b" stroke-width="1.5"/>
+  <text x="185" y="68" text-anchor="middle" font-family="Nunito,sans-serif" font-size="9" fill="#1e293b">5000</text>
+  <line x1="218" y1="44" x2="218" y2="56" stroke="#1e293b" stroke-width="1.5"/>
+  <text x="218" y="68" text-anchor="middle" font-family="Nunito,sans-serif" font-size="9" fill="#1e293b">6000</text>
+  <line x1="251" y1="44" x2="251" y2="56" stroke="#1e293b" stroke-width="1.5"/>
+  <text x="251" y="68" text-anchor="middle" font-family="Nunito,sans-serif" font-size="9" fill="#1e293b">8000</text>
+  <line x1="284" y1="44" x2="284" y2="56" stroke="#1e293b" stroke-width="1.5"/>
+  <text x="284" y="68" text-anchor="middle" font-family="Nunito,sans-serif" font-size="9" fill="#1e293b">10,000</text>
+  <circle cx="75" cy="50" r="5" fill="#2563eb"/>
+  <text x="75" y="35" text-anchor="middle" font-family="Baloo 2,cursive" font-size="11" font-weight="700" fill="#2563eb">2180</text>
+  <circle cx="98" cy="50" r="5" fill="#ef4444"/>
+  <text x="98" y="80" text-anchor="middle" font-family="Baloo 2,cursive" font-size="11" font-weight="700" fill="#ef4444">2754</text>
+</svg>
+</div>
+<div class="fig-out">
+  <div class="fo-hdr">&#x2699; Figure it Out</div>
+  <ol>
+    <li>Place these numbers on a number line: 2180, 2754, 1500, 3600, 9950.</li>
+    <li>Which is closest to 5000: 4800 or 5200? How can the number line help?</li>
+    <li>On a number line from 9996 to 10005, mark all whole numbers.</li>
+  </ol>
+</div>
+<div class="practice-section">
+  <div class="ps-hdr">&#x1F3AF; Practice Time!</div>
+  <div class="practice-q"><div class="pq-text">Q1. On a number line from 1000 to 10000, where is 5500?</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">Near 1000</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">Exactly in the middle</button><button class="choice-btn" onclick="checkAnswer(this,false)">Near 10000</button><button class="choice-btn" onclick="checkAnswer(this,false)">Between 1000 and 2000</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q2. Which number is between 9996 and 9998?</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">9994</button><button class="choice-btn" onclick="checkAnswer(this,false)">9995</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">9997</button><button class="choice-btn" onclick="checkAnswer(this,false)">9999</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q3. Highway km markers: 150, 151, 152, 153... Which comes after 153?</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">152</button><button class="choice-btn" onclick="checkAnswer(this,false)">153</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">154</button><button class="choice-btn" onclick="checkAnswer(this,false)">155</button></div><div class="feedback"></div></div>
+</div>`;}
+
+function sec34(){return `
+<div class="sec-heading" style="color:#f97316">&#x1F50D; 3.4 Playing with Digits</div>
+<p>Numbers are made up of <strong>digits (0–9)</strong>. Playing with digits reveals amazing patterns!</p>
+<div class="india-example">
+  <div class="ie-label">&#x1F1EE;&#x1F1F3; Indian Example</div>
+  <p>The <strong>mobile number</strong> 98765-43210 uses all 10 digits once! In a <strong>railway ticket</strong>, PNR numbers have digits that add up in interesting ways. <strong>Komal</strong> noticed that 68, 176, and 545 all have the same digit sum = 14!</p>
+</div>
+<div class="concept-box">
+  <div class="cb-title">Digit Sum</div>
+  <p>Add up all the digits of a number to get its <strong>digit sum</strong>.<br/>
+  Example: 68 → 6+8 = <strong>14</strong> &nbsp;&nbsp; 176 → 1+7+6 = <strong>14</strong> &nbsp;&nbsp; 545 → 5+4+5 = <strong>14</strong></p>
+</div>
+<div class="num-table" style="background:#fff7ed; border-color:#fed7aa;">
+  <div class="nt-title" style="color:#c2410c;">Count of numbers by digits</div>
+  <div class="seq-row"><span class="seq-nums">1-digit numbers (1–9)</span><span class="seq-name" style="background:#fed7aa;color:#c2410c;">9 numbers</span></div>
+  <div class="seq-row"><span class="seq-nums">2-digit numbers (10–99)</span><span class="seq-name" style="background:#fed7aa;color:#c2410c;">90 numbers</span></div>
+  <div class="seq-row"><span class="seq-nums">3-digit numbers (100–999)</span><span class="seq-name" style="background:#fed7aa;color:#c2410c;">900 numbers</span></div>
+  <div class="seq-row"><span class="seq-nums">4-digit numbers (1000–9999)</span><span class="seq-name" style="background:#fed7aa;color:#c2410c;">9000 numbers</span></div>
+  <div class="seq-row"><span class="seq-nums">5-digit numbers (10000–99999)</span><span class="seq-name" style="background:#fed7aa;color:#c2410c;">90000 numbers</span></div>
+</div>
+<div class="fig-out">
+  <div class="fo-hdr">&#x2699; Figure it Out</div>
+  <ol>
+    <li>Write 5 different numbers that have digit sum = 14.</li>
+    <li>What is the smallest number with digit sum 14?</li>
+    <li>How many times does the digit 7 appear in numbers from 1 to 100?</li>
+  </ol>
+</div>
+<div class="practice-section">
+  <div class="ps-hdr">&#x1F3AF; Practice Time!</div>
+  <div class="practice-q"><div class="pq-text">Q1. What is the digit sum of 347?</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">13</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">14</button><button class="choice-btn" onclick="checkAnswer(this,false)">15</button><button class="choice-btn" onclick="checkAnswer(this,false)">12</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q2. How many 2-digit numbers are there? (10 to 99)</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">89</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">90</button><button class="choice-btn" onclick="checkAnswer(this,false)">91</button><button class="choice-btn" onclick="checkAnswer(this,false)">99</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q3. Which has the same digit sum as 59?</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">68</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">95</button><button class="choice-btn" onclick="checkAnswer(this,false)">77</button><button class="choice-btn" onclick="checkAnswer(this,false)">48</button></div><div class="feedback"></div></div>
+</div>`;}
+
+function sec35(){return `
+<div class="sec-heading" style="color:#f97316">&#x1F500; 3.5 Pretty Palindromic Patterns</div>
+<p>A <strong>palindrome</strong> is a number that reads the same forwards and backwards!</p>
+<div class="india-example">
+  <div class="ie-label">&#x1F1EE;&#x1F1F3; Indian Example</div>
+  <p>The date <strong>02/02/2020</strong> was a palindrome date — it reads the same forwards and backwards! Meghana's birthday <strong>11/02/2011</strong> is also a palindrome. In Gujarati, the word "<strong>saras</strong>" is a palindrome! Numbers like 121, 1221, 12321 are palindromes.</p>
+</div>
+<div class="pattern-box">
+  <div class="pline">66, 848, 575, 797, 1111 — all palindromes!</div>
+  <div class="pline" style="font-size:11px; color:#64748b;">Read left to right = read right to left</div>
+</div>
+<div class="concept-box">
+  <div class="cb-title">Reverse-and-Add Method</div>
+  <p>Take any number. Add it to its reverse. Keep repeating until you get a palindrome!<br/>
+  Example: 34 + 43 = <strong>77</strong> ✓ (palindrome in 1 step!)<br/>
+  Example: 48 + 84 = 132 → 132 + 231 = 363 ✓ (palindrome in 2 steps!)</p>
+</div>
+<div class="fig-out">
+  <div class="fo-hdr">&#x2699; Figure it Out</div>
+  <ol>
+    <li>Write all 3-digit palindromes using digits 1, 2, 3.</li>
+    <li>Try reverse-and-add on: 29, 76, 57. How many steps to reach a palindrome?</li>
+    <li>Is your birth date a palindrome? Check it!</li>
+  </ol>
+</div>
+<div class="practice-section">
+  <div class="ps-hdr">&#x1F3AF; Practice Time!</div>
+  <div class="practice-q"><div class="pq-text">Q1. Which of these is a palindrome?</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">123</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">12321</button><button class="choice-btn" onclick="checkAnswer(this,false)">4567</button><button class="choice-btn" onclick="checkAnswer(this,false)">1234</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q2. Reverse-and-add: 34 + 43 = ?</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">66</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">77</button><button class="choice-btn" onclick="checkAnswer(this,false)">88</button><button class="choice-btn" onclick="checkAnswer(this,false)">99</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q3. How many 2-digit palindromes are there? (11, 22, 33...)</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">8</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">9</button><button class="choice-btn" onclick="checkAnswer(this,false)">10</button><button class="choice-btn" onclick="checkAnswer(this,false)">11</button></div><div class="feedback"></div></div>
+</div>`;}
+
+function sec36(){return `
+<div class="sec-heading" style="color:#f97316">&#x2728; 3.6 The Magic Number of Kaprekar</div>
+<p>Meet <strong>D.R. Kaprekar</strong> — an Indian maths teacher from Maharashtra who discovered a magical number pattern in 1949!</p>
+<div class="india-example">
+  <div class="ie-label">&#x1F1EE;&#x1F1F3; Proud Indian Mathematician!</div>
+  <p><strong>D.R. Kaprekar</strong> was a government school maths teacher in Devlali, Maharashtra. Without any fancy equipment — just curiosity and love for numbers — he discovered a pattern that surprises mathematicians even today. The number <strong>6174</strong> is called the <strong>Kaprekar Constant</strong>!</p>
+</div>
+<div class="concept-box">
+  <div class="cb-title">The Kaprekar Magic — Try it yourself!</div>
+  <p>Step 1: Take any 4-digit number with at least 2 different digits (not 1111, 2222...)<br/>
+  Step 2: Arrange digits to make the <strong>largest</strong> number (A)<br/>
+  Step 3: Arrange digits to make the <strong>smallest</strong> number (B)<br/>
+  Step 4: Calculate C = A − B<br/>
+  Step 5: Repeat with C's digits<br/>
+  <strong>You will ALWAYS reach 6174!</strong></p>
+</div>
+<div class="pattern-box">
+  <div class="pline">Start: 6382</div>
+  <div class="pline">8632 − 2368 = <span class="res">6264</span></div>
+  <div class="pline">6642 − 2466 = <span class="res">4176</span></div>
+  <div class="pline">7641 − 1467 = <span class="res">6174</span> &#x2728;</div>
+  <div class="pline" style="font-size:11px;color:#64748b;">6174 stays forever: 7641 − 1467 = 6174!</div>
+</div>
+<div class="fig-out">
+  <div class="fo-hdr">&#x2699; Figure it Out</div>
+  <ol>
+    <li>Try Kaprekar's method with: 1234, 5678, 9801.</li>
+    <li>How many steps does 5683 take to reach 6174?</li>
+    <li>Try the same process with 3-digit numbers. What number do you always reach?</li>
+  </ol>
+</div>
+<div class="practice-section">
+  <div class="ps-hdr">&#x1F3AF; Practice Time!</div>
+  <div class="practice-q"><div class="pq-text">Q1. The Kaprekar constant for 4-digit numbers is:</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">1234</button><button class="choice-btn" onclick="checkAnswer(this,false)">9999</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">6174</button><button class="choice-btn" onclick="checkAnswer(this,false)">4321</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q2. D.R. Kaprekar was a:</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">Scientist from Delhi</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">Maths teacher from Maharashtra</button><button class="choice-btn" onclick="checkAnswer(this,false)">Engineer from Mumbai</button><button class="choice-btn" onclick="checkAnswer(this,false)">Doctor from Chennai</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q3. For 4-digit number 3087: largest = 8730, smallest = 0378. C = ?</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">8030</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">8352</button><button class="choice-btn" onclick="checkAnswer(this,false)">6174</button><button class="choice-btn" onclick="checkAnswer(this,false)">5400</button></div><div class="feedback"></div></div>
+</div>`;}
+
+function sec37(){return `
+<div class="sec-heading" style="color:#f97316">&#x1F570; 3.7 Clock and Calendar Numbers</div>
+<p>Clocks and calendars are full of <strong>number patterns</strong> — once you see them, you can't unsee them!</p>
+<div class="india-example">
+  <div class="ie-label">&#x1F1EE;&#x1F1F3; Indian Example</div>
+  <p>The time <strong>4:44</strong> on a clock — all same digits! <strong>11:11</strong> is a palindrome time. The date <strong>20/12/2012</strong> repeats digits 2, 0, 1, 2. Independence Day <strong>15/08/1947</strong> — can you find a pattern in its digits?</p>
+</div>
+<div class="concept-box">
+  <div class="cb-title">Palindrome Times on a 12-hour clock</div>
+  <p>Times like 1:01, 1:11, 2:02, 2:12, 2:22, 3:03... are palindromes — they read the same forwards and backwards. How many such times exist in a 12-hour clock?</p>
+</div>
+<div class="visual-wrap">
+<svg viewBox="0 0 340 100" xmlns="http://www.w3.org/2000/svg">
+  <text x="170" y="16" text-anchor="middle" font-family="Baloo 2,cursive" font-size="12" font-weight="700" fill="#1e293b">Palindrome Times on Clock</text>
+  <rect x="10" y="26" width="70" height="36" rx="8" fill="#fff7ed" stroke="#f97316" stroke-width="2"/>
+  <text x="45" y="50" text-anchor="middle" font-family="Baloo 2,cursive" font-size="18" font-weight="800" fill="#f97316">1:01</text>
+  <text x="45" y="74" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" fill="#64748b">palindrome!</text>
+  <rect x="92" y="26" width="70" height="36" rx="8" fill="#fff7ed" stroke="#f97316" stroke-width="2"/>
+  <text x="127" y="50" text-anchor="middle" font-family="Baloo 2,cursive" font-size="18" font-weight="800" fill="#f97316">4:44</text>
+  <text x="127" y="74" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" fill="#64748b">all same!</text>
+  <rect x="174" y="26" width="70" height="36" rx="8" fill="#fff7ed" stroke="#f97316" stroke-width="2"/>
+  <text x="209" y="50" text-anchor="middle" font-family="Baloo 2,cursive" font-size="18" font-weight="800" fill="#f97316">10:10</text>
+  <text x="209" y="74" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" fill="#64748b">pattern!</text>
+  <rect x="256" y="26" width="74" height="36" rx="8" fill="#fff7ed" stroke="#f97316" stroke-width="2"/>
+  <text x="293" y="50" text-anchor="middle" font-family="Baloo 2,cursive" font-size="18" font-weight="800" fill="#f97316">12:21</text>
+  <text x="293" y="74" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" fill="#64748b">palindrome!</text>
+</svg>
+</div>
+<div class="fig-out">
+  <div class="fo-hdr">&#x2699; Figure it Out</div>
+  <ol>
+    <li>Find all palindrome times on a 12-hour clock (format H:MM or HH:MM).</li>
+    <li>Is your birthday date a palindrome? Check DD/MM/YYYY format.</li>
+    <li>Can a calendar year repeat? When would 2024's calendar be the same?</li>
+  </ol>
+</div>
+<div class="practice-section">
+  <div class="ps-hdr">&#x1F3AF; Practice Time!</div>
+  <div class="practice-q"><div class="pq-text">Q1. Which clock time is a palindrome?</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">3:45</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">3:03</button><button class="choice-btn" onclick="checkAnswer(this,false)">10:20</button><button class="choice-btn" onclick="checkAnswer(this,false)">12:34</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q2. At 1 o'clock, the angle between clock hands = 30°. At 2 o'clock?</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">30°</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">60°</button><button class="choice-btn" onclick="checkAnswer(this,false)">90°</button><button class="choice-btn" onclick="checkAnswer(this,false)">45°</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q3. 20/12/2012 has repeating digits 2, 0, 1, 2. This is an example of:</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">Kaprekar pattern</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">Number pattern in a date</button><button class="choice-btn" onclick="checkAnswer(this,false)">Palindrome date</button><button class="choice-btn" onclick="checkAnswer(this,false)">Supercell date</button></div><div class="feedback"></div></div>
+</div>`;}
+
+function sec38(){return `
+<div class="sec-heading" style="color:#f97316">&#x1F9E0; 3.8 Mental Math</div>
+<p><strong>Mental math</strong> means calculating in your head — quickly, without pen and paper!</p>
+<div class="india-example">
+  <div class="ie-label">&#x1F1EE;&#x1F1F3; Indian Example</div>
+  <p>At a <strong>sabzi mandi</strong> (vegetable market), vendors calculate quickly in their heads! Buying 3 kg of tomatoes at &#x20B9;25/kg = &#x20B9;75 — no calculator needed! <strong>Shopkeepers in Surat</strong> are famous for their quick mental calculations in the textile market!</p>
+</div>
+<div class="concept-box">
+  <div class="cb-title">Key Mental Math Tricks</div>
+  <p><strong>Breaking numbers:</strong> 38,800 = 25,000 + 13,000 + 400 + 400<br/>
+  <strong>Rounding:</strong> 98 × 5 ≈ 100 × 5 = 500 (then subtract 2×5=10) = 490<br/>
+  <strong>Grouping:</strong> 40+50+40+50+40+50 = 3×(40+50) = 3×90 = 270</p>
+</div>
+<div class="fig-out">
+  <div class="fo-hdr">&#x2699; Figure it Out</div>
+  <ol>
+    <li>Calculate mentally: 25 × 4, 50 × 6, 99 + 99, 125 × 8.</li>
+    <li>A shopkeeper sells 15 sarees at &#x20B9;200 each. Calculate the total mentally.</li>
+    <li>Always, Sometimes, Never: 5-digit + 5-digit = 5-digit number?</li>
+  </ol>
+</div>
+<div class="practice-section">
+  <div class="ps-hdr">&#x1F3AF; Practice Time!</div>
+  <div class="practice-q"><div class="pq-text">Q1. Mental math: 25 × 4 = ?</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">90</button><button class="choice-btn" onclick="checkAnswer(this,false)">95</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">100</button><button class="choice-btn" onclick="checkAnswer(this,false)">105</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q2. A sabzi mandi bill: 3 items at ₹30 each = ?</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">60</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">90</button><button class="choice-btn" onclick="checkAnswer(this,false)">120</button><button class="choice-btn" onclick="checkAnswer(this,false)">100</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q3. 99 + 99 = ? (Think: 100+100 then subtract)</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">196</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">198</button><button class="choice-btn" onclick="checkAnswer(this,false)">200</button><button class="choice-btn" onclick="checkAnswer(this,false)">202</button></div><div class="feedback"></div></div>
+</div>`;}
+
+function sec39(){return `
+<div class="sec-heading" style="color:#f97316">&#x1F300; 3.9 Playing with Number Patterns</div>
+<p>Some number patterns are beautiful — and some are <strong>unsolved mysteries</strong> that even today's mathematicians cannot prove!</p>
+<div class="india-example">
+  <div class="ie-label">&#x1F1EE;&#x1F1F3; Indian Example</div>
+  <p>Indian mathematician <strong>Srinivasa Ramanujan</strong> loved playing with number patterns from a very young age — even without formal education, he discovered patterns that shocked the world! Number play is how great mathematicians are born!</p>
+</div>
+<div class="concept-box">
+  <div class="cb-title">The Collatz Conjecture (Unsolved!)</div>
+  <p><strong>Rule:</strong> If the number is even → divide by 2. If odd → multiply by 3 and add 1. Repeat.<br/>
+  <strong>Claim:</strong> You will ALWAYS reach 1, no matter which number you start with!<br/>
+  <strong>Status:</strong> Nobody has proved it yet! It is one of maths' great unsolved puzzles!</p>
+</div>
+<div class="pattern-box">
+  <div class="pline">Start: 6 → 3 → 10 → 5 → 16 → 8 → 4 → 2 → <span class="res">1</span> !</div>
+  <div class="pline">Start: 11 → 34 → 17 → 52 → 26 → 13 → 40 → 20 → 10 → 5 → 16 → 8 → 4 → 2 → <span class="res">1</span> !</div>
+</div>
+<div class="fig-out">
+  <div class="fo-hdr">&#x2699; Figure it Out</div>
+  <ol>
+    <li>Try Collatz with: 3, 7, 15, 27. Do you always reach 1?</li>
+    <li>Which starting number between 1 and 20 takes the most steps to reach 1?</li>
+    <li>Do you believe the Collatz Conjecture is true? Why or why not?</li>
+  </ol>
+</div>
+<div class="practice-section">
+  <div class="ps-hdr">&#x1F3AF; Practice Time!</div>
+  <div class="practice-q"><div class="pq-text">Q1. Collatz rule: if number is even, you:</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">Multiply by 3 and add 1</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">Divide by 2</button><button class="choice-btn" onclick="checkAnswer(this,false)">Add 1</button><button class="choice-btn" onclick="checkAnswer(this,false)">Subtract 1</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q2. Collatz: Start with 6. First step (6 is even) gives:</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">19</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">3</button><button class="choice-btn" onclick="checkAnswer(this,false)">12</button><button class="choice-btn" onclick="checkAnswer(this,false)">7</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q3. The Collatz Conjecture says sequences always reach:</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">0</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">1</button><button class="choice-btn" onclick="checkAnswer(this,false)">6174</button><button class="choice-btn" onclick="checkAnswer(this,false)">100</button></div><div class="feedback"></div></div>
+</div>`;}
+
+function sec310(){return `
+<div class="sec-heading" style="color:#f97316">&#x1F9EE; 3.10 Playing with Number Patterns 2</div>
+<p>More fun with number patterns — using <strong>grids and arrangements</strong>!</p>
+<div class="india-example">
+  <div class="ie-label">&#x1F1EE;&#x1F1F3; Indian Example</div>
+  <p>In a <strong>cricket match</strong>, runs scored in each over: 6, 4, 8, 6, 4, 8... — a repeating pattern! A <strong>rangoli artist</strong> places coloured dots in a pattern — the total number of dots follows a number sequence. <strong>Vedic maths</strong> is full of such grid patterns!</p>
+</div>
+<div class="concept-box">
+  <div class="cb-title">Number Arrangements</div>
+  <p>Numbers arranged in grids or patterns can be summed using smart methods instead of adding one by one. Look for repeating groups, rows, columns — then multiply!</p>
+</div>
+<div class="pattern-box">
+  <div class="pline">Pattern: 40, 50, 40, 50, 40, 50, 40, 50, 40, 50</div>
+  <div class="pline">Smart way: 5 pairs of (40+50) = 5 × 90 = <span class="res">450</span></div>
+  <div class="pline">Much faster than adding one by one!</div>
+</div>
+<div class="fig-out">
+  <div class="fo-hdr">&#x2699; Figure it Out</div>
+  <ol>
+    <li>Find the sum: 40, 50, 40, 50, 40, 50, 40, 50 — use a smart method!</li>
+    <li>A 10×10 dot grid — how many dots? Any shortcut?</li>
+    <li>Find your own number pattern and challenge a classmate to find the sum!</li>
+  </ol>
+</div>
+<div class="practice-section">
+  <div class="ps-hdr">&#x1F3AF; Practice Time!</div>
+  <div class="practice-q"><div class="pq-text">Q1. Sum of 40+50+40+50+40+50 (3 pairs) = ?</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">240</button><button class="choice-btn" onclick="checkAnswer(this,false)">250</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">270</button><button class="choice-btn" onclick="checkAnswer(this,false)">280</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q2. Cricket: runs per over = 6, 4, 6, 4, 6, 4 (6 overs). Total runs?</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">55</button><button class="choice-btn" onclick="checkAnswer(this,false)">58</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">60</button><button class="choice-btn" onclick="checkAnswer(this,false)">62</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q3. A 5×5 dot rangoli grid. How many dots total?</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">20</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">25</button><button class="choice-btn" onclick="checkAnswer(this,false)">30</button><button class="choice-btn" onclick="checkAnswer(this,false)">10</button></div><div class="feedback"></div></div>
+</div>`;}
+
+function sec311(){return `
+<div class="sec-heading" style="color:#f97316">&#x1F4CA; 3.11 Simple Estimation</div>
+<p><strong>Estimation</strong> means making a smart, reasonable guess — without needing the exact answer!</p>
+<div class="india-example">
+  <div class="ie-label">&#x1F1EE;&#x1F1F3; Indian Example</div>
+  <p>At a <strong>mela (fair)</strong>, you estimate the crowd — "about 5000 people". A <strong>kirana store owner</strong> estimates stock — "about 200 kg of rice". When your mom says "add a little salt" — that is estimation! You do not need exact answers always — a good estimate is enough!</p>
+</div>
+<div class="concept-box">
+  <div class="cb-title">When do we estimate?</div>
+  <p>When we do NOT need an exact answer, or when counting exactly is too difficult or time-consuming. A good estimate is close enough to be useful!</p>
+</div>
+<div class="visual-wrap">
+<svg viewBox="0 0 340 110" xmlns="http://www.w3.org/2000/svg">
+  <text x="170" y="16" text-anchor="middle" font-family="Baloo 2,cursive" font-size="12" font-weight="700" fill="#1e293b">Estimation Examples from Daily Life</text>
+  <rect x="8" y="28" width="96" height="64" rx="10" fill="#fff7ed" stroke="#f97316" stroke-width="1.5"/>
+  <text x="56" y="52" text-anchor="middle" font-family="Baloo 2,cursive" font-size="20" fill="#f97316">&#x1F3AA;</text>
+  <text x="56" y="72" text-anchor="middle" font-family="Nunito,sans-serif" font-size="11" font-weight="700" fill="#c2410c">Mela crowd</text>
+  <text x="56" y="85" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" fill="#64748b">~5000 people</text>
+
+  <rect x="122" y="28" width="96" height="64" rx="10" fill="#fff7ed" stroke="#f97316" stroke-width="1.5"/>
+  <text x="170" y="52" text-anchor="middle" font-family="Baloo 2,cursive" font-size="20" fill="#f97316">&#x1F6D2;</text>
+  <text x="170" y="72" text-anchor="middle" font-family="Nunito,sans-serif" font-size="11" font-weight="700" fill="#c2410c">Market price</text>
+  <text x="170" y="85" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" fill="#64748b">~₹200 per kg</text>
+
+  <rect x="236" y="28" width="96" height="64" rx="10" fill="#fff7ed" stroke="#f97316" stroke-width="1.5"/>
+  <text x="284" y="52" text-anchor="middle" font-family="Baloo 2,cursive" font-size="20" fill="#f97316">&#x1F3EB;</text>
+  <text x="284" y="72" text-anchor="middle" font-family="Nunito,sans-serif" font-size="11" font-weight="700" fill="#c2410c">School students</text>
+  <text x="284" y="85" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" fill="#64748b">~500 students</text>
+</svg>
+</div>
+<div class="fig-out">
+  <div class="fo-hdr">&#x2699; Figure it Out</div>
+  <ol>
+    <li>Estimate: How many steps to walk from your classroom to the school gate?</li>
+    <li>Estimate: How many times do you blink in one hour?</li>
+    <li>Roshan wants to buy 3 fruits for 5 people. Estimate the total cost. Is ₹100 a good estimate?</li>
+  </ol>
+</div>
+<div class="practice-section">
+  <div class="ps-hdr">&#x1F3AF; Practice Time!</div>
+  <div class="practice-q"><div class="pq-text">Q1. A good estimate for the number of students in a medium-sized school is:</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">10</button><button class="choice-btn" onclick="checkAnswer(this,false)">50</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">500</button><button class="choice-btn" onclick="checkAnswer(this,false)">50,000</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q2. Paromita's class has 32 students. Her school has 5 such classes. Estimate total:</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">100</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">150-160</button><button class="choice-btn" onclick="checkAnswer(this,false)">500</button><button class="choice-btn" onclick="checkAnswer(this,false)">1000</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q3. We estimate when:</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">Exact answer is needed</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">Approximate answer is enough</button><button class="choice-btn" onclick="checkAnswer(this,false)">Numbers are small</button><button class="choice-btn" onclick="checkAnswer(this,false)">We have a calculator</button></div><div class="feedback"></div></div>
+</div>
+<div class="math-talk">&#x1F3C6; <strong>Chapter 3 — Complete!</strong>&nbsp; Numbers that tell stories, supercells, number lines, digit play, palindromes, Kaprekar magic, clock patterns, mental math, Collatz, and estimation — badhu cover thayu! &#x1F4AF;</div>`;}
 
 function sec16(){return `
 <div class="sec-heading" style="color:#2563eb">&#x1F9E9; 1.6 Relation to Number Sequences</div>
