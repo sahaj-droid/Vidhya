@@ -427,7 +427,12 @@ body { font-family: 'Nunito', sans-serif; background: #f0f9ff; color: #1e293b; m
         <div class="ch-name">Prime Time</div>
         <span class="ch-badge">&#x2705; Available</span>
       </div>
-      <div class="chapter-card ch-6 locked"><span class="ch-icon">&#x25A1;</span><div class="ch-num">6</div><div class="ch-name">Perimeter and Area</div><span class="ch-badge">&#x1F512; Soon</span></div>
+      <div class="chapter-card ch-6" onclick="openChapter(6)">
+        <span class="ch-icon">&#x25A1;</span>
+        <div class="ch-num">6</div>
+        <div class="ch-name">Perimeter and Area</div>
+        <span class="ch-badge">&#x2705; Available</span>
+      </div>
       <div class="chapter-card ch-7 locked"><span class="ch-icon">&#xBD;</span><div class="ch-num">7</div><div class="ch-name">Fractions</div><span class="ch-badge">&#x1F512; Soon</span></div>
       <div class="chapter-card ch-8 locked"><span class="ch-icon">&#x1F4D0;</span><div class="ch-num">8</div><div class="ch-name">Playing with Constructions</div><span class="ch-badge">&#x1F512; Soon</span></div>
       <div class="chapter-card ch-9 locked"><span class="ch-icon">&#x25C6;</span><div class="ch-num">9</div><div class="ch-name">Symmetry</div><span class="ch-badge">&#x1F512; Soon</span></div>
@@ -526,6 +531,18 @@ var CHAPTERS = [{
     {id:"5.4", title:"Prime Factorisation",                 type:"Concept + Steps + Practice"},
     {id:"5.5", title:"Divisibility Rules",                  type:"Rules + Indian Examples + Practice"},
   ]
+},{
+  id:6, title:"Perimeter and Area",
+  color:"#16a34a", bg:"linear-gradient(135deg,#14532d,#16a34a)",
+  available:true,
+  sections:[
+    {id:"6.1", title:"Perimeter",                         type:"Concept + Formula + Practice"},
+    {id:"6.2", title:"Perimeter of Regular Polygon",      type:"Concept + Visual + Practice"},
+    {id:"6.3", title:"Area",                              type:"Concept + Visual + Practice"},
+    {id:"6.4", title:"Area of Rectangle",                 type:"Formula + Examples + Practice"},
+    {id:"6.5", title:"Area of Triangle",                  type:"Concept + Visual + Practice"},
+    {id:"6.6", title:"Perimeter and Area in Real Life",   type:"Application + Indian Examples + Practice"},
+  ]
 }];
 
 function goBack() {
@@ -618,7 +635,8 @@ function buildContent(id){
     '3.1':sec31,'3.2':sec32,'3.3':sec33,'3.4':sec34,'3.5':sec35,
     '3.6':sec36,'3.7':sec37,'3.8':sec38,'3.9':sec39,'3.10':sec310,'3.11':sec311,
     '4.1':sec41,'4.2':sec42,'4.3':sec43,'4.4':sec44,'4.5':sec45,
-    '5.1':sec51,'5.2':sec52,'5.3':sec53,'5.4':sec54,'5.5':sec55
+    '5.1':sec51,'5.2':sec52,'5.3':sec53,'5.4':sec54,'5.5':sec55,
+    '6.1':sec61,'6.2':sec62,'6.3':sec63,'6.4':sec64,'6.5':sec65,'6.6':sec66
   };
   return map[id]?map[id]():'<p style="padding:40px;text-align:center;color:#94a3b8">Coming soon!</p>';
 }
@@ -2549,6 +2567,301 @@ function sec55(){return `
   <div class="practice-q"><div class="pq-text">Q4. 2024 is a leap year because it is divisible by:</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">2</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">4 (and not 100)</button><button class="choice-btn" onclick="checkAnswer(this,false)">100</button><button class="choice-btn" onclick="checkAnswer(this,false)">400</button></div><div class="feedback"></div></div>
 </div>
 <div class="math-talk">&#x1F3C6; <strong>Chapter 5 — Complete!</strong>&nbsp; Idli-Vada multiples, prime vs composite, Sieve of Eratosthenes, prime factorisation, co-primes, and divisibility rules — badhu! &#x1F4AF;</div>`;}
+
+// ── CHAPTER 6 ──
+
+function sec61(){return `
+<div class="sec-heading" style="color:#16a34a">&#x1F4CF; 6.1 Perimeter</div>
+<p>The <strong>perimeter</strong> of a shape is the total distance around its boundary — like walking around the edge of a field!</p>
+<div class="india-example">
+  <div class="ie-label">&#x1F1EE;&#x1F1F3; Indian Example</div>
+  <p>A <strong>farmer in Gujarat</strong> wants to fence his rectangular field of 40m × 25m. How much fencing wire does he need? That is the perimeter! When you do <strong>parikrama</strong> (going around a temple), you walk the perimeter. <strong>Akshi</strong> puts lace around a 3m × 2m tablecloth — that is perimeter too!</p>
+</div>
+<div class="concept-box">
+  <div class="cb-title">Perimeter Formulas</div>
+  <p><strong>Rectangle:</strong> P = 2 × (length + breadth) = 2(l + b)<br/>
+  <strong>Square:</strong> P = 4 × side = 4s<br/>
+  <strong>Triangle:</strong> P = side1 + side2 + side3<br/>
+  <strong>Any polygon:</strong> P = sum of all sides</p>
+</div>
+<div class="visual-wrap">
+<svg viewBox="0 0 340 130" xmlns="http://www.w3.org/2000/svg">
+  <text x="170" y="16" text-anchor="middle" font-family="Baloo 2,cursive" font-size="12" font-weight="700" fill="#1e293b">Perimeter Examples</text>
+  <rect x="20" y="28" width="90" height="55" rx="4" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="65" y="50" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" font-weight="700" fill="#15803d">12 cm</text>
+  <text x="10" y="60" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" font-weight="700" fill="#15803d">8 cm</text>
+  <text x="65" y="98" text-anchor="middle" font-family="Baloo 2,cursive" font-size="11" font-weight="800" fill="#16a34a">P = 2(12+8)</text>
+  <text x="65" y="112" text-anchor="middle" font-family="Baloo 2,cursive" font-size="11" font-weight="800" fill="#16a34a">= 40 cm</text>
+  <rect x="140" y="35" width="50" height="50" rx="4" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="165" y="60" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" font-weight="700" fill="#15803d">7 cm</text>
+  <text x="165" y="98" text-anchor="middle" font-family="Baloo 2,cursive" font-size="11" font-weight="800" fill="#16a34a">P = 4×7</text>
+  <text x="165" y="112" text-anchor="middle" font-family="Baloo 2,cursive" font-size="11" font-weight="800" fill="#16a34a">= 28 cm</text>
+  <polygon points="260,28 300,83 220,83" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="270" y="52" font-family="Nunito,sans-serif" font-size="9" font-weight="700" fill="#15803d">5 cm</text>
+  <text x="237" y="79" font-family="Nunito,sans-serif" font-size="9" font-weight="700" fill="#15803d">7 cm</text>
+  <text x="287" y="79" font-family="Nunito,sans-serif" font-size="9" font-weight="700" fill="#15803d">4 cm</text>
+  <text x="260" y="100" text-anchor="middle" font-family="Baloo 2,cursive" font-size="11" font-weight="800" fill="#16a34a">P = 5+7+4</text>
+  <text x="260" y="114" text-anchor="middle" font-family="Baloo 2,cursive" font-size="11" font-weight="800" fill="#16a34a">= 16 cm</text>
+</svg>
+</div>
+<div class="fig-out">
+  <div class="fo-hdr">&#x2699; Figure it Out</div>
+  <ol>
+    <li>Akshi puts lace around a tablecloth 3m × 2m. How much lace needed?</li>
+    <li>Usha runs 3 rounds of a square park of side 75m. How far did she run?</li>
+    <li>A farmer's field is 120m × 80m. Find the cost of fencing at ₹15 per metre.</li>
+  </ol>
+</div>
+<div class="practice-section">
+  <div class="ps-hdr">&#x1F3AF; Practice Time!</div>
+  <div class="practice-q"><div class="pq-text">Q1. Perimeter of a rectangle 12cm × 8cm = ?</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">20 cm</button><button class="choice-btn" onclick="checkAnswer(this,false)">96 cm</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">40 cm</button><button class="choice-btn" onclick="checkAnswer(this,false)">48 cm</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q2. Perimeter of a square park of side 75m = ?</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">225 m</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">300 m</button><button class="choice-btn" onclick="checkAnswer(this,false)">75 m</button><button class="choice-btn" onclick="checkAnswer(this,false)">150 m</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q3. A Gujarat farmer's rectangular field is 40m × 25m. Fencing needed = ?</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">65 m</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">130 m</button><button class="choice-btn" onclick="checkAnswer(this,false)">1000 m</button><button class="choice-btn" onclick="checkAnswer(this,false)">100 m</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q4. Perimeter of triangle with sides 5cm, 7cm, 4cm = ?</div><div class="answer-choices"><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">16 cm</button><button class="choice-btn" onclick="checkAnswer(this,false)">140 cm²</button><button class="choice-btn" onclick="checkAnswer(this,false)">12 cm</button><button class="choice-btn" onclick="checkAnswer(this,false)">35 cm</button></div><div class="feedback"></div></div>
+</div>`;}
+
+function sec62(){return `
+<div class="sec-heading" style="color:#16a34a">&#x2B1F; 6.2 Perimeter of Regular Polygon</div>
+<p>Regular polygons have ALL sides equal — so their perimeter is super easy to find!</p>
+<div class="india-example">
+  <div class="ie-label">&#x1F1EE;&#x1F1F3; Indian Example</div>
+  <p>The <strong>Jantar Mantar</strong> in Delhi has many regular polygon shapes. A <strong>square rangoli</strong> with side 30cm — perimeter = 4×30 = 120cm of border needed. An <strong>equilateral triangle yantra</strong> with side 15cm — perimeter = 3×15 = 45cm. Simple!</p>
+</div>
+<div class="concept-box">
+  <div class="cb-title">Regular Polygon Perimeter Formula</div>
+  <p><strong>Perimeter = number of sides × length of one side</strong><br/>
+  Equilateral triangle (3 sides): P = 3 × side<br/>
+  Square (4 sides): P = 4 × side<br/>
+  Regular pentagon (5 sides): P = 5 × side<br/>
+  Regular hexagon (6 sides): P = 6 × side</p>
+</div>
+<div class="visual-wrap">
+<svg viewBox="0 0 340 110" xmlns="http://www.w3.org/2000/svg">
+  <text x="170" y="16" text-anchor="middle" font-family="Baloo 2,cursive" font-size="12" font-weight="700" fill="#1e293b">Regular Polygon Perimeters (all sides = 6 cm)</text>
+  <polygon points="55,30 70,62 40,62" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="55" y="78" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" fill="#15803d">Triangle</text>
+  <text x="55" y="90" text-anchor="middle" font-family="Baloo 2,cursive" font-size="12" font-weight="700" fill="#16a34a">P=18cm</text>
+  <rect x="100" y="30" width="36" height="36" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="118" y="78" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" fill="#15803d">Square</text>
+  <text x="118" y="90" text-anchor="middle" font-family="Baloo 2,cursive" font-size="12" font-weight="700" fill="#16a34a">P=24cm</text>
+  <polygon points="185,28 198,34 202,49 192,60 175,60 166,49 170,34" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="185" y="78" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" fill="#15803d">Hexagon</text>
+  <text x="185" y="90" text-anchor="middle" font-family="Baloo 2,cursive" font-size="12" font-weight="700" fill="#16a34a">P=36cm</text>
+  <polygon points="265,30 278,26 289,34 289,48 278,56 265,56 254,48 254,34" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="272" y="78" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" fill="#15803d">Octagon</text>
+  <text x="272" y="90" text-anchor="middle" font-family="Baloo 2,cursive" font-size="12" font-weight="700" fill="#16a34a">P=48cm</text>
+  <text x="170" y="108" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" fill="#64748b">More sides = bigger perimeter (when side length is same)</text>
+</svg>
+</div>
+<div class="fig-out">
+  <div class="fo-hdr">&#x2699; Figure it Out</div>
+  <ol>
+    <li>Find perimeter of: equilateral triangle (side=8cm), regular hexagon (side=5cm), regular octagon (side=3cm).</li>
+    <li>A regular polygon has perimeter 48cm and each side is 6cm. How many sides does it have?</li>
+    <li>Why is the perimeter formula for a square the same as for a rectangle when length = breadth?</li>
+  </ol>
+</div>
+<div class="practice-section">
+  <div class="ps-hdr">&#x1F3AF; Practice Time!</div>
+  <div class="practice-q"><div class="pq-text">Q1. Perimeter of equilateral triangle with side 8cm = ?</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">16 cm</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">24 cm</button><button class="choice-btn" onclick="checkAnswer(this,false)">32 cm</button><button class="choice-btn" onclick="checkAnswer(this,false)">8 cm</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q2. A regular hexagon has perimeter 42cm. Each side = ?</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">8 cm</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">7 cm</button><button class="choice-btn" onclick="checkAnswer(this,false)">6 cm</button><button class="choice-btn" onclick="checkAnswer(this,false)">42 cm</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q3. A square rangoli has side 30cm. Border length needed = ?</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">90 cm</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">120 cm</button><button class="choice-btn" onclick="checkAnswer(this,false)">900 cm²</button><button class="choice-btn" onclick="checkAnswer(this,false)">30 cm</button></div><div class="feedback"></div></div>
+</div>`;}
+
+function sec63(){return `
+<div class="sec-heading" style="color:#16a34a">&#x25A6; 6.3 Area</div>
+<p><strong>Area</strong> is the amount of surface a shape covers — measured in square units!</p>
+<div class="india-example">
+  <div class="ie-label">&#x1F1EE;&#x1F1F3; Indian Example</div>
+  <p>When buying <strong>floor tiles for a room</strong>, you need to know the area. A <strong>farmer in Gujarat</strong> needs to know the area of his field to buy fertiliser. The area of <strong>India</strong> is about 3.29 million km²! Perimeter tells you the boundary — area tells you how much SPACE is inside.</p>
+</div>
+<div class="concept-box">
+  <div class="cb-title">Perimeter vs Area — Key Difference!</div>
+  <p><strong>Perimeter</strong> = distance around the boundary (measured in cm, m, km)<br/>
+  <strong>Area</strong> = surface covered inside (measured in cm², m², km²)<br/>
+  Important: Two shapes can have the SAME area but DIFFERENT perimeters, or same perimeter but different areas!</p>
+</div>
+<div class="visual-wrap">
+<svg viewBox="0 0 340 120" xmlns="http://www.w3.org/2000/svg">
+  <text x="170" y="16" text-anchor="middle" font-family="Baloo 2,cursive" font-size="12" font-weight="700" fill="#1e293b">Area = counting squares inside the shape</text>
+  <rect x="20" y="26" width="130" height="80" rx="4" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <line x1="46" y1="26" x2="46" y2="106" stroke="#16a34a" stroke-width="0.5" stroke-dasharray="2,2"/>
+  <line x1="72" y1="26" x2="72" y2="106" stroke="#16a34a" stroke-width="0.5" stroke-dasharray="2,2"/>
+  <line x1="98" y1="26" x2="98" y2="106" stroke="#16a34a" stroke-width="0.5" stroke-dasharray="2,2"/>
+  <line x1="124" y1="26" x2="124" y2="106" stroke="#16a34a" stroke-width="0.5" stroke-dasharray="2,2"/>
+  <line x1="20" y1="52" x2="150" y2="52" stroke="#16a34a" stroke-width="0.5" stroke-dasharray="2,2"/>
+  <line x1="20" y1="78" x2="150" y2="78" stroke="#16a34a" stroke-width="0.5" stroke-dasharray="2,2"/>
+  <text x="85" y="70" text-anchor="middle" font-family="Baloo 2,cursive" font-size="11" font-weight="700" fill="#15803d">5 × 3 = 15 squares</text>
+  <text x="85" y="84" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" fill="#15803d">Area = 15 sq units</text>
+  <text x="85" y="115" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" fill="#64748b">Each small square = 1 sq unit</text>
+  <rect x="185" y="46" width="130" height="40" rx="4" fill="#fef9c3" stroke="#ca8a04" stroke-width="2"/>
+  <text x="250" y="62" text-anchor="middle" font-family="Baloo 2,cursive" font-size="11" font-weight="700" fill="#92400e">Same area (15 sq units)</text>
+  <text x="250" y="76" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" fill="#92400e">but different shape!</text>
+  <text x="250" y="100" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" fill="#64748b">Longer perimeter here!</text>
+</svg>
+</div>
+<div class="fig-out">
+  <div class="fo-hdr">&#x2699; Figure it Out</div>
+  <ol>
+    <li>Draw two different shapes on grid paper that both have area = 12 square units. Compare their perimeters.</li>
+    <li>Can two shapes have the same perimeter but different areas? Try drawing examples!</li>
+    <li>Tangram puzzle: arrange 7 pieces to form different shapes. Do they all have the same area?</li>
+  </ol>
+</div>
+<div class="practice-section">
+  <div class="ps-hdr">&#x1F3AF; Practice Time!</div>
+  <div class="practice-q"><div class="pq-text">Q1. Area is measured in:</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">cm or m</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">cm² or m² (square units)</button><button class="choice-btn" onclick="checkAnswer(this,false)">kg</button><button class="choice-btn" onclick="checkAnswer(this,false)">litres</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q2. Two shapes have the same area. Their perimeters must be:</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">Always equal</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">Not necessarily equal — can be different!</button><button class="choice-btn" onclick="checkAnswer(this,false)">Always different</button><button class="choice-btn" onclick="checkAnswer(this,false)">Zero</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q3. Buying floor tiles for a room — you need to know the:</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">Perimeter</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">Area</button><button class="choice-btn" onclick="checkAnswer(this,false)">Both equally</button><button class="choice-btn" onclick="checkAnswer(this,false)">Neither</button></div><div class="feedback"></div></div>
+</div>`;}
+
+function sec64(){return `
+<div class="sec-heading" style="color:#16a34a">&#x1F4D0; 6.4 Area of Rectangle</div>
+<p>The area of a rectangle = <strong>length × breadth</strong>. Simple and powerful!</p>
+<div class="india-example">
+  <div class="ie-label">&#x1F1EE;&#x1F1F3; Indian Example</div>
+  <p>A <strong>carpet shop in Surat</strong> sells carpet at ₹200 per sq metre. Your room is 5m × 4m. Area = 5×4 = 20 sq m. Cost = 20×200 = <strong>₹4000!</strong> Sharan's home plan (42 ft wide total): Master bedroom 12×15=180 sq ft, Kitchen 18×10=180 sq ft — same area, different shape!</p>
+</div>
+<div class="concept-box">
+  <div class="cb-title">Formulas</div>
+  <p><strong>Rectangle:</strong> Area = length × breadth = l × b<br/>
+  <strong>Square:</strong> Area = side × side = s²<br/>
+  <strong>Units:</strong> If sides in cm → Area in cm². If sides in m → Area in m².</p>
+</div>
+<div class="visual-wrap">
+<svg viewBox="0 0 340 130" xmlns="http://www.w3.org/2000/svg">
+  <text x="170" y="16" text-anchor="middle" font-family="Baloo 2,cursive" font-size="12" font-weight="700" fill="#1e293b">Area = length × breadth</text>
+  <rect x="20" y="26" width="140" height="84" rx="4" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <line x1="48" y1="26" x2="48" y2="110" stroke="#16a34a" stroke-width="0.5" stroke-dasharray="2,2"/>
+  <line x1="76" y1="26" x2="76" y2="110" stroke="#16a34a" stroke-width="0.5" stroke-dasharray="2,2"/>
+  <line x1="104" y1="26" x2="104" y2="110" stroke="#16a34a" stroke-width="0.5" stroke-dasharray="2,2"/>
+  <line x1="132" y1="26" x2="132" y2="110" stroke="#16a34a" stroke-width="0.5" stroke-dasharray="2,2"/>
+  <line x1="20" y1="54" x2="160" y2="54" stroke="#16a34a" stroke-width="0.5" stroke-dasharray="2,2"/>
+  <line x1="20" y1="82" x2="160" y2="82" stroke="#16a34a" stroke-width="0.5" stroke-dasharray="2,2"/>
+  <text x="90" y="44" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" font-weight="700" fill="#15803d">5 columns</text>
+  <text x="8" y="70" text-anchor="middle" font-family="Nunito,sans-serif" font-size="9" fill="#15803d">3 rows</text>
+  <text x="90" y="70" text-anchor="middle" font-family="Baloo 2,cursive" font-size="14" font-weight="800" fill="#16a34a">5 × 3 = 15</text>
+  <text x="90" y="124" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" fill="#64748b">Rectangle 5cm × 3cm → Area = 15 cm²</text>
+  <rect x="200" y="35" width="120" height="60" rx="4" fill="#fef9c3" stroke="#ca8a04" stroke-width="1.5"/>
+  <text x="260" y="55" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" font-weight="700" fill="#92400e">Master Bedroom</text>
+  <text x="260" y="68" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" fill="#92400e">12 ft × 15 ft</text>
+  <text x="260" y="82" text-anchor="middle" font-family="Baloo 2,cursive" font-size="12" font-weight="800" fill="#ca8a04">= 180 sq ft</text>
+  <text x="260" y="110" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" fill="#64748b">Sharan's house plan!</text>
+</svg>
+</div>
+<div class="fig-out">
+  <div class="fo-hdr">&#x2699; Figure it Out</div>
+  <ol>
+    <li>Room is 5m × 4m. Carpet costs ₹200/sq m. Find total cost.</li>
+    <li>A rectangular garden is 50m long, area = 1000 sq m. Find its breadth.</li>
+    <li>Floor is 5m × 4m. A square carpet of side 3m is placed. Find uncarpeted area.</li>
+  </ol>
+</div>
+<div class="practice-section">
+  <div class="ps-hdr">&#x1F3AF; Practice Time!</div>
+  <div class="practice-q"><div class="pq-text">Q1. Area of rectangle 12cm × 8cm = ?</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">40 cm</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">96 cm²</button><button class="choice-btn" onclick="checkAnswer(this,false)">20 cm²</button><button class="choice-btn" onclick="checkAnswer(this,false)">48 cm²</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q2. Area of square with side 7cm = ?</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">28 cm</button><button class="choice-btn" onclick="checkAnswer(this,false)">14 cm²</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">49 cm²</button><button class="choice-btn" onclick="checkAnswer(this,false)">21 cm²</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q3. Surat carpet shop: room 5m × 4m, carpet ₹200/m². Total cost = ?</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">₹1800</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">₹4000</button><button class="choice-btn" onclick="checkAnswer(this,false)">₹200</button><button class="choice-btn" onclick="checkAnswer(this,false)">₹2000</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q4. Rectangle area=50 sq m, length=10m. Breadth = ?</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">40 m</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">5 m</button><button class="choice-btn" onclick="checkAnswer(this,false)">500 m</button><button class="choice-btn" onclick="checkAnswer(this,false)">60 m</button></div><div class="feedback"></div></div>
+</div>`;}
+
+function sec65(){return `
+<div class="sec-heading" style="color:#16a34a">&#x25B3; 6.5 Area of Triangle</div>
+<p>A triangle is exactly <strong>half of a rectangle</strong> — so its area formula comes from the rectangle!</p>
+<div class="india-example">
+  <div class="ie-label">&#x1F1EE;&#x1F1F3; Indian Example</div>
+  <p>The <strong>sail of a traditional Indian boat</strong> (nauka) is triangular. A <strong>Diwali rangoli</strong> sometimes uses triangular sections. The <strong>pyramids of Giza</strong> (triangular faces) — all use triangle area! Cutting a rectangular roti diagonally gives two triangular halves — same area each!</p>
+</div>
+<div class="concept-box">
+  <div class="cb-title">Area of Triangle Formula</div>
+  <p>A triangle is always <strong>half of a rectangle</strong> with same base and height!<br/>
+  <strong>Area of triangle = ½ × base × height</strong><br/>
+  The base is any one side. The height is the perpendicular distance from the opposite vertex to that base.<br/>
+  Any triangle with the same base and height — same area, even if they look different!</p>
+</div>
+<div class="visual-wrap">
+<svg viewBox="0 0 340 130" xmlns="http://www.w3.org/2000/svg">
+  <text x="170" y="14" text-anchor="middle" font-family="Baloo 2,cursive" font-size="12" font-weight="700" fill="#1e293b">Triangle = Half of Rectangle!</text>
+  <rect x="20" y="24" width="120" height="72" rx="4" fill="#fef9c3" stroke="#ca8a04" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <polygon points="20,96 140,96 80,24" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="80" y="75" text-anchor="middle" font-family="Baloo 2,cursive" font-size="11" font-weight="700" fill="#15803d">Triangle</text>
+  <line x1="80" y1="24" x2="80" y2="96" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="3,2"/>
+  <text x="86" y="60" font-family="Nunito,sans-serif" font-size="9" fill="#ef4444">h</text>
+  <text x="80" y="110" text-anchor="middle" font-family="Nunito,sans-serif" font-size="9" fill="#64748b">base = 12 cm</text>
+  <text x="8" y="65" text-anchor="middle" font-family="Nunito,sans-serif" font-size="9" fill="#ca8a04">h=7cm</text>
+  <text x="80" y="125" text-anchor="middle" font-family="Baloo 2,cursive" font-size="12" font-weight="700" fill="#16a34a">Area = ½×12×7 = 42 cm²</text>
+  <rect x="185" y="34" width="130" height="56" rx="4" fill="#fee2e2" stroke="#ef4444" stroke-width="2"/>
+  <polygon points="185,90 315,90 250,34" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="250" y="68" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" font-weight="700" fill="#15803d">Same base</text>
+  <text x="250" y="80" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" font-weight="700" fill="#15803d">same height</text>
+  <text x="250" y="108" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" fill="#64748b">= same area!</text>
+</svg>
+</div>
+<div class="fig-out">
+  <div class="fo-hdr">&#x2699; Figure it Out</div>
+  <ol>
+    <li>Find area of triangle: base=10cm, height=6cm.</li>
+    <li>Two triangles have the same base (8cm) and same height (5cm). Do they have the same area even if they look different? Why?</li>
+    <li>A rectangular piece of paper 12cm × 8cm is cut diagonally. What is the area of each triangle?</li>
+  </ol>
+</div>
+<div class="practice-section">
+  <div class="ps-hdr">&#x1F3AF; Practice Time!</div>
+  <div class="practice-q"><div class="pq-text">Q1. Area of triangle with base 10cm and height 6cm = ?</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">60 cm²</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">30 cm²</button><button class="choice-btn" onclick="checkAnswer(this,false)">16 cm</button><button class="choice-btn" onclick="checkAnswer(this,false)">32 cm²</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q2. A rectangular roti 20cm × 10cm is cut diagonally. Each triangle's area = ?</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">200 cm²</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">100 cm²</button><button class="choice-btn" onclick="checkAnswer(this,false)">60 cm²</button><button class="choice-btn" onclick="checkAnswer(this,false)">50 cm²</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q3. Triangle area formula is:</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">base × height</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">½ × base × height</button><button class="choice-btn" onclick="checkAnswer(this,false)">2 × base × height</button><button class="choice-btn" onclick="checkAnswer(this,false)">base + height</button></div><div class="feedback"></div></div>
+</div>`;}
+
+function sec66(){return `
+<div class="sec-heading" style="color:#16a34a">&#x1F3E0; 6.6 Perimeter and Area in Real Life</div>
+<p>Perimeter and area are used constantly in real life — from building homes to buying carpet!</p>
+<div class="india-example">
+  <div class="ie-label">&#x1F1EE;&#x1F1F3; Indian Example</div>
+  <p><strong>Sharan's house plan</strong> (Gujarat): Total width = 42 ft. Rooms: Master bedroom 12×15=180 sq ft, Small bedroom 12×10=120 sq ft, Kitchen 18×10=180 sq ft, Hall 23×__ft. A <strong>Gujarat farmer</strong> digs 4 flower beds (2m×1m each) at corners of a 15m×12m garden. How much lawn area is left?</p>
+</div>
+<div class="concept-box">
+  <div class="cb-title">Key Real Life Applications</div>
+  <p><strong>Perimeter</strong> → fencing, lace borders, running tracks, picture frames<br/>
+  <strong>Area</strong> → flooring, painting walls, carpet, farming, land measurement<br/>
+  <strong>Important:</strong> Sometimes a shape has parts removed — then total area = big area − small area!</p>
+</div>
+<div class="visual-wrap">
+<svg viewBox="0 0 340 130" xmlns="http://www.w3.org/2000/svg">
+  <text x="170" y="14" text-anchor="middle" font-family="Baloo 2,cursive" font-size="12" font-weight="700" fill="#1e293b">Sharan's House Plan (Gujarat)</text>
+  <rect x="10" y="24" width="320" height="90" rx="4" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <line x1="130" y1="24" x2="130" y2="114" stroke="#16a34a" stroke-width="1.5"/>
+  <line x1="10" y1="69" x2="130" y2="69" stroke="#16a34a" stroke-width="1.5"/>
+  <line x1="130" y1="69" x2="280" y2="69" stroke="#16a34a" stroke-width="1.5"/>
+  <line x1="280" y1="24" x2="280" y2="114" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="70" y="44" text-anchor="middle" font-family="Nunito,sans-serif" font-size="9" font-weight="700" fill="#15803d">Master Bed</text>
+  <text x="70" y="56" text-anchor="middle" font-family="Nunito,sans-serif" font-size="9" fill="#15803d">12×15=180 sq ft</text>
+  <text x="70" y="90" text-anchor="middle" font-family="Nunito,sans-serif" font-size="9" font-weight="700" fill="#15803d">Small Bed</text>
+  <text x="70" y="102" text-anchor="middle" font-family="Nunito,sans-serif" font-size="9" fill="#15803d">12×10=120 sq ft</text>
+  <text x="205" y="44" text-anchor="middle" font-family="Nunito,sans-serif" font-size="9" font-weight="700" fill="#15803d">Kitchen</text>
+  <text x="205" y="56" text-anchor="middle" font-family="Nunito,sans-serif" font-size="9" fill="#15803d">18×10=180 sq ft</text>
+  <text x="205" y="90" text-anchor="middle" font-family="Nunito,sans-serif" font-size="9" font-weight="700" fill="#15803d">Hall</text>
+  <text x="205" y="102" text-anchor="middle" font-family="Nunito,sans-serif" font-size="9" fill="#15803d">23×? ft</text>
+  <text x="300" y="70" text-anchor="middle" font-family="Nunito,sans-serif" font-size="8" fill="#15803d">Side</text>
+  <text x="300" y="80" text-anchor="middle" font-family="Nunito,sans-serif" font-size="8" fill="#15803d">rooms</text>
+  <text x="170" y="125" text-anchor="middle" font-family="Nunito,sans-serif" font-size="9" fill="#64748b">Total width = 42 ft</text>
+</svg>
+</div>
+<div class="fig-out">
+  <div class="fo-hdr">&#x2699; Figure it Out</div>
+  <ol>
+    <li>A garden 15m×12m has 4 flower beds (2m×1m each) at corners. Find remaining lawn area.</li>
+    <li>A room floor is 5m×4m. Square carpet of side 3m is placed. Find uncarpeted area.</li>
+    <li>Draw a rectangle 12 units×8 units. Inside it, draw another rectangle that covers exactly half the area.</li>
+  </ol>
+</div>
+<div class="practice-section">
+  <div class="ps-hdr">&#x1F3AF; Practice Time!</div>
+  <div class="practice-q"><div class="pq-text">Q1. Garden 15m×12m, area of lawn = 180 sq m. 4 flower beds each 2m×1m are removed. Remaining lawn area = ?</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">172 sq m</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">172 sq m</button><button class="choice-btn" onclick="checkAnswer(this,false)">176 sq m</button><button class="choice-btn" onclick="checkAnswer(this,false)">168 sq m</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q2. Room 5m×4m, square carpet 3m×3m placed. Uncarpeted area = ?</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">9 sq m</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">11 sq m</button><button class="choice-btn" onclick="checkAnswer(this,false)">20 sq m</button><button class="choice-btn" onclick="checkAnswer(this,false)">29 sq m</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q3. For FENCING a field, you need to calculate its:</div><div class="answer-choices"><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">Perimeter</button><button class="choice-btn" onclick="checkAnswer(this,false)">Area</button><button class="choice-btn" onclick="checkAnswer(this,false)">Both</button><button class="choice-btn" onclick="checkAnswer(this,false)">Neither</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q4. For buying TILES for a floor, you need to calculate its:</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">Perimeter</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">Area</button><button class="choice-btn" onclick="checkAnswer(this,false)">Both</button><button class="choice-btn" onclick="checkAnswer(this,false)">Neither</button></div><div class="feedback"></div></div>
+</div>
+<div class="math-talk">&#x1F3C6; <strong>Chapter 6 — Complete!</strong>&nbsp; Perimeter of rectangles, squares, triangles, regular polygons, area concepts, rectangle area, triangle area, and real life problems — badhu! &#x1F4AF;</div>`;}
 
 function sec16(){return `
 <div class="sec-heading" style="color:#2563eb">&#x1F9E9; 1.6 Relation to Number Sequences</div>
