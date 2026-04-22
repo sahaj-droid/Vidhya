@@ -421,7 +421,12 @@ body { font-family: 'Nunito', sans-serif; background: #f0f9ff; color: #1e293b; m
         <div class="ch-name">Data Handling and Presentation</div>
         <span class="ch-badge">&#x2705; Available</span>
       </div>
-      <div class="chapter-card ch-5 locked"><span class="ch-icon">&#x1F31F;</span><div class="ch-num">5</div><div class="ch-name">Prime Time</div><span class="ch-badge">&#x1F512; Soon</span></div>
+      <div class="chapter-card ch-5" onclick="openChapter(5)">
+        <span class="ch-icon">&#x1F31F;</span>
+        <div class="ch-num">5</div>
+        <div class="ch-name">Prime Time</div>
+        <span class="ch-badge">&#x2705; Available</span>
+      </div>
       <div class="chapter-card ch-6 locked"><span class="ch-icon">&#x25A1;</span><div class="ch-num">6</div><div class="ch-name">Perimeter and Area</div><span class="ch-badge">&#x1F512; Soon</span></div>
       <div class="chapter-card ch-7 locked"><span class="ch-icon">&#xBD;</span><div class="ch-num">7</div><div class="ch-name">Fractions</div><span class="ch-badge">&#x1F512; Soon</span></div>
       <div class="chapter-card ch-8 locked"><span class="ch-icon">&#x1F4D0;</span><div class="ch-num">8</div><div class="ch-name">Playing with Constructions</div><span class="ch-badge">&#x1F512; Soon</span></div>
@@ -509,6 +514,17 @@ var CHAPTERS = [{
     {id:"4.3", title:"Bar Graphs",                        type:"Concept + Visual + Practice"},
     {id:"4.4", title:"Drawing a Bar Graph",               type:"Steps + Visual + Practice"},
     {id:"4.5", title:"Artistic and Aesthetic Considerations", type:"Concept + Visual + Practice"},
+  ]
+},{
+  id:5, title:"Prime Time",
+  color:"#ef4444", bg:"linear-gradient(135deg,#b91c1c,#ef4444)",
+  available:true,
+  sections:[
+    {id:"5.1", title:"Common Multiples and Common Factors", type:"Concept + Game + Practice"},
+    {id:"5.2", title:"Prime and Composite Numbers",         type:"Concept + Visual + Practice"},
+    {id:"5.3", title:"Sieve of Eratosthenes",               type:"Method + Visual + Practice"},
+    {id:"5.4", title:"Prime Factorisation",                 type:"Concept + Steps + Practice"},
+    {id:"5.5", title:"Divisibility Rules",                  type:"Rules + Indian Examples + Practice"},
   ]
 }];
 
@@ -601,7 +617,8 @@ function buildContent(id){
     '2.10':sec210,'2.11':sec211,
     '3.1':sec31,'3.2':sec32,'3.3':sec33,'3.4':sec34,'3.5':sec35,
     '3.6':sec36,'3.7':sec37,'3.8':sec38,'3.9':sec39,'3.10':sec310,'3.11':sec311,
-    '4.1':sec41,'4.2':sec42,'4.3':sec43,'4.4':sec44,'4.5':sec45
+    '4.1':sec41,'4.2':sec42,'4.3':sec43,'4.4':sec44,'4.5':sec45,
+    '5.1':sec51,'5.2':sec52,'5.3':sec53,'5.4':sec54,'5.5':sec55
   };
   return map[id]?map[id]():'<p style="padding:40px;text-align:center;color:#94a3b8">Coming soon!</p>';
 }
@@ -2240,6 +2257,298 @@ function sec45(){return `
   <div class="practice-q"><div class="pq-text">Q3. A graph that makes small differences look very large is called:</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">A good graph</button><button class="choice-btn" onclick="checkAnswer(this,false)">An artistic graph</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">A misleading graph</button><button class="choice-btn" onclick="checkAnswer(this,false)">A bar graph</button></div><div class="feedback"></div></div>
 </div>
 <div class="math-talk">&#x1F3C6; <strong>Chapter 4 — Complete!</strong>&nbsp; Data, Tally marks, Frequency, Pictographs, Bar Graphs, Drawing graphs, and Aesthetic considerations — badhu cover thayu! &#x1F4AF;</div>`;}
+
+// ── CHAPTER 5 ──
+
+function sec51(){return `
+<div class="sec-heading" style="color:#ef4444">&#x1F35B; 5.1 Common Multiples and Common Factors</div>
+<p>Numbers have <strong>multiples</strong> and <strong>factors</strong> — and sometimes two numbers share the same ones!</p>
+<div class="india-example">
+  <div class="ie-label">&#x1F1EE;&#x1F1F3; Idli-Vada Game!</div>
+  <p>Children sit in a circle and count 1, 2, 3... When it is a <strong>multiple of 3</strong> — say <strong>"Idli"</strong>! When it is a <strong>multiple of 5</strong> — say <strong>"Vada"</strong>! When it is a multiple of BOTH 3 and 5 (like 15, 30...) — say <strong>"Idli-Vada"</strong>! Make a mistake and you are out!</p>
+</div>
+<div class="concept-box">
+  <div class="cb-title">Key Words</div>
+  <p><strong>Multiple:</strong> 3 × 1=3, 3×2=6, 3×3=9... Multiples of 3 = 3, 6, 9, 12, 15...<br/>
+  <strong>Factor/Divisor:</strong> Numbers that divide exactly. Factors of 24 = 1, 2, 3, 4, 6, 8, 12, 24<br/>
+  <strong>Common multiple:</strong> Shared by two numbers. Common multiples of 3 and 5 = 15, 30, 45...<br/>
+  <strong>Common factor:</strong> Shared factor. Common factors of 12 and 18 = 1, 2, 3, 6</p>
+</div>
+<div class="visual-wrap">
+<svg viewBox="0 0 340 120" xmlns="http://www.w3.org/2000/svg">
+  <text x="170" y="16" text-anchor="middle" font-family="Baloo 2,cursive" font-size="12" font-weight="700" fill="#1e293b">Jump Jackpot — Factors of 24 on number line</text>
+  <line x1="20" y1="65" x2="320" y2="65" stroke="#1e293b" stroke-width="2"/>
+  <polygon points="314,61 324,65 314,69" fill="#1e293b"/>
+  <text x="20" y="80" font-family="Nunito,sans-serif" font-size="9" fill="#64748b">0</text>
+  <text x="45" y="80" font-family="Nunito,sans-serif" font-size="9" fill="#64748b">4</text>
+  <text x="83" y="80" font-family="Nunito,sans-serif" font-size="9" fill="#64748b">8</text>
+  <text x="120" y="80" font-family="Nunito,sans-serif" font-size="9" fill="#64748b">12</text>
+  <text x="158" y="80" font-family="Nunito,sans-serif" font-size="9" fill="#64748b">16</text>
+  <text x="195" y="80" font-family="Nunito,sans-serif" font-size="9" fill="#64748b">20</text>
+  <text x="233" y="80" font-family="Nunito,sans-serif" font-size="9" fill="#64748b">24</text>
+  <path d="M 20 65 Q 32 40 45 65" fill="none" stroke="#ef4444" stroke-width="2"/>
+  <path d="M 45 65 Q 64 40 83 65" fill="none" stroke="#ef4444" stroke-width="2"/>
+  <path d="M 83 65 Q 101 40 120 65" fill="none" stroke="#ef4444" stroke-width="2"/>
+  <path d="M 120 65 Q 139 40 158 65" fill="none" stroke="#ef4444" stroke-width="2"/>
+  <path d="M 158 65 Q 177 40 195 65" fill="none" stroke="#ef4444" stroke-width="2"/>
+  <path d="M 195 65 Q 214 40 233 65" fill="none" stroke="#ef4444" stroke-width="2"/>
+  <circle cx="20" cy="65" r="5" fill="#ef4444"/>
+  <circle cx="45" cy="65" r="5" fill="#ef4444"/>
+  <circle cx="83" cy="65" r="5" fill="#ef4444"/>
+  <circle cx="120" cy="65" r="5" fill="#ef4444"/>
+  <circle cx="158" cy="65" r="5" fill="#ef4444"/>
+  <circle cx="195" cy="65" r="5" fill="#ef4444"/>
+  <circle cx="233" cy="65" r="5" fill="#ef4444"/>
+  <text x="170" y="100" text-anchor="middle" font-family="Nunito,sans-serif" font-size="11" font-weight="700" fill="#ef4444">Jump size 4 lands on 24! So 4 is a factor of 24.</text>
+  <text x="170" y="115" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" fill="#64748b">Factors of 24: 1, 2, 3, 4, 6, 8, 12, 24</text>
+</svg>
+</div>
+<div class="fig-out">
+  <div class="fo-hdr">&#x2699; Figure it Out</div>
+  <ol>
+    <li>Play Idli-Vada game with your class! Try with multiples of 4 and 6.</li>
+    <li>Find all common multiples of 4 and 6 up to 60.</li>
+    <li>Find all common factors of 36 and 48.</li>
+  </ol>
+</div>
+<div class="practice-section">
+  <div class="ps-hdr">&#x1F3AF; Practice Time!</div>
+  <div class="practice-q"><div class="pq-text">Q1. In the Idli-Vada game, which number from 1-20 gets "Idli-Vada"?</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">9</button><button class="choice-btn" onclick="checkAnswer(this,false)">10</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">15</button><button class="choice-btn" onclick="checkAnswer(this,false)">20</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q2. Which of these is a factor of 24?</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">5</button><button class="choice-btn" onclick="checkAnswer(this,false)">7</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">8</button><button class="choice-btn" onclick="checkAnswer(this,false)">9</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q3. Common multiples of 3 and 5 are multiples of:</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">3</button><button class="choice-btn" onclick="checkAnswer(this,false)">5</button><button class="choice-btn" onclick="checkAnswer(this,false)">8</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">15</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q4. How many factors does 12 have? (1,2,3,4,6,12)</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">4</button><button class="choice-btn" onclick="checkAnswer(this,false)">5</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">6</button><button class="choice-btn" onclick="checkAnswer(this,false)">12</button></div><div class="feedback"></div></div>
+</div>`;}
+
+function sec52(){return `
+<div class="sec-heading" style="color:#ef4444">&#x1F31F; 5.2 Prime and Composite Numbers</div>
+<p>Every whole number (greater than 1) is either <strong>prime</strong> or <strong>composite</strong> — no exceptions!</p>
+<div class="india-example">
+  <div class="ie-label">&#x1F1EE;&#x1F1F3; Indian Example</div>
+  <p>Think of arranging <strong>laddoos</strong> in rows equally. If you have <strong>7 laddoos</strong>, you can only make rows of 1 or 7 — no other way! That is a prime number. But <strong>12 laddoos</strong> can be arranged as 1×12, 2×6, 3×4 — many ways! That is composite. <strong>2, 3, 5, 7, 11, 13</strong> are prime — like building blocks of all numbers!</p>
+</div>
+<div class="concept-box">
+  <div class="cb-title">Prime vs Composite</div>
+  <p><strong>Prime number:</strong> Has EXACTLY 2 factors — 1 and itself.<br/>
+  Examples: 2, 3, 5, 7, 11, 13, 17, 19, 23...<br/><br/>
+  <strong>Composite number:</strong> Has MORE than 2 factors.<br/>
+  Examples: 4, 6, 8, 9, 10, 12, 14, 15, 16...<br/><br/>
+  <strong>Special: 1</strong> is NEITHER prime nor composite!</p>
+</div>
+<div class="visual-wrap">
+<svg viewBox="0 0 340 110" xmlns="http://www.w3.org/2000/svg">
+  <text x="170" y="16" text-anchor="middle" font-family="Baloo 2,cursive" font-size="12" font-weight="700" fill="#1e293b">Prime vs Composite — dot arrangement</text>
+  <text x="60" y="36" text-anchor="middle" font-family="Baloo 2,cursive" font-size="13" font-weight="800" fill="#ef4444">7 (Prime)</text>
+  <circle cx="30" cy="52" r="6" fill="#ef4444"/><circle cx="45" cy="52" r="6" fill="#ef4444"/><circle cx="60" cy="52" r="6" fill="#ef4444"/><circle cx="75" cy="52" r="6" fill="#ef4444"/><circle cx="90" cy="52" r="6" fill="#ef4444"/><circle cx="105" cy="52" r="6" fill="#ef4444"/><circle cx="120" cy="52" r="6" fill="#ef4444"/>
+  <text x="60" y="72" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" fill="#64748b">Only 1 row possible!</text>
+  <text x="60" y="84" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" fill="#b91c1c">Factors: 1 and 7 only</text>
+  <line x1="165" y1="25" x2="165" y2="95" stroke="#e2e8f0" stroke-width="1.5"/>
+  <text x="255" y="36" text-anchor="middle" font-family="Baloo 2,cursive" font-size="13" font-weight="800" fill="#16a34a">12 (Composite)</text>
+  <circle cx="195" cy="50" r="5" fill="#16a34a"/><circle cx="210" cy="50" r="5" fill="#16a34a"/><circle cx="225" cy="50" r="5" fill="#16a34a"/><circle cx="240" cy="50" r="5" fill="#16a34a"/>
+  <circle cx="195" cy="63" r="5" fill="#16a34a"/><circle cx="210" cy="63" r="5" fill="#16a34a"/><circle cx="225" cy="63" r="5" fill="#16a34a"/><circle cx="240" cy="63" r="5" fill="#16a34a"/>
+  <circle cx="195" cy="76" r="5" fill="#16a34a"/><circle cx="210" cy="76" r="5" fill="#16a34a"/><circle cx="225" cy="76" r="5" fill="#16a34a"/><circle cx="240" cy="76" r="5" fill="#16a34a"/>
+  <text x="255" y="72" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" fill="#64748b">3×4 arrangement!</text>
+  <text x="255" y="84" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" fill="#15803d">Factors: 1,2,3,4,6,12</text>
+</svg>
+</div>
+<div class="fig-out">
+  <div class="fo-hdr">&#x2699; Figure it Out</div>
+  <ol>
+    <li>List all prime numbers between 1 and 50.</li>
+    <li>Why is 1 neither prime nor composite?</li>
+    <li>Which prime number is also an even number? Is it the only one?</li>
+  </ol>
+</div>
+<div class="practice-section">
+  <div class="ps-hdr">&#x1F3AF; Practice Time!</div>
+  <div class="practice-q"><div class="pq-text">Q1. Which of these is a prime number?</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">9</button><button class="choice-btn" onclick="checkAnswer(this,false)">15</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">13</button><button class="choice-btn" onclick="checkAnswer(this,false)">21</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q2. The number 1 is:</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">Prime</button><button class="choice-btn" onclick="checkAnswer(this,false)">Composite</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">Neither prime nor composite</button><button class="choice-btn" onclick="checkAnswer(this,false)">Both</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q3. 7 laddoos can be arranged equally in how many ways?</div><div class="answer-choices"><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">Only 1×7 (prime!)</button><button class="choice-btn" onclick="checkAnswer(this,false)">1×7 and 7×1 only</button><button class="choice-btn" onclick="checkAnswer(this,false)">Many ways</button><button class="choice-btn" onclick="checkAnswer(this,false)">3 ways</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q4. The only even prime number is:</div><div class="answer-choices"><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">2</button><button class="choice-btn" onclick="checkAnswer(this,false)">4</button><button class="choice-btn" onclick="checkAnswer(this,false)">6</button><button class="choice-btn" onclick="checkAnswer(this,false)">8</button></div><div class="feedback"></div></div>
+</div>`;}
+
+function sec53(){return `
+<div class="sec-heading" style="color:#ef4444">&#x1F9EE; 5.3 Sieve of Eratosthenes</div>
+<p>A clever method from 2200 years ago to find ALL prime numbers — still used today!</p>
+<div class="india-example">
+  <div class="ie-label">&#x1F1EE;&#x1F1F3; Indian Connection</div>
+  <p><strong>Eratosthenes</strong> was a Greek mathematician who lived around 2200 years ago. Interestingly, ancient Indian mathematicians like <strong>Brahmagupta</strong> (from Gujarat!) were also studying prime numbers around the same era. The sieve method is as elegant today as it was 2000 years ago!</p>
+</div>
+<div class="concept-box">
+  <div class="cb-title">How the Sieve works — 5 steps</div>
+  <p><strong>Step 1:</strong> Write numbers 1 to 100. Cross out 1 (neither prime nor composite).<br/>
+  <strong>Step 2:</strong> Circle 2. Cross out all multiples of 2 (4, 6, 8...).<br/>
+  <strong>Step 3:</strong> Circle 3. Cross out all multiples of 3 (6, 9, 12...).<br/>
+  <strong>Step 4:</strong> Circle 5. Cross out all multiples of 5 (10, 15, 20...).<br/>
+  <strong>Step 5:</strong> Continue. All circled numbers are <strong>prime!</strong></p>
+</div>
+<div class="visual-wrap">
+<svg viewBox="0 0 340 135" xmlns="http://www.w3.org/2000/svg">
+  <text x="170" y="14" text-anchor="middle" font-family="Baloo 2,cursive" font-size="12" font-weight="700" fill="#1e293b">Primes from 1 to 50 (circled = prime)</text>
+  <text x="17" y="30" text-anchor="middle" font-size="11" font-family="Baloo 2,cursive" fill="#94a3b8">1</text>
+  <circle cx="36" cy="26" r="9" fill="none" stroke="#ef4444" stroke-width="2"/><text x="36" y="30" text-anchor="middle" font-size="11" font-family="Baloo 2,cursive" font-weight="700" fill="#ef4444">2</text>
+  <circle cx="55" cy="26" r="9" fill="none" stroke="#ef4444" stroke-width="2"/><text x="55" y="30" text-anchor="middle" font-size="11" font-family="Baloo 2,cursive" font-weight="700" fill="#ef4444">3</text>
+  <text x="74" y="30" text-anchor="middle" font-size="11" font-family="Baloo 2,cursive" fill="#94a3b8" text-decoration="line-through">4</text>
+  <circle cx="93" cy="26" r="9" fill="none" stroke="#ef4444" stroke-width="2"/><text x="93" y="30" text-anchor="middle" font-size="11" font-family="Baloo 2,cursive" font-weight="700" fill="#ef4444">5</text>
+  <text x="112" y="30" text-anchor="middle" font-size="11" font-family="Baloo 2,cursive" fill="#94a3b8">6</text>
+  <circle cx="131" cy="26" r="9" fill="none" stroke="#ef4444" stroke-width="2"/><text x="131" y="30" text-anchor="middle" font-size="11" font-family="Baloo 2,cursive" font-weight="700" fill="#ef4444">7</text>
+  <text x="150" y="30" text-anchor="middle" font-size="11" font-family="Baloo 2,cursive" fill="#94a3b8">8</text>
+  <text x="169" y="30" text-anchor="middle" font-size="11" font-family="Baloo 2,cursive" fill="#94a3b8">9</text>
+  <text x="188" y="30" text-anchor="middle" font-size="11" font-family="Baloo 2,cursive" fill="#94a3b8">10</text>
+  <circle cx="209" cy="26" r="9" fill="none" stroke="#ef4444" stroke-width="2"/><text x="209" y="30" text-anchor="middle" font-size="11" font-family="Baloo 2,cursive" font-weight="700" fill="#ef4444">11</text>
+  <text x="230" y="30" text-anchor="middle" font-size="11" font-family="Baloo 2,cursive" fill="#94a3b8">12</text>
+  <circle cx="251" cy="26" r="9" fill="none" stroke="#ef4444" stroke-width="2"/><text x="251" y="30" text-anchor="middle" font-size="11" font-family="Baloo 2,cursive" font-weight="700" fill="#ef4444">13</text>
+  <text x="272" y="30" text-anchor="middle" font-size="11" font-family="Baloo 2,cursive" fill="#94a3b8">14</text>
+  <text x="293" y="30" text-anchor="middle" font-size="11" font-family="Baloo 2,cursive" fill="#94a3b8">15</text>
+  <text x="312" y="30" text-anchor="middle" font-size="11" font-family="Baloo 2,cursive" fill="#94a3b8">16</text>
+  <circle cx="17" cy="50" r="9" fill="none" stroke="#ef4444" stroke-width="2"/><text x="17" y="54" text-anchor="middle" font-size="11" font-family="Baloo 2,cursive" font-weight="700" fill="#ef4444">17</text>
+  <text x="36" y="54" text-anchor="middle" font-size="11" font-family="Baloo 2,cursive" fill="#94a3b8">18</text>
+  <circle cx="55" cy="50" r="9" fill="none" stroke="#ef4444" stroke-width="2"/><text x="55" y="54" text-anchor="middle" font-size="11" font-family="Baloo 2,cursive" font-weight="700" fill="#ef4444">19</text>
+  <text x="74" y="54" text-anchor="middle" font-size="11" font-family="Baloo 2,cursive" fill="#94a3b8">20</text>
+  <text x="93" y="54" text-anchor="middle" font-size="11" font-family="Baloo 2,cursive" fill="#94a3b8">21</text>
+  <text x="112" y="54" text-anchor="middle" font-size="11" font-family="Baloo 2,cursive" fill="#94a3b8">22</text>
+  <circle cx="131" cy="50" r="9" fill="none" stroke="#ef4444" stroke-width="2"/><text x="131" y="54" text-anchor="middle" font-size="11" font-family="Baloo 2,cursive" font-weight="700" fill="#ef4444">23</text>
+  <text x="150" y="54" text-anchor="middle" font-size="11" font-family="Baloo 2,cursive" fill="#94a3b8">24</text>
+  <text x="169" y="54" text-anchor="middle" font-size="11" font-family="Baloo 2,cursive" fill="#94a3b8">25</text>
+  <text x="170" y="80" text-anchor="middle" font-family="Nunito,sans-serif" font-size="11" font-weight="700" fill="#1e293b">Primes up to 50: 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47</text>
+  <text x="170" y="96" text-anchor="middle" font-family="Nunito,sans-serif" font-size="11" font-weight="700" fill="#1e293b">Total: 15 prime numbers from 1 to 50!</text>
+  <rect x="10" y="106" width="320" height="22" rx="8" fill="#fee2e2"/>
+  <text x="170" y="121" text-anchor="middle" font-family="Nunito,sans-serif" font-size="11" font-weight="700" fill="#b91c1c">Brahmagupta (from Gujarat!) studied number theory ~628 CE</text>
+</svg>
+</div>
+<div class="fig-out">
+  <div class="fo-hdr">&#x2699; Figure it Out</div>
+  <ol>
+    <li>Use the Sieve method in your notebook to find all primes from 1 to 100.</li>
+    <li>How many primes are there from 1 to 100?</li>
+    <li>Are there more primes in 1-50 or 51-100? What do you notice?</li>
+  </ol>
+</div>
+<div class="practice-section">
+  <div class="ps-hdr">&#x1F3AF; Practice Time!</div>
+  <div class="practice-q"><div class="pq-text">Q1. The Sieve of Eratosthenes is used to find:</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">Common factors</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">All prime numbers up to a given number</button><button class="choice-btn" onclick="checkAnswer(this,false)">Multiples of 2</button><button class="choice-btn" onclick="checkAnswer(this,false)">Composite numbers only</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q2. In the Sieve, after circling 2, we cross out:</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">All odd numbers</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">All multiples of 2 (4,6,8...)</button><button class="choice-btn" onclick="checkAnswer(this,false)">Number 3 also</button><button class="choice-btn" onclick="checkAnswer(this,false)">All numbers after 2</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q3. How many primes are there from 1 to 10?</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">3</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">4 (2,3,5,7)</button><button class="choice-btn" onclick="checkAnswer(this,false)">5</button><button class="choice-btn" onclick="checkAnswer(this,false)">6</button></div><div class="feedback"></div></div>
+</div>`;}
+
+function sec54(){return `
+<div class="sec-heading" style="color:#ef4444">&#x1F9E9; 5.4 Prime Factorisation</div>
+<p>Every composite number can be broken down into a product of <strong>prime numbers</strong> — its prime factorisation!</p>
+<div class="india-example">
+  <div class="ie-label">&#x1F1EE;&#x1F1F3; Indian Example</div>
+  <p>Think of <strong>breaking a 36-piece chakli</strong> into equal groups — you can break it into groups of 2, 3, 4, 6, 9, 12, 18, or 36. The most basic breaking is into PRIME pieces: 36 = 2×2×3×3. Just like breaking anything into its simplest building blocks — that is prime factorisation!</p>
+</div>
+<div class="concept-box">
+  <div class="cb-title">Factor Tree Method</div>
+  <p>Keep dividing by the smallest prime factor until you get all primes!<br/>
+  <strong>Example: 36</strong><br/>
+  36 = 2 × 18 = 2 × 2 × 9 = 2 × 2 × 3 × 3<br/>
+  So 36 = 2² × 3² (prime factorisation!)<br/><br/>
+  <strong>Co-prime numbers:</strong> Two numbers are co-prime if their ONLY common factor is 1.<br/>
+  Example: 8 and 9 — factors of 8: {1,2,4,8}, factors of 9: {1,3,9} — only 1 is common → co-prime!</p>
+</div>
+<div class="visual-wrap">
+<svg viewBox="0 0 340 130" xmlns="http://www.w3.org/2000/svg">
+  <text x="170" y="14" text-anchor="middle" font-family="Baloo 2,cursive" font-size="12" font-weight="700" fill="#1e293b">Factor Tree for 36 and 60</text>
+  <text x="75" y="35" text-anchor="middle" font-family="Baloo 2,cursive" font-size="16" font-weight="800" fill="#ef4444">36</text>
+  <line x1="60" y1="38" x2="40" y2="52" stroke="#ef4444" stroke-width="1.5"/>
+  <line x1="90" y1="38" x2="110" y2="52" stroke="#ef4444" stroke-width="1.5"/>
+  <circle cx="35" cy="58" r="12" fill="#fee2e2" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="35" y="62" text-anchor="middle" font-family="Baloo 2,cursive" font-size="12" font-weight="700" fill="#ef4444">2</text>
+  <text x="115" y="62" text-anchor="middle" font-family="Baloo 2,cursive" font-size="14" font-weight="700" fill="#1e293b">18</text>
+  <line x1="105" y1="65" x2="90" y2="78" stroke="#ef4444" stroke-width="1.5"/>
+  <line x1="125" y1="65" x2="140" y2="78" stroke="#ef4444" stroke-width="1.5"/>
+  <circle cx="85" cy="84" r="12" fill="#fee2e2" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="85" y="88" text-anchor="middle" font-family="Baloo 2,cursive" font-size="12" font-weight="700" fill="#ef4444">2</text>
+  <text x="145" y="88" text-anchor="middle" font-family="Baloo 2,cursive" font-size="14" font-weight="700" fill="#1e293b">9</text>
+  <line x1="135" y1="91" x2="122" y2="104" stroke="#ef4444" stroke-width="1.5"/>
+  <line x1="155" y1="91" x2="168" y2="104" stroke="#ef4444" stroke-width="1.5"/>
+  <circle cx="117" cy="110" r="12" fill="#fee2e2" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="117" y="114" text-anchor="middle" font-family="Baloo 2,cursive" font-size="12" font-weight="700" fill="#ef4444">3</text>
+  <circle cx="173" cy="110" r="12" fill="#fee2e2" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="173" y="114" text-anchor="middle" font-family="Baloo 2,cursive" font-size="12" font-weight="700" fill="#ef4444">3</text>
+  <text x="75" y="128" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" fill="#b91c1c">36 = 2×2×3×3</text>
+  <text x="270" y="35" text-anchor="middle" font-family="Baloo 2,cursive" font-size="16" font-weight="800" fill="#16a34a">60</text>
+  <line x1="255" y1="38" x2="235" y2="52" stroke="#16a34a" stroke-width="1.5"/>
+  <line x1="285" y1="38" x2="305" y2="52" stroke="#16a34a" stroke-width="1.5"/>
+  <circle cx="228" cy="58" r="12" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="228" y="62" text-anchor="middle" font-family="Baloo 2,cursive" font-size="12" font-weight="700" fill="#16a34a">2</text>
+  <text x="308" y="62" text-anchor="middle" font-family="Baloo 2,cursive" font-size="14" font-weight="700" fill="#1e293b">30</text>
+  <line x1="298" y1="65" x2="283" y2="78" stroke="#16a34a" stroke-width="1.5"/>
+  <line x1="318" y1="65" x2="333" y2="78" stroke="#16a34a" stroke-width="1.5"/>
+  <circle cx="277" cy="84" r="12" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="277" y="88" text-anchor="middle" font-family="Baloo 2,cursive" font-size="12" font-weight="700" fill="#16a34a">2</text>
+  <text x="336" y="88" text-anchor="middle" font-family="Baloo 2,cursive" font-size="14" font-weight="700" fill="#1e293b">15</text>
+  <line x1="326" y1="91" x2="313" y2="104" stroke="#16a34a" stroke-width="1.5"/>
+  <line x1="336" y1="91" x2="336" y2="104" stroke="#16a34a" stroke-width="1" stroke-dasharray="2,2"/>
+  <circle cx="307" cy="110" r="12" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="307" y="114" text-anchor="middle" font-family="Baloo 2,cursive" font-size="12" font-weight="700" fill="#16a34a">3</text>
+  <text x="270" y="128" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" fill="#15803d">60 = 2×2×3×5</text>
+</svg>
+</div>
+<div class="fig-out">
+  <div class="fo-hdr">&#x2699; Figure it Out</div>
+  <ol>
+    <li>Find prime factorisation of: 24, 48, 72, 100.</li>
+    <li>Are 56 and 63 co-prime? Find their prime factorisations to check.</li>
+    <li>Is 168 divisible by 12? Use prime factorisation to check without long division!</li>
+  </ol>
+</div>
+<div class="practice-section">
+  <div class="ps-hdr">&#x1F3AF; Practice Time!</div>
+  <div class="practice-q"><div class="pq-text">Q1. Prime factorisation of 12 is:</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">2×6</button><button class="choice-btn" onclick="checkAnswer(this,false)">3×4</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">2×2×3</button><button class="choice-btn" onclick="checkAnswer(this,false)">1×12</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q2. Are 8 and 9 co-prime?</div><div class="answer-choices"><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">Yes — only common factor is 1</button><button class="choice-btn" onclick="checkAnswer(this,false)">No — they share factor 3</button><button class="choice-btn" onclick="checkAnswer(this,false)">No — they share factor 2</button><button class="choice-btn" onclick="checkAnswer(this,false)">Cannot say</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q3. 36 = 2×2×3×3. So 36 is divisible by which of these?</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">5</button><button class="choice-btn" onclick="checkAnswer(this,false)">7</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">12 (=2×2×3)</button><button class="choice-btn" onclick="checkAnswer(this,false)">15</button></div><div class="feedback"></div></div>
+</div>`;}
+
+function sec55(){return `
+<div class="sec-heading" style="color:#ef4444">&#x1F522; 5.5 Divisibility Rules</div>
+<p><strong>Divisibility rules</strong> let us check if a number is divisible by another — without doing long division!</p>
+<div class="india-example">
+  <div class="ie-label">&#x1F1EE;&#x1F1F3; Indian Example</div>
+  <p>A <strong>mela organiser in Ahmedabad</strong> has 1236 visitors. Can they be divided into groups of 2? Of 4? Of 5? Instead of dividing, use divisibility rules! <strong>Ashoka Chakra</strong> has 24 spokes — is 24 divisible by 8? Yes! (last 3 digits 024 ÷ 8 = 3). These rules save lots of time!</p>
+</div>
+<div class="num-table" style="background:#fff1f2; border-color:#fecdd3;">
+  <div class="nt-title" style="color:#9f1239;">Divisibility Rules — Quick Reference</div>
+  <div class="seq-row"><span class="seq-nums">Divisible by 2</span><span class="seq-name" style="background:#fecdd3;color:#9f1239;">Last digit is 0, 2, 4, 6, or 8 (even)</span></div>
+  <div class="seq-row"><span class="seq-nums">Divisible by 5</span><span class="seq-name" style="background:#fecdd3;color:#9f1239;">Last digit is 0 or 5</span></div>
+  <div class="seq-row"><span class="seq-nums">Divisible by 10</span><span class="seq-name" style="background:#fecdd3;color:#9f1239;">Last digit is 0</span></div>
+  <div class="seq-row"><span class="seq-nums">Divisible by 4</span><span class="seq-name" style="background:#fecdd3;color:#9f1239;">Last TWO digits divisible by 4</span></div>
+  <div class="seq-row"><span class="seq-nums">Divisible by 8</span><span class="seq-name" style="background:#fecdd3;color:#9f1239;">Last THREE digits divisible by 8</span></div>
+</div>
+<div class="visual-wrap">
+<svg viewBox="0 0 340 100" xmlns="http://www.w3.org/2000/svg">
+  <text x="170" y="16" text-anchor="middle" font-family="Baloo 2,cursive" font-size="12" font-weight="700" fill="#1e293b">Quick Check — Is 1236 divisible by...?</text>
+  <rect x="10" y="26" width="72" height="46" rx="8" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="46" y="47" text-anchor="middle" font-family="Baloo 2,cursive" font-size="14" font-weight="800" fill="#15803d">÷2</text>
+  <text x="46" y="62" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" fill="#166534">Yes! (6 is even)</text>
+  <rect x="92" y="26" width="72" height="46" rx="8" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="128" y="47" text-anchor="middle" font-family="Baloo 2,cursive" font-size="14" font-weight="800" fill="#15803d">÷4</text>
+  <text x="128" y="62" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" fill="#166534">Yes! (36÷4=9)</text>
+  <rect x="174" y="26" width="72" height="46" rx="8" fill="#fee2e2" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="210" y="47" text-anchor="middle" font-family="Baloo 2,cursive" font-size="14" font-weight="800" fill="#b91c1c">÷5</text>
+  <text x="210" y="62" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" fill="#b91c1c">No! (ends in 6)</text>
+  <rect x="256" y="26" width="74" height="46" rx="8" fill="#fee2e2" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="293" y="47" text-anchor="middle" font-family="Baloo 2,cursive" font-size="14" font-weight="800" fill="#b91c1c">÷10</text>
+  <text x="293" y="62" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" fill="#b91c1c">No! (ends in 6)</text>
+  <text x="170" y="88" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" fill="#64748b">No long division needed — just look at last digits!</text>
+</svg>
+</div>
+<div class="fig-out">
+  <div class="fo-hdr">&#x2699; Figure it Out</div>
+  <ol>
+    <li>Check 2024 — is it a leap year? (Divisible by 4? By 100? By 400?)</li>
+    <li>Which of these are divisible by 4: 316, 418, 220, 534?</li>
+    <li>Ashoka Chakra: 24 spokes. Is 24 divisible by 2, 4, 8? Check using rules!</li>
+  </ol>
+</div>
+<div class="practice-section">
+  <div class="ps-hdr">&#x1F3AF; Practice Time!</div>
+  <div class="practice-q"><div class="pq-text">Q1. Is 435 divisible by 5?</div><div class="answer-choices"><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">Yes — ends in 5</button><button class="choice-btn" onclick="checkAnswer(this,false)">No — it is odd</button><button class="choice-btn" onclick="checkAnswer(this,false)">Cannot say without dividing</button><button class="choice-btn" onclick="checkAnswer(this,false)">Only sometimes</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q2. Is 1248 divisible by 4? (Last two digits = 48)</div><div class="answer-choices"><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">Yes — 48 ÷ 4 = 12</button><button class="choice-btn" onclick="checkAnswer(this,false)">No — it is too big</button><button class="choice-btn" onclick="checkAnswer(this,false)">No — last digit is 8</button><button class="choice-btn" onclick="checkAnswer(this,false)">Cannot say</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q3. A number ends in 0. It is definitely divisible by:</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">Only 2</button><button class="choice-btn" onclick="checkAnswer(this,false)">Only 5</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">Both 2 and 5 and 10</button><button class="choice-btn" onclick="checkAnswer(this,false)">Only 10</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q4. 2024 is a leap year because it is divisible by:</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">2</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">4 (and not 100)</button><button class="choice-btn" onclick="checkAnswer(this,false)">100</button><button class="choice-btn" onclick="checkAnswer(this,false)">400</button></div><div class="feedback"></div></div>
+</div>
+<div class="math-talk">&#x1F3C6; <strong>Chapter 5 — Complete!</strong>&nbsp; Idli-Vada multiples, prime vs composite, Sieve of Eratosthenes, prime factorisation, co-primes, and divisibility rules — badhu! &#x1F4AF;</div>`;}
 
 function sec16(){return `
 <div class="sec-heading" style="color:#2563eb">&#x1F9E9; 1.6 Relation to Number Sequences</div>
