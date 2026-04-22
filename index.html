@@ -433,7 +433,12 @@ body { font-family: 'Nunito', sans-serif; background: #f0f9ff; color: #1e293b; m
         <div class="ch-name">Perimeter and Area</div>
         <span class="ch-badge">&#x2705; Available</span>
       </div>
-      <div class="chapter-card ch-7 locked"><span class="ch-icon">&#xBD;</span><div class="ch-num">7</div><div class="ch-name">Fractions</div><span class="ch-badge">&#x1F512; Soon</span></div>
+      <div class="chapter-card ch-7" onclick="openChapter(7)">
+        <span class="ch-icon">&#xBD;</span>
+        <div class="ch-num">7</div>
+        <div class="ch-name">Fractions</div>
+        <span class="ch-badge">&#x2705; Available</span>
+      </div>
       <div class="chapter-card ch-8 locked"><span class="ch-icon">&#x1F4D0;</span><div class="ch-num">8</div><div class="ch-name">Playing with Constructions</div><span class="ch-badge">&#x1F512; Soon</span></div>
       <div class="chapter-card ch-9 locked"><span class="ch-icon">&#x25C6;</span><div class="ch-num">9</div><div class="ch-name">Symmetry</div><span class="ch-badge">&#x1F512; Soon</span></div>
       <div class="chapter-card ch-10 locked"><span class="ch-icon">&#x2B07;</span><div class="ch-num">10</div><div class="ch-name">The Other Side of Zero</div><span class="ch-badge">&#x1F512; Soon</span></div>
@@ -543,6 +548,34 @@ var CHAPTERS = [{
     {id:"6.5", title:"Area of Triangle",                  type:"Concept + Visual + Practice"},
     {id:"6.6", title:"Perimeter and Area in Real Life",   type:"Application + Indian Examples + Practice"},
   ]
+},{
+  id:7, title:"Fractions",
+  color:"#db2777", bg:"linear-gradient(135deg,#9d174d,#db2777)",
+  available:true,
+  sections:[
+    {id:"7.1", title:"Fractional Units and Equal Shares",  type:"Concept + Indian Examples + Practice"},
+    {id:"7.2", title:"Fractions on Number Line",           type:"Visual + Activity + Practice"},
+    {id:"7.3", title:"Measuring Using Fractional Units",   type:"Concept + Activity + Practice"},
+    {id:"7.4", title:"Equivalent Fractions",               type:"Concept + Visual + Practice"},
+    {id:"7.5", title:"Comparing Fractions",                type:"Concept + Method + Practice"},
+    {id:"7.6", title:"Lowest Terms / Simplest Form",       type:"Concept + Steps + Practice"},
+    {id:"7.7", title:"Addition of Fractions",              type:"Concept + Visual + Practice"},
+    {id:"7.8", title:"Subtraction of Fractions",           type:"Concept + Visual + Practice"},
+  ]
+},{
+  id:7, title:"Fractions",
+  color:"#db2777", bg:"linear-gradient(135deg,#9d174d,#db2777)",
+  available:true,
+  sections:[
+    {id:"7.1", title:"Fractional Units",                          type:"Concept + Indian Examples + Practice"},
+    {id:"7.2", title:"Fractional Units as Parts of a Whole",      type:"Concept + Visual + Practice"},
+    {id:"7.3", title:"Measuring Using Fractional Units",          type:"Concept + Activity + Practice"},
+    {id:"7.4", title:"Marking Fractions on Number Line",          type:"Visual + Activity + Practice"},
+    {id:"7.5", title:"Mixed Fractions",                           type:"Concept + Examples + Practice"},
+    {id:"7.6", title:"Equivalent Fractions",                      type:"Concept + Visual + Practice"},
+    {id:"7.7", title:"Comparing Fractions",                       type:"Method + Steps + Practice"},
+    {id:"7.8", title:"Addition and Subtraction of Fractions",     type:"Method + Examples + Practice"},
+  ]
 }];
 
 function goBack() {
@@ -636,7 +669,9 @@ function buildContent(id){
     '3.6':sec36,'3.7':sec37,'3.8':sec38,'3.9':sec39,'3.10':sec310,'3.11':sec311,
     '4.1':sec41,'4.2':sec42,'4.3':sec43,'4.4':sec44,'4.5':sec45,
     '5.1':sec51,'5.2':sec52,'5.3':sec53,'5.4':sec54,'5.5':sec55,
-    '6.1':sec61,'6.2':sec62,'6.3':sec63,'6.4':sec64,'6.5':sec65,'6.6':sec66
+    '6.1':sec61,'6.2':sec62,'6.3':sec63,'6.4':sec64,'6.5':sec65,'6.6':sec66,
+    '7.1':sec71,'7.2':sec72,'7.3':sec73,'7.4':sec74,'7.5':sec75,'7.6':sec76,'7.7':sec77,'7.8':sec78,
+    '7.1':sec71,'7.2':sec72,'7.3':sec73,'7.4':sec74,'7.5':sec75,'7.6':sec76,'7.7':sec77,'7.8':sec78
   };
   return map[id]?map[id]():'<p style="padding:40px;text-align:center;color:#94a3b8">Coming soon!</p>';
 }
@@ -2862,6 +2897,576 @@ function sec66(){return `
   <div class="practice-q"><div class="pq-text">Q4. For buying TILES for a floor, you need to calculate its:</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">Perimeter</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">Area</button><button class="choice-btn" onclick="checkAnswer(this,false)">Both</button><button class="choice-btn" onclick="checkAnswer(this,false)">Neither</button></div><div class="feedback"></div></div>
 </div>
 <div class="math-talk">&#x1F3C6; <strong>Chapter 6 — Complete!</strong>&nbsp; Perimeter of rectangles, squares, triangles, regular polygons, area concepts, rectangle area, triangle area, and real life problems — badhu! &#x1F4AF;</div>`;}
+
+// ── CHAPTER 7 ──
+
+function sec71(){return `
+<div class="sec-heading" style="color:#db2777">&#x1F9C2; 7.1 Fractional Units and Equal Shares</div>
+<p>When we share things equally, we get <strong>fractions</strong>! A fraction tells us how much each person gets.</p>
+<div class="india-example">
+  <div class="ie-label">&#x1F1EE;&#x1F1F3; Indian Example — Roti Sharing!</div>
+  <p><strong>Shabnam</strong> divides 1 roti equally between 2 children — each gets <strong>½ roti</strong>. If shared among 4 children, each gets <strong>¼ roti</strong>. More children = smaller share! So ½ &gt; ¼. Three guavas weighing 1 kg divided equally — each guava = <strong>⅓ kg</strong>.</p>
+</div>
+<div class="concept-box">
+  <div class="cb-title">Understanding Fractions</div>
+  <p>In a fraction like <strong>³⁄₄</strong>:<br/>
+  <strong>3</strong> = numerator (how many parts we have)<br/>
+  <strong>4</strong> = denominator (how many equal parts the whole is divided into)<br/>
+  <strong>Unit fraction:</strong> numerator = 1, like ½, ⅓, ¼, ⅕...</p>
+</div>
+<div class="visual-wrap">
+<svg viewBox="0 0 340 110" xmlns="http://www.w3.org/2000/svg">
+  <text x="170" y="16" text-anchor="middle" font-family="Baloo 2,cursive" font-size="12" font-weight="700" fill="#1e293b">1 Roti shared equally</text>
+  <circle cx="60" cy="65" r="36" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+  <line x1="60" y1="29" x2="60" y2="101" stroke="#d97706" stroke-width="2"/>
+  <text x="60" y="108" text-anchor="middle" font-family="Baloo 2,cursive" font-size="13" font-weight="800" fill="#db2777">2 parts = ½ each</text>
+  <circle cx="170" cy="65" r="36" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+  <line x1="170" y1="29" x2="170" y2="101" stroke="#d97706" stroke-width="2"/>
+  <line x1="134" y1="65" x2="206" y2="65" stroke="#d97706" stroke-width="2"/>
+  <text x="170" y="108" text-anchor="middle" font-family="Baloo 2,cursive" font-size="13" font-weight="800" fill="#db2777">4 parts = ¼ each</text>
+  <circle cx="280" cy="65" r="36" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+  <line x1="280" y1="29" x2="280" y2="101" stroke="#d97706" stroke-width="2"/>
+  <line x1="244" y1="65" x2="316" y2="65" stroke="#d97706" stroke-width="2"/>
+  <line x1="255" y1="40" x2="305" y2="90" stroke="#d97706" stroke-width="1.5"/>
+  <line x1="305" y1="40" x2="255" y2="90" stroke="#d97706" stroke-width="1.5"/>
+  <text x="280" y="108" text-anchor="middle" font-family="Baloo 2,cursive" font-size="13" font-weight="800" fill="#db2777">8 parts = ⅛ each</text>
+</svg>
+</div>
+<div class="fig-out">
+  <div class="fo-hdr">&#x2699; Figure it Out</div>
+  <ol>
+    <li>3 guavas weigh 1 kg. If equal size, each weighs ___ kg.</li>
+    <li>4 friends share 3 glasses of sugarcane juice equally. Each gets ___ glasses.</li>
+    <li>Which is bigger: ⅕ or ⅑? How do you know?</li>
+  </ol>
+</div>
+<div class="practice-section">
+  <div class="ps-hdr">&#x1F3AF; Practice Time!</div>
+  <div class="practice-q"><div class="pq-text">Q1. 1 roti shared equally among 4 children. Each child gets:</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">½</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">¼</button><button class="choice-btn" onclick="checkAnswer(this,false)">⅓</button><button class="choice-btn" onclick="checkAnswer(this,false)">⅛</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q2. Which is MORE — ½ roti or ¼ roti?</div><div class="answer-choices"><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">½ (fewer people share = more each)</button><button class="choice-btn" onclick="checkAnswer(this,false)">¼ (4 is bigger than 2)</button><button class="choice-btn" onclick="checkAnswer(this,false)">Equal</button><button class="choice-btn" onclick="checkAnswer(this,false)">Cannot say</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q3. In fraction ¾, the denominator is:</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">3</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">4</button><button class="choice-btn" onclick="checkAnswer(this,false)">7</button><button class="choice-btn" onclick="checkAnswer(this,false)">¾</button></div><div class="feedback"></div></div>
+</div>`;}
+
+function sec72(){return `
+<div class="sec-heading" style="color:#db2777">&#x27A1; 7.2 Fractions on Number Line</div>
+<p>We can show fractions on a <strong>number line</strong> — between 0 and 1, and even beyond!</p>
+<div class="india-example">
+  <div class="ie-label">&#x1F1EE;&#x1F1F3; Indian Example</div>
+  <p>On a <strong>ruler</strong>, between 0 cm and 1 cm, there are many smaller markings — those are fractions! Half a centimetre = ½ cm. The <strong>speedometer</strong> in a car shows fractions of speed. A <strong>measuring cup</strong> at half level = ½ of the cup!</p>
+</div>
+<div class="visual-wrap">
+<svg viewBox="0 0 340 100" xmlns="http://www.w3.org/2000/svg">
+  <text x="170" y="16" text-anchor="middle" font-family="Baloo 2,cursive" font-size="12" font-weight="700" fill="#1e293b">Fractions on Number Line</text>
+  <line x1="20" y1="50" x2="320" y2="50" stroke="#1e293b" stroke-width="2"/>
+  <polygon points="314,46 324,50 314,54" fill="#1e293b"/>
+  <line x1="20" y1="44" x2="20" y2="56" stroke="#1e293b" stroke-width="2"/>
+  <text x="20" y="68" text-anchor="middle" font-family="Baloo 2,cursive" font-size="13" font-weight="700" fill="#1e293b">0</text>
+  <line x1="170" y1="44" x2="170" y2="56" stroke="#1e293b" stroke-width="2"/>
+  <text x="170" y="68" text-anchor="middle" font-family="Baloo 2,cursive" font-size="13" font-weight="700" fill="#1e293b">1</text>
+  <line x1="320" y1="44" x2="320" y2="56" stroke="#1e293b" stroke-width="2"/>
+  <text x="320" y="68" text-anchor="middle" font-family="Baloo 2,cursive" font-size="13" font-weight="700" fill="#1e293b">2</text>
+  <line x1="95" y1="46" x2="95" y2="54" stroke="#db2777" stroke-width="1.5"/>
+  <text x="95" y="40" text-anchor="middle" font-family="Baloo 2,cursive" font-size="12" font-weight="700" fill="#db2777">½</text>
+  <line x1="57" y1="47" x2="57" y2="53" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="57" y="80" text-anchor="middle" font-family="Baloo 2,cursive" font-size="11" font-weight="700" fill="#7c3aed">¼</text>
+  <line x1="132" y1="47" x2="132" y2="53" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="132" y="80" text-anchor="middle" font-family="Baloo 2,cursive" font-size="11" font-weight="700" fill="#7c3aed">¾</text>
+  <line x1="245" y1="46" x2="245" y2="54" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="245" y="40" text-anchor="middle" font-family="Baloo 2,cursive" font-size="12" font-weight="700" fill="#16a34a">1½</text>
+  <text x="170" y="96" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" fill="#64748b">Between 0 and 1 there are INFINITE fractions!</text>
+</svg>
+</div>
+<div class="concept-box">
+  <div class="cb-title">Key Idea</div>
+  <p>Between any two whole numbers on a number line, there are <strong>infinitely many fractions</strong>! Between 0 and 1: ½, ⅓, ¼, ⅕, 2/3, 3/4, 7/10... and many more!</p>
+</div>
+<div class="practice-section">
+  <div class="ps-hdr">&#x1F3AF; Practice Time!</div>
+  <div class="practice-q"><div class="pq-text">Q1. On a number line, ½ lies between:</div><div class="answer-choices"><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">0 and 1</button><button class="choice-btn" onclick="checkAnswer(this,false)">1 and 2</button><button class="choice-btn" onclick="checkAnswer(this,false)">Before 0</button><button class="choice-btn" onclick="checkAnswer(this,false)">After 2</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q2. Which fraction is closest to 1 on the number line?</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">¼</button><button class="choice-btn" onclick="checkAnswer(this,false)">½</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">¾</button><button class="choice-btn" onclick="checkAnswer(this,false)">⅛</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q3. How many fractions lie between 0 and 1?</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">10</button><button class="choice-btn" onclick="checkAnswer(this,false)">100</button><button class="choice-btn" onclick="checkAnswer(this,false)">1000</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">Infinitely many!</button></div><div class="feedback"></div></div>
+</div>`;}
+
+function sec73(){return `
+<div class="sec-heading" style="color:#db2777">&#x1F4CF; 7.3 Measuring Using Fractional Units</div>
+<p>We can use fractions to <strong>measure lengths</strong> — just like with a ruler!</p>
+<div class="india-example">
+  <div class="ie-label">&#x1F1EE;&#x1F1F3; Indian Example</div>
+  <p>A <strong>tailor in Surat</strong> uses ½ metre of cloth, or ¾ metre. A <strong>cook</strong> uses ⅓ cup of oil, 2½ cups of flour. <strong>Paper folding</strong> (origami): fold a strip in half → each part = ½. Fold again → each part = ¼. 4 × ¼ = 4/4 = 1 whole!</p>
+</div>
+<div class="concept-box">
+  <div class="cb-title">Building Fractions from Unit Fractions</div>
+  <p>1 time ¼ = <strong>¼</strong><br/>
+  2 times ¼ = 2/4 = <strong>½</strong><br/>
+  3 times ¼ = 3/4 = <strong>¾</strong><br/>
+  4 times ¼ = 4/4 = <strong>1</strong> (whole!)<br/>
+  Any fraction = numerator × unit fraction</p>
+</div>
+<div class="visual-wrap">
+<svg viewBox="0 0 340 90" xmlns="http://www.w3.org/2000/svg">
+  <text x="170" y="16" text-anchor="middle" font-family="Baloo 2,cursive" font-size="12" font-weight="700" fill="#1e293b">Paper Strip Folding — Building fractions!</text>
+  <rect x="20" y="28" width="300" height="20" rx="4" fill="#fce7f3" stroke="#db2777" stroke-width="2"/>
+  <text x="170" y="42" text-anchor="middle" font-family="Nunito,sans-serif" font-size="11" font-weight="700" fill="#db2777">1 whole strip</text>
+  <rect x="20" y="58" width="149" height="20" rx="4" fill="#db2777"/>
+  <text x="95" y="72" text-anchor="middle" font-family="Nunito,sans-serif" font-size="11" font-weight="700" fill="white">½</text>
+  <rect x="171" y="58" width="149" height="20" rx="4" fill="#fce7f3" stroke="#db2777" stroke-width="1.5"/>
+  <text x="246" y="72" text-anchor="middle" font-family="Nunito,sans-serif" font-size="11" font-weight="700" fill="#db2777">½</text>
+  <text x="170" y="88" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" fill="#64748b">Fold once → 2 halves. Fold again → 4 quarters. ¼+¼+¼+¼ = 1</text>
+</svg>
+</div>
+<div class="practice-section">
+  <div class="ps-hdr">&#x1F3AF; Practice Time!</div>
+  <div class="practice-q"><div class="pq-text">Q1. A tailor needs 3 pieces each of length ¼ metre. Total length needed = ?</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">¼ m</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">¾ m</button><button class="choice-btn" onclick="checkAnswer(this,false)">3 m</button><button class="choice-btn" onclick="checkAnswer(this,false)">½ m</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q2. A paper strip folded into 4 equal parts — each part = ?</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">½</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">¼</button><button class="choice-btn" onclick="checkAnswer(this,false)">⅛</button><button class="choice-btn" onclick="checkAnswer(this,false)">⅓</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q3. 5 times ⅕ = ?</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">⅕</button><button class="choice-btn" onclick="checkAnswer(this,false)">5/25</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">1 (whole)</button><button class="choice-btn" onclick="checkAnswer(this,false)">25</button></div><div class="feedback"></div></div>
+</div>`;}
+
+function sec74(){return `
+<div class="sec-heading" style="color:#db2777">&#x21C4; 7.4 Equivalent Fractions</div>
+<p><strong>Equivalent fractions</strong> look different but represent the <strong>same amount</strong>!</p>
+<div class="india-example">
+  <div class="ie-label">&#x1F1EE;&#x1F1F3; Indian Example</div>
+  <p>2 rotis shared among 3 children = ⅔ each. 4 rotis shared among 6 children = 4/6 each. 6 rotis shared among 9 children = 6/9 each. All three are <strong>equivalent</strong> — everyone gets the same amount! ⅔ = 4/6 = 6/9</p>
+</div>
+<div class="concept-box">
+  <div class="cb-title">How to find Equivalent Fractions</div>
+  <p>Multiply or divide BOTH numerator and denominator by the same number!<br/>
+  ½ = 2/4 = 3/6 = 4/8 = 5/10... (multiply top and bottom by 2, 3, 4, 5...)<br/>
+  12/16 = 6/8 = 3/4 (divide top and bottom by 2, then 2 again)</p>
+</div>
+<div class="visual-wrap">
+<svg viewBox="0 0 340 100" xmlns="http://www.w3.org/2000/svg">
+  <text x="170" y="16" text-anchor="middle" font-family="Baloo 2,cursive" font-size="12" font-weight="700" fill="#1e293b">½ = 2/4 = 3/6 = 4/8 — all the same!</text>
+  <rect x="10" y="26" width="70" height="22" rx="4" fill="#db2777"/>
+  <rect x="82" y="26" width="70" height="22" rx="4" fill="#fce7f3" stroke="#db2777" stroke-width="1.5"/>
+  <text x="47" y="41" text-anchor="middle" font-family="Nunito,sans-serif" font-size="11" font-weight="700" fill="white">½</text>
+  <text x="47" y="60" text-anchor="middle" font-family="Baloo 2,cursive" font-size="12" font-weight="800" fill="#db2777">½</text>
+  <rect x="10" y="68" width="35" height="22" rx="4" fill="#db2777"/>
+  <rect x="47" y="68" width="35" height="22" rx="4" fill="#fce7f3" stroke="#db2777" stroke-width="1.5"/>
+  <rect x="84" y="68" width="35" height="22" rx="4" fill="#fce7f3" stroke="#db2777" stroke-width="1.5"/>
+  <rect x="121" y="68" width="35" height="22" rx="4" fill="#fce7f3" stroke="#db2777" stroke-width="1.5"/>
+  <text x="47" y="87" text-anchor="middle" font-family="Baloo 2,cursive" font-size="12" font-weight="800" fill="#db2777">2/4</text>
+  <text x="170" y="50" text-anchor="middle" font-family="Baloo 2,cursive" font-size="18" font-weight="800" fill="#94a3b8">=</text>
+  <text x="170" y="84" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" fill="#64748b">Both shaded parts are the same size!</text>
+  <text x="255" y="50" text-anchor="middle" font-family="Baloo 2,cursive" font-size="14" font-weight="800" fill="#db2777">½ × 2/2 = 2/4</text>
+  <text x="255" y="70" text-anchor="middle" font-family="Baloo 2,cursive" font-size="14" font-weight="800" fill="#db2777">½ × 3/3 = 3/6</text>
+  <text x="255" y="90" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" fill="#64748b">multiply top &amp; bottom!</text>
+</svg>
+</div>
+<div class="practice-section">
+  <div class="ps-hdr">&#x1F3AF; Practice Time!</div>
+  <div class="practice-q"><div class="pq-text">Q1. Which fraction is equivalent to ½?</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">2/3</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">4/8</button><button class="choice-btn" onclick="checkAnswer(this,false)">3/8</button><button class="choice-btn" onclick="checkAnswer(this,false)">1/3</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q2. 2/3 = ?/6</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">2</button><button class="choice-btn" onclick="checkAnswer(this,false)">3</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">4</button><button class="choice-btn" onclick="checkAnswer(this,false)">6</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q3. 2 rotis ÷ 3 children = 4 rotis ÷ ? children (equivalent shares)</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">4</button><button class="choice-btn" onclick="checkAnswer(this,false)">5</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">6</button><button class="choice-btn" onclick="checkAnswer(this,false)">8</button></div><div class="feedback"></div></div>
+</div>`;}
+
+function sec75(){return `
+<div class="sec-heading" style="color:#db2777">&#x2195; 7.5 Comparing Fractions</div>
+<p>Which fraction is bigger? We use smart methods to compare!</p>
+<div class="india-example">
+  <div class="ie-label">&#x1F1EE;&#x1F1F3; Indian Example</div>
+  <p>In a <strong>cricket match</strong>, Team A scored ¾ of their target, Team B scored ⅔ of their target. Who is closer to winning? We need to compare ¾ and ⅔! A <strong>kirana shop owner</strong> sells ⅖ kg or ⅗ kg packets — which is heavier?</p>
+</div>
+<div class="concept-box">
+  <div class="cb-title">Comparing Methods</div>
+  <p><strong>Same denominator:</strong> Compare numerators. 3/7 &lt; 5/7 (3 &lt; 5)<br/>
+  <strong>Same numerator:</strong> Bigger denominator = smaller fraction. 1/5 &lt; 1/3 (more people = less each!)<br/>
+  <strong>Different both:</strong> Make denominators same (find equivalent fractions), then compare.<br/>
+  ¾ vs ⅔ → 9/12 vs 8/12 → ¾ &gt; ⅔</p>
+</div>
+<div class="practice-section">
+  <div class="ps-hdr">&#x1F3AF; Practice Time!</div>
+  <div class="practice-q"><div class="pq-text">Q1. Which is greater: 3/7 or 5/7?</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">3/7</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">5/7 (same denominator, bigger numerator)</button><button class="choice-btn" onclick="checkAnswer(this,false)">Equal</button><button class="choice-btn" onclick="checkAnswer(this,false)">Cannot say</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q2. Which is greater: 1/5 or 1/3?</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">1/5 (5 is bigger)</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">1/3 (fewer parts = bigger share)</button><button class="choice-btn" onclick="checkAnswer(this,false)">Equal</button><button class="choice-btn" onclick="checkAnswer(this,false)">Cannot say</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q3. Cricket: Team A scored ¾, Team B scored ⅔ of target. Who is closer?</div><div class="answer-choices"><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">Team A — ¾ = 9/12 &gt; ⅔ = 8/12</button><button class="choice-btn" onclick="checkAnswer(this,false)">Team B</button><button class="choice-btn" onclick="checkAnswer(this,false)">Equal</button><button class="choice-btn" onclick="checkAnswer(this,false)">Cannot compare</button></div><div class="feedback"></div></div>
+</div>`;}
+
+function sec76(){return `
+<div class="sec-heading" style="color:#db2777">&#x2B07; 7.6 Lowest Terms / Simplest Form</div>
+<p>A fraction is in its <strong>simplest form</strong> when numerator and denominator have NO common factor except 1!</p>
+<div class="india-example">
+  <div class="ie-label">&#x1F1EE;&#x1F1F3; Indian Example</div>
+  <p>A <strong>merchant packs 1 kg rice into 4 bags</strong>. Each bag = ¼ kg. But if he packs 2 kg into 8 bags, each = 2/8 kg. Both are same — 2/8 simplifies to ¼! <strong>Reducing to simplest form</strong> is like simplifying a recipe — ½ cup oil and 1 cup flour is easier to understand than 4/8 cup oil and 8/8 cup flour!</p>
+</div>
+<div class="concept-box">
+  <div class="cb-title">How to simplify a fraction</div>
+  <p>Divide BOTH numerator and denominator by their <strong>Highest Common Factor (HCF)</strong>!<br/>
+  Example: 16/20 → HCF of 16 and 20 is 4 → 16÷4 / 20÷4 = <strong>4/5</strong><br/>
+  Check: 4 and 5 have no common factor other than 1 ✓ → Simplest form!</p>
+</div>
+<div class="pattern-box" style="background:#fdf4ff; border-color:#e879f9;">
+  <div class="pline">16/20 → HCF=4 → 16÷4/20÷4 = <span class="res">4/5</span></div>
+  <div class="pline">12/18 → HCF=6 → 12÷6/18÷6 = <span class="res">2/3</span></div>
+  <div class="pline">15/25 → HCF=5 → 15÷5/25÷5 = <span class="res">3/5</span></div>
+</div>
+<div class="practice-section">
+  <div class="ps-hdr">&#x1F3AF; Practice Time!</div>
+  <div class="practice-q"><div class="pq-text">Q1. Simplest form of 6/9 is:</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">6/9</button><button class="choice-btn" onclick="checkAnswer(this,false)">3/4</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">2/3</button><button class="choice-btn" onclick="checkAnswer(this,false)">1/3</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q2. Is 4/5 in simplest form?</div><div class="answer-choices"><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">Yes — 4 and 5 have no common factor except 1</button><button class="choice-btn" onclick="checkAnswer(this,false)">No — divide by 2</button><button class="choice-btn" onclick="checkAnswer(this,false)">No — divide by 4</button><button class="choice-btn" onclick="checkAnswer(this,false)">Cannot say</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q3. Merchant packs 2kg in 8 bags. Each bag fraction in simplest form = ?</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">2/8</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">¼</button><button class="choice-btn" onclick="checkAnswer(this,false)">½</button><button class="choice-btn" onclick="checkAnswer(this,false)">⅛</button></div><div class="feedback"></div></div>
+</div>`;}
+
+function sec77(){return `
+<div class="sec-heading" style="color:#db2777">&#x2795; 7.7 Addition of Fractions</div>
+<p>Adding fractions is easy when the denominators are the same — just add the numerators!</p>
+<div class="india-example">
+  <div class="ie-label">&#x1F1EE;&#x1F1F3; Indian Example</div>
+  <p><strong>Meena's father made chikki</strong>. Meena ate ½ of it, her brother ate ¼. Total eaten = ½ + ¼ = 2/4 + 1/4 = <strong>¾</strong>. A <strong>cook</strong> adds ⅓ cup oil and ⅓ cup water = 2/3 cup liquid total. During <strong>Holi</strong>, you drink ⅔ glass of thandai and later another ⅓ glass — total = 1 full glass!</p>
+</div>
+<div class="concept-box">
+  <div class="cb-title">Addition Rules</div>
+  <p><strong>Same denominator:</strong> Add numerators, keep denominator.<br/>
+  ⅓ + ⅓ = 2/3 &nbsp;&nbsp; 2/5 + 1/5 = 3/5<br/><br/>
+  <strong>Different denominators:</strong> First make them the same (find equivalent fractions), then add!<br/>
+  ½ + ¼ → 2/4 + 1/4 = 3/4</p>
+</div>
+<div class="pattern-box" style="background:#fdf4ff; border-color:#e879f9;">
+  <div class="pline">½ + ¼ = 2/4 + 1/4 = <span class="res">3/4</span></div>
+  <div class="pline">⅓ + ⅙ = 2/6 + 1/6 = <span class="res">3/6 = ½</span></div>
+  <div class="pline">¾ + ⅛ = 6/8 + 1/8 = <span class="res">7/8</span></div>
+</div>
+<div class="practice-section">
+  <div class="ps-hdr">&#x1F3AF; Practice Time!</div>
+  <div class="practice-q"><div class="pq-text">Q1. ⅓ + ⅓ = ?</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">2/9</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">2/3</button><button class="choice-btn" onclick="checkAnswer(this,false)">1/6</button><button class="choice-btn" onclick="checkAnswer(this,false)">⅔ is wrong</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q2. Meena ate ½ chikki, brother ate ¼. Total eaten = ?</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">2/6</button><button class="choice-btn" onclick="checkAnswer(this,false)">½</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">¾</button><button class="choice-btn" onclick="checkAnswer(this,false)">1/8</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q3. ⅔ + ⅓ = ?</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">2/9</button><button class="choice-btn" onclick="checkAnswer(this,false)">3/6</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">1 (one whole!)</button><button class="choice-btn" onclick="checkAnswer(this,false)">5/3</button></div><div class="feedback"></div></div>
+</div>`;}
+
+function sec78(){return `
+<div class="sec-heading" style="color:#db2777">&#x2796; 7.8 Subtraction of Fractions</div>
+<p>Subtraction of fractions works just like addition — make denominators same, then subtract!</p>
+<div class="india-example">
+  <div class="ie-label">&#x1F1EE;&#x1F1F3; Indian Example</div>
+  <p><strong>Meena's chikki:</strong> Meena and her brother together ate ¾ of it. How much chikki is left? 1 − ¾ = <strong>¼</strong> remaining! A <strong>cook</strong> had ¾ cup of ghee, used ½ cup — how much left? ¾ − ½ = 3/4 − 2/4 = <strong>¼ cup</strong> remaining!</p>
+</div>
+<div class="concept-box">
+  <div class="cb-title">Subtraction Rules</div>
+  <p><strong>Same denominator:</strong> Subtract numerators, keep denominator.<br/>
+  5/7 − 2/7 = 3/7<br/><br/>
+  <strong>Different denominators:</strong> Make them equal first!<br/>
+  ¾ − ½ = 3/4 − 2/4 = 1/4</p>
+</div>
+<div class="pattern-box" style="background:#fdf4ff; border-color:#e879f9;">
+  <div class="pline">1 − ¾ = 4/4 − 3/4 = <span class="res">1/4</span></div>
+  <div class="pline">¾ − ½ = 3/4 − 2/4 = <span class="res">1/4</span></div>
+  <div class="pline">⅚ − ⅓ = 5/6 − 2/6 = <span class="res">3/6 = ½</span></div>
+</div>
+<div class="fig-out">
+  <div class="fo-hdr">&#x2699; Figure it Out</div>
+  <ol>
+    <li>Find three different fractional units that add up to 1. (Hint: ½ + ⅓ + ⅙ = 1!)</li>
+    <li>Can you find four different fractional units that add up to 1?</li>
+    <li>Meena's chikki: Meena ate ½, brother ate ¼. How much is left?</li>
+  </ol>
+</div>
+<div class="practice-section">
+  <div class="ps-hdr">&#x1F3AF; Practice Time!</div>
+  <div class="practice-q"><div class="pq-text">Q1. ¾ cup ghee, used ½ cup. Remaining = ?</div><div class="answer-choices"><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">¼ cup</button><button class="choice-btn" onclick="checkAnswer(this,false)">½ cup</button><button class="choice-btn" onclick="checkAnswer(this,false)">⅛ cup</button><button class="choice-btn" onclick="checkAnswer(this,false)">1 cup</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q2. Meena ate ½ chikki, brother ate ¼. How much is LEFT?</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">½</button><button class="choice-btn" onclick="checkAnswer(this,false)">¾</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">¼</button><button class="choice-btn" onclick="checkAnswer(this,false)">⅛</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q3. ⅚ − ⅓ = ?</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">4/3</button><button class="choice-btn" onclick="checkAnswer(this,false)">4/6</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">½</button><button class="choice-btn" onclick="checkAnswer(this,false)">⅙</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q4. ½ + ⅓ + ⅙ = ?</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">½</button><button class="choice-btn" onclick="checkAnswer(this,false)">⅚</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">1 (whole!)</button><button class="choice-btn" onclick="checkAnswer(this,false)">2</button></div><div class="feedback"></div></div>
+</div>
+<div class="math-talk">&#x1F3C6; <strong>Chapter 7 — Complete!</strong>&nbsp; Fractional units, number line, measuring, equivalent fractions, comparing, simplest form, addition and subtraction — badhu! &#x1F4AF; Roti thi sharu, chikki par puri! 😄</div>`;}
+
+// ── CHAPTER 7 ──
+
+function sec71(){return `
+<div class="sec-heading" style="color:#db2777">&#x1F355; 7.1 Fractional Units</div>
+<p>When we divide a whole into equal parts, each part is a <strong>fractional unit</strong>!</p>
+<div class="india-example">
+  <div class="ie-label">&#x1F1EE;&#x1F1F3; Indian Example</div>
+  <p><strong>Roti sharing:</strong> 1 roti divided equally between 2 children — each gets <strong>½ roti</strong>. Divided among 4 children — each gets <strong>¼ roti</strong>. More children = smaller share! A <strong>chikki</strong> (groundnut candy) cut into 6 equal pieces — each piece is <strong>⅙ chikki</strong>. <strong>Brahmagupta</strong> (Indian mathematician from Gujarat!) first wrote rules for fractions in 628 CE!</p>
+</div>
+<div class="concept-box">
+  <div class="cb-title">What is a Fraction?</div>
+  <p>A fraction has two parts:<br/>
+  <strong>Numerator</strong> (top number) = how many parts we have<br/>
+  <strong>Denominator</strong> (bottom number) = how many equal parts the whole is divided into<br/><br/>
+  Example: ¾ → numerator=3, denominator=4 → "3 out of 4 equal parts"</p>
+</div>
+<div class="visual-wrap">
+<svg viewBox="0 0 340 110" xmlns="http://www.w3.org/2000/svg">
+  <text x="170" y="16" text-anchor="middle" font-family="Baloo 2,cursive" font-size="12" font-weight="700" fill="#1e293b">Roti sharing — fractional units</text>
+  <circle cx="55" cy="65" r="38" fill="#fef3c7" stroke="#f97316" stroke-width="2"/>
+  <text x="55" y="70" text-anchor="middle" font-family="Baloo 2,cursive" font-size="14" font-weight="800" fill="#c2410c">1 Roti</text>
+  <text x="55" y="100" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" fill="#64748b">whole</text>
+  <circle cx="170" cy="65" r="38" fill="#fef3c7" stroke="#f97316" stroke-width="2"/>
+  <line x1="170" y1="27" x2="170" y2="103" stroke="#f97316" stroke-width="2"/>
+  <text x="155" y="70" text-anchor="middle" font-family="Baloo 2,cursive" font-size="16" font-weight="800" fill="#db2777">½</text>
+  <text x="185" y="70" text-anchor="middle" font-family="Baloo 2,cursive" font-size="16" font-weight="800" fill="#db2777">½</text>
+  <text x="170" y="100" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" fill="#64748b">÷2 children</text>
+  <circle cx="285" cy="65" r="38" fill="#fef3c7" stroke="#f97316" stroke-width="2"/>
+  <line x1="285" y1="27" x2="285" y2="103" stroke="#f97316" stroke-width="2"/>
+  <line x1="247" y1="65" x2="323" y2="65" stroke="#f97316" stroke-width="2"/>
+  <text x="270" y="58" text-anchor="middle" font-family="Baloo 2,cursive" font-size="13" font-weight="800" fill="#db2777">¼</text>
+  <text x="300" y="58" text-anchor="middle" font-family="Baloo 2,cursive" font-size="13" font-weight="800" fill="#db2777">¼</text>
+  <text x="270" y="82" text-anchor="middle" font-family="Baloo 2,cursive" font-size="13" font-weight="800" fill="#db2777">¼</text>
+  <text x="300" y="82" text-anchor="middle" font-family="Baloo 2,cursive" font-size="13" font-weight="800" fill="#db2777">¼</text>
+  <text x="285" y="100" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" fill="#64748b">÷4 children</text>
+</svg>
+</div>
+<div class="practice-section">
+  <div class="ps-hdr">&#x1F3AF; Practice Time!</div>
+  <div class="practice-q"><div class="pq-text">Q1. 1 roti shared equally among 8 children. Each child gets:</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">¼</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">⅛</button><button class="choice-btn" onclick="checkAnswer(this,false)">½</button><button class="choice-btn" onclick="checkAnswer(this,false)">¾</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q2. In the fraction ¾, the denominator is:</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">3</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">4</button><button class="choice-btn" onclick="checkAnswer(this,false)">7</button><button class="choice-btn" onclick="checkAnswer(this,false)">¾</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q3. More children share 1 roti equally — each child gets:</div><div class="answer-choices"><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">A smaller piece</button><button class="choice-btn" onclick="checkAnswer(this,false)">A bigger piece</button><button class="choice-btn" onclick="checkAnswer(this,false)">The same piece</button><button class="choice-btn" onclick="checkAnswer(this,false)">No piece</button></div><div class="feedback"></div></div>
+</div>`;}
+
+function sec72(){return `
+<div class="sec-heading" style="color:#db2777">&#x1F36C; 7.2 Fractional Units as Parts of a Whole</div>
+<p>A fractional unit always tells us <strong>one equal part</strong> of a whole thing!</p>
+<div class="india-example">
+  <div class="ie-label">&#x1F1EE;&#x1F1F3; Indian Example</div>
+  <p>A whole <strong>chikki</strong> (peanut candy) cut into 4 equal pieces — each piece is ¼. If you take 3 pieces, you have ¾ chikki! A <strong>circular rangoli</strong> divided into 6 equal sections — each section is ⅙. Two sections = 2/6 = ⅓ of the rangoli.</p>
+</div>
+<div class="visual-wrap">
+<svg viewBox="0 0 340 120" xmlns="http://www.w3.org/2000/svg">
+  <text x="170" y="16" text-anchor="middle" font-family="Baloo 2,cursive" font-size="12" font-weight="700" fill="#1e293b">Chikki cut into 4 equal pieces</text>
+  <rect x="20" y="30" width="70" height="70" rx="6" fill="#fde68a" stroke="#d97706" stroke-width="2"/>
+  <text x="55" y="70" text-anchor="middle" font-family="Baloo 2,cursive" font-size="14" font-weight="800" fill="#92400e">Whole</text>
+  <rect x="110" y="30" width="33" height="70" rx="3" fill="#fde68a" stroke="#d97706" stroke-width="2"/>
+  <rect x="147" y="30" width="33" height="70" rx="3" fill="#fde68a" stroke="#d97706" stroke-width="2"/>
+  <rect x="184" y="30" width="33" height="70" rx="3" fill="#fed7aa" stroke="#d97706" stroke-width="1" stroke-dasharray="4,3"/>
+  <rect x="221" y="30" width="33" height="70" rx="3" fill="#fed7aa" stroke="#d97706" stroke-width="1" stroke-dasharray="4,3"/>
+  <text x="126" y="70" text-anchor="middle" font-family="Baloo 2,cursive" font-size="16" font-weight="800" fill="#db2777">¼</text>
+  <text x="163" y="70" text-anchor="middle" font-family="Baloo 2,cursive" font-size="16" font-weight="800" fill="#db2777">¼</text>
+  <text x="200" y="70" text-anchor="middle" font-family="Baloo 2,cursive" font-size="16" font-weight="800" fill="#94a3b8">¼</text>
+  <text x="237" y="70" text-anchor="middle" font-family="Baloo 2,cursive" font-size="16" font-weight="800" fill="#94a3b8">¼</text>
+  <text x="163" y="112" text-anchor="middle" font-family="Nunito,sans-serif" font-size="11" font-weight="700" fill="#db2777">2 pieces taken = 2/4 = ½ chikki</text>
+  <text x="270" y="70" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" fill="#64748b">= ½ left</text>
+</svg>
+</div>
+<div class="concept-box">
+  <div class="cb-title">Key Idea</div>
+  <p>The denominator tells us the fractional unit (how many equal pieces). The numerator tells us how many of those pieces we have. When numerator = denominator, we have the whole thing (e.g., 4/4 = 1 whole).</p>
+</div>
+<div class="practice-section">
+  <div class="ps-hdr">&#x1F3AF; Practice Time!</div>
+  <div class="practice-q"><div class="pq-text">Q1. A chikki is cut into 6 equal pieces. You eat 4. What fraction did you eat?</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">4</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">4/6</button><button class="choice-btn" onclick="checkAnswer(this,false)">6/4</button><button class="choice-btn" onclick="checkAnswer(this,false)">2/6</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q2. 3/3 of a roti means:</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">Only 3 pieces</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">The whole roti (all 3 of 3 pieces)</button><button class="choice-btn" onclick="checkAnswer(this,false)">Half the roti</button><button class="choice-btn" onclick="checkAnswer(this,false)">Nothing</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q3. Circular rangoli in 6 sections. You colour 2 sections. Fraction coloured = ?</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">2</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">2/6 = 1/3</button><button class="choice-btn" onclick="checkAnswer(this,false)">6/2</button><button class="choice-btn" onclick="checkAnswer(this,false)">4/6</button></div><div class="feedback"></div></div>
+</div>`;}
+
+function sec73(){return `
+<div class="sec-heading" style="color:#db2777">&#x1F4CF; 7.3 Measuring Using Fractional Units</div>
+<p>We can use fractions to <strong>measure lengths, quantities, and amounts</strong> precisely!</p>
+<div class="india-example">
+  <div class="ie-label">&#x1F1EE;&#x1F1F3; Indian Example</div>
+  <p>A <strong>saree</strong> is typically 6 metres long. A blouse piece needs 0.75m = ¾ metre. A recipe needs 2½ cups of atta (flour). At a <strong>kirana store</strong>, you buy 1¾ kg of sugar. All these use fractional measurements in everyday Indian life!</p>
+</div>
+<div class="concept-box">
+  <div class="cb-title">Measuring with fractions</div>
+  <p>Just like we use cm, m, kg to measure — we can use fractional units to measure things that are not exactly a whole number.<br/>
+  A length of 2½ means 2 whole units + ½ more unit.<br/>
+  We can also express the same length in different fractional units: ½ = 2/4 = 3/6 = 4/8...</p>
+</div>
+<div class="visual-wrap">
+<svg viewBox="0 0 340 100" xmlns="http://www.w3.org/2000/svg">
+  <text x="170" y="16" text-anchor="middle" font-family="Baloo 2,cursive" font-size="12" font-weight="700" fill="#1e293b">Measuring a length using fractional units</text>
+  <line x1="20" y1="50" x2="320" y2="50" stroke="#1e293b" stroke-width="2"/>
+  <line x1="20" y1="40" x2="20" y2="60" stroke="#1e293b" stroke-width="2"/>
+  <line x1="95" y1="40" x2="95" y2="60" stroke="#1e293b" stroke-width="2"/>
+  <line x1="170" y1="40" x2="170" y2="60" stroke="#1e293b" stroke-width="2"/>
+  <line x1="245" y1="40" x2="245" y2="60" stroke="#1e293b" stroke-width="2"/>
+  <line x1="320" y1="40" x2="320" y2="60" stroke="#1e293b" stroke-width="2"/>
+  <text x="20" y="72" text-anchor="middle" font-family="Baloo 2,cursive" font-size="12" fill="#1e293b">0</text>
+  <text x="95" y="72" text-anchor="middle" font-family="Baloo 2,cursive" font-size="12" fill="#1e293b">1</text>
+  <text x="170" y="72" text-anchor="middle" font-family="Baloo 2,cursive" font-size="12" fill="#1e293b">2</text>
+  <text x="245" y="72" text-anchor="middle" font-family="Baloo 2,cursive" font-size="12" fill="#1e293b">3</text>
+  <line x1="57" y1="43" x2="57" y2="57" stroke="#db2777" stroke-width="1.5" stroke-dasharray="3,2"/>
+  <line x1="132" y1="43" x2="132" y2="57" stroke="#db2777" stroke-width="1.5" stroke-dasharray="3,2"/>
+  <line x1="207" y1="43" x2="207" y2="57" stroke="#db2777" stroke-width="1.5" stroke-dasharray="3,2"/>
+  <line x1="282" y1="43" x2="282" y2="57" stroke="#db2777" stroke-width="1.5" stroke-dasharray="3,2"/>
+  <text x="57" y="36" text-anchor="middle" font-family="Baloo 2,cursive" font-size="11" fill="#db2777">½</text>
+  <text x="132" y="36" text-anchor="middle" font-family="Baloo 2,cursive" font-size="11" fill="#db2777">1½</text>
+  <text x="207" y="36" text-anchor="middle" font-family="Baloo 2,cursive" font-size="11" fill="#db2777">2½</text>
+  <text x="170" y="92" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" fill="#64748b">Saree = 6m, blouse = ¾m — measuring real things with fractions!</text>
+</svg>
+</div>
+<div class="practice-section">
+  <div class="ps-hdr">&#x1F3AF; Practice Time!</div>
+  <div class="practice-q"><div class="pq-text">Q1. A recipe needs 2½ cups of atta. This is the same as:</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">2 cups</button><button class="choice-btn" onclick="checkAnswer(this,false)">3 cups</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">5/2 cups</button><button class="choice-btn" onclick="checkAnswer(this,false)">2 cups and 2 parts</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q2. Kirana store: you buy 1¾ kg sugar. This is:</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">1 kg</button><button class="choice-btn" onclick="checkAnswer(this,false)">2 kg</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">Between 1 and 2 kg</button><button class="choice-btn" onclick="checkAnswer(this,false)">7/4 means 7 kg</button></div><div class="feedback"></div></div>
+</div>`;}
+
+function sec74(){return `
+<div class="sec-heading" style="color:#db2777">&#x2194; 7.4 Marking Fractions on Number Line</div>
+<p>We can show fractions on a number line — exactly like whole numbers but in between!</p>
+<div class="india-example">
+  <div class="ie-label">&#x1F1EE;&#x1F1F3; Indian Example</div>
+  <p>Think of a <strong>ruler</strong> (scale) — between 0cm and 1cm, there are marks for ½cm, ¼cm. A <strong>thermometer</strong> shows temperatures like 37.5°C = between 37 and 38. The <strong>fuel gauge</strong> in a car shows ¼ tank, ½ tank — these are fractions on a "number line"!</p>
+</div>
+<div class="visual-wrap">
+<svg viewBox="0 0 340 115" xmlns="http://www.w3.org/2000/svg">
+  <text x="170" y="16" text-anchor="middle" font-family="Baloo 2,cursive" font-size="12" font-weight="700" fill="#1e293b">Fractions on Number Line</text>
+  <line x1="20" y1="45" x2="320" y2="45" stroke="#1e293b" stroke-width="2"/>
+  <polygon points="314,41 324,45 314,49" fill="#1e293b"/>
+  <line x1="20" y1="38" x2="20" y2="52" stroke="#1e293b" stroke-width="2"/>
+  <line x1="170" y1="38" x2="170" y2="52" stroke="#1e293b" stroke-width="2"/>
+  <line x1="320" y1="38" x2="320" y2="52" stroke="#1e293b" stroke-width="2"/>
+  <text x="20" y="64" text-anchor="middle" font-family="Baloo 2,cursive" font-size="13" font-weight="800" fill="#1e293b">0</text>
+  <text x="170" y="64" text-anchor="middle" font-family="Baloo 2,cursive" font-size="13" font-weight="800" fill="#1e293b">1</text>
+  <line x1="95" y1="40" x2="95" y2="50" stroke="#db2777" stroke-width="2"/>
+  <text x="95" y="70" text-anchor="middle" font-family="Baloo 2,cursive" font-size="13" font-weight="800" fill="#db2777">½</text>
+  <line x1="57" y1="42" x2="57" y2="48" stroke="#9d174d" stroke-width="1.5"/>
+  <text x="57" y="78" text-anchor="middle" font-family="Baloo 2,cursive" font-size="11" fill="#9d174d">¼</text>
+  <line x1="132" y1="42" x2="132" y2="48" stroke="#9d174d" stroke-width="1.5"/>
+  <text x="132" y="78" text-anchor="middle" font-family="Baloo 2,cursive" font-size="11" fill="#9d174d">¾</text>
+  <text x="170" y="96" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" font-weight="700" fill="#1e293b">0 ......... ¼ ......... ½ ......... ¾ ......... 1</text>
+  <text x="170" y="110" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" fill="#64748b">Fractions sit between whole numbers on the number line</text>
+</svg>
+</div>
+<div class="practice-section">
+  <div class="ps-hdr">&#x1F3AF; Practice Time!</div>
+  <div class="practice-q"><div class="pq-text">Q1. On number line, ½ is located:</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">Before 0</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">Exactly between 0 and 1</button><button class="choice-btn" onclick="checkAnswer(this,false)">After 1</button><button class="choice-btn" onclick="checkAnswer(this,false)">At 2</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q2. Which fraction is closest to 1 on the number line?</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">¼</button><button class="choice-btn" onclick="checkAnswer(this,false)">½</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">¾</button><button class="choice-btn" onclick="checkAnswer(this,false)">⅛</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q3. A car fuel gauge shows between ¼ and ½. The tank is:</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">Nearly empty</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">About ⅓ full</button><button class="choice-btn" onclick="checkAnswer(this,false)">Nearly full</button><button class="choice-btn" onclick="checkAnswer(this,false)">Exactly half</button></div><div class="feedback"></div></div>
+</div>`;}
+
+function sec75(){return `
+<div class="sec-heading" style="color:#db2777">&#x1F522; 7.5 Mixed Fractions</div>
+<p>A <strong>mixed fraction</strong> has a whole number part AND a fractional part together!</p>
+<div class="india-example">
+  <div class="ie-label">&#x1F1EE;&#x1F1F3; Indian Example</div>
+  <p>After dinner, 1 whole roti is left + half another roti = 1½ rotis. A <strong>tailor needs 2¾ metres</strong> of fabric for a kurta. At a <strong>mela (fair)</strong>, you drink 1⅓ glasses of sugarcane juice. All these are mixed fractions in everyday Indian life!</p>
+</div>
+<div class="concept-box">
+  <div class="cb-title">Mixed Fraction ↔ Improper Fraction</div>
+  <p><strong>Mixed fraction:</strong> 2¾ = 2 whole + ¾<br/>
+  <strong>Improper fraction:</strong> numerator &gt; denominator, e.g., 11/4<br/>
+  <strong>Converting:</strong> 2¾ = (2×4 + 3)/4 = 11/4<br/>
+  <strong>Back:</strong> 11÷4 = 2 remainder 3 → 2¾</p>
+</div>
+<div class="visual-wrap">
+<svg viewBox="0 0 340 100" xmlns="http://www.w3.org/2000/svg">
+  <text x="170" y="16" text-anchor="middle" font-family="Baloo 2,cursive" font-size="12" font-weight="700" fill="#1e293b">2¾ rotis = 11/4 rotis</text>
+  <circle cx="48" cy="60" r="32" fill="#fef3c7" stroke="#f97316" stroke-width="2"/>
+  <text x="48" y="65" text-anchor="middle" font-family="Baloo 2,cursive" font-size="13" font-weight="700" fill="#c2410c">1 roti</text>
+  <circle cx="130" cy="60" r="32" fill="#fef3c7" stroke="#f97316" stroke-width="2"/>
+  <text x="130" y="65" text-anchor="middle" font-family="Baloo 2,cursive" font-size="13" font-weight="700" fill="#c2410c">1 roti</text>
+  <path d="M 193 60 A 32 32 0 0 1 225 28" fill="#fde68a" stroke="#f97316" stroke-width="2"/>
+  <path d="M 193 60 A 32 32 0 0 0 225 92" fill="#fde68a" stroke="#f97316" stroke-width="2"/>
+  <path d="M 225 28 A 32 32 0 0 1 225 92" fill="#fde68a" stroke="#f97316" stroke-width="2"/>
+  <path d="M 193 60 A 32 32 0 0 1 161 28 A 32 32 0 0 1 193 28" fill="none" stroke="#f97316" stroke-width="1.5" stroke-dasharray="3,2"/>
+  <path d="M 193 60 A 32 32 0 0 0 161 92 A 32 32 0 0 0 193 92" fill="none" stroke="#f97316" stroke-width="1.5" stroke-dasharray="3,2"/>
+  <line x1="193" y1="28" x2="193" y2="92" stroke="#f97316" stroke-width="1.5" stroke-dasharray="3,2"/>
+  <text x="209" y="65" text-anchor="middle" font-family="Baloo 2,cursive" font-size="13" font-weight="700" fill="#db2777">¾</text>
+  <text x="170" y="94" text-anchor="middle" font-family="Baloo 2,cursive" font-size="12" font-weight="800" fill="#db2777">2¾ = 11/4</text>
+  <text x="290" y="55" text-anchor="middle" font-family="Nunito,sans-serif" font-size="11" font-weight="700" fill="#1e293b">2¾</text>
+  <text x="290" y="70" text-anchor="middle" font-family="Baloo 2,cursive" font-size="14" font-weight="800" fill="#db2777">= 11/4</text>
+</svg>
+</div>
+<div class="practice-section">
+  <div class="ps-hdr">&#x1F3AF; Practice Time!</div>
+  <div class="practice-q"><div class="pq-text">Q1. Convert 2¾ to improper fraction:</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">9/4</button><button class="choice-btn" onclick="checkAnswer(this,false)">10/4</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">11/4</button><button class="choice-btn" onclick="checkAnswer(this,false)">6/4</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q2. Convert 13/4 to mixed fraction:</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">2½</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">3¼</button><button class="choice-btn" onclick="checkAnswer(this,false)">3½</button><button class="choice-btn" onclick="checkAnswer(this,false)">4¼</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q3. Tailor needs 2¾ m fabric. This in improper fraction = ?</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">10/4</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">11/4</button><button class="choice-btn" onclick="checkAnswer(this,false)">9/4</button><button class="choice-btn" onclick="checkAnswer(this,false)">12/4</button></div><div class="feedback"></div></div>
+</div>`;}
+
+function sec76(){return `
+<div class="sec-heading" style="color:#db2777">&#x2194; 7.6 Equivalent Fractions</div>
+<p><strong>Equivalent fractions</strong> look different but represent the <strong>same amount</strong>!</p>
+<div class="india-example">
+  <div class="ie-label">&#x1F1EE;&#x1F1F3; Indian Example</div>
+  <p>½ of a <strong>gulab jamun</strong> = 2/4 of it = 4/8 of it — same amount, different ways to say it! In a <strong>cricket match</strong>, 3 wickets out of 6 overs = ½ the wickets. Writing it as 3/6 or ½ — same thing! <strong>Brahmagupta</strong> knew: multiplying or dividing both top and bottom by the same number keeps the fraction equal.</p>
+</div>
+<div class="concept-box">
+  <div class="cb-title">How to find Equivalent Fractions</div>
+  <p><strong>Multiply</strong> both numerator and denominator by same number:<br/>
+  ½ = 1×2/2×2 = 2/4 = 1×3/2×3 = 3/6 = 1×4/2×4 = 4/8 ...<br/><br/>
+  <strong>Divide</strong> both by same number (simplify):<br/>
+  6/8 = 6÷2/8÷2 = 3/4 (simplest form!)</p>
+</div>
+<div class="visual-wrap">
+<svg viewBox="0 0 340 100" xmlns="http://www.w3.org/2000/svg">
+  <text x="170" y="16" text-anchor="middle" font-family="Baloo 2,cursive" font-size="12" font-weight="700" fill="#1e293b">Equivalent Fractions — same length, different units</text>
+  <rect x="20" y="28" width="140" height="20" rx="3" fill="#db2777"/>
+  <text x="90" y="43" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" font-weight="700" fill="white">½ of the bar</text>
+  <rect x="20" y="56" width="70" height="20" rx="3" fill="#f472b6"/>
+  <rect x="90" y="56" width="70" height="20" rx="3" fill="#f9a8d4" stroke="#db2777" stroke-width="1"/>
+  <text x="55" y="71" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" font-weight="700" fill="white">2/4</text>
+  <rect x="20" y="82" width="47" height="14" rx="2" fill="#db2777"/>
+  <rect x="67" y="82" width="47" height="14" rx="2" fill="#f9a8d4" stroke="#db2777" stroke-width="1"/>
+  <rect x="114" y="82" width="46" height="14" rx="2" fill="#f9a8d4" stroke="#db2777" stroke-width="1"/>
+  <text x="43" y="93" text-anchor="middle" font-family="Nunito,sans-serif" font-size="9" font-weight="700" fill="white">3/6</text>
+  <text x="200" y="50" text-anchor="middle" font-family="Baloo 2,cursive" font-size="16" font-weight="800" fill="#db2777">½ = 2/4 = 3/6 = 4/8</text>
+  <text x="200" y="70" text-anchor="middle" font-family="Nunito,sans-serif" font-size="11" font-weight="700" fill="#1e293b">All the SAME amount!</text>
+  <text x="200" y="90" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" fill="#64748b">Fraction wall shows this clearly</text>
+</svg>
+</div>
+<div class="practice-section">
+  <div class="ps-hdr">&#x1F3AF; Practice Time!</div>
+  <div class="practice-q"><div class="pq-text">Q1. Which fraction is equivalent to ½?</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">1/3</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">3/6</button><button class="choice-btn" onclick="checkAnswer(this,false)">2/3</button><button class="choice-btn" onclick="checkAnswer(this,false)">3/4</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q2. Simplify 6/8 to lowest terms:</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">2/4</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">3/4</button><button class="choice-btn" onclick="checkAnswer(this,false)">1/2</button><button class="choice-btn" onclick="checkAnswer(this,false)">6/8</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q3. ⅓ of gulab jamun = ?/6</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">1</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">2</button><button class="choice-btn" onclick="checkAnswer(this,false)">3</button><button class="choice-btn" onclick="checkAnswer(this,false)">6</button></div><div class="feedback"></div></div>
+</div>`;}
+
+function sec77(){return `
+<div class="sec-heading" style="color:#db2777">&#x2194; 7.7 Comparing Fractions</div>
+<p>Which is more — ½ or ¾? How do we compare fractions?</p>
+<div class="india-example">
+  <div class="ie-label">&#x1F1EE;&#x1F1F3; Indian Example</div>
+  <p><strong>Shabnam and Mukta</strong> are comparing: "1 roti divided between 2 children" vs "5 chikkis divided among 8 children". Who gets more? They need to compare ½ and 5/8! <strong>Brahmagupta's method:</strong> make denominators the same, then compare numerators!</p>
+</div>
+<div class="concept-box">
+  <div class="cb-title">How to Compare Fractions — 2 Steps</div>
+  <p><strong>Step 1:</strong> Convert both fractions to equivalent fractions with the SAME denominator (use LCM of denominators).<br/>
+  <strong>Step 2:</strong> Compare numerators — bigger numerator = bigger fraction!<br/><br/>
+  Example: Compare 4/5 and 7/9<br/>
+  LCM of 5 and 9 = 45<br/>
+  4/5 = 36/45, 7/9 = 35/45<br/>
+  36 &gt; 35, so 4/5 &gt; 7/9!</p>
+</div>
+<div class="pattern-box" style="background:#fff1f2; border-color:#fda4af;">
+  <div class="pline" style="color:#1e293b;">Compare ½ and 5/8:</div>
+  <div class="pline" style="color:#64748b; font-size:12px;">LCM of 2 and 8 = 8</div>
+  <div class="pline">½ = 4/8 &nbsp;&nbsp;&nbsp; 5/8 = 5/8</div>
+  <div class="pline">4/8 &lt; 5/8</div>
+  <div class="pline">So <span class="res">½ &lt; 5/8</span> — the 8-children group gets more!</div>
+</div>
+<div class="practice-section">
+  <div class="ps-hdr">&#x1F3AF; Practice Time!</div>
+  <div class="practice-q"><div class="pq-text">Q1. Compare ½ and 5/8. Which is bigger?</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">½</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">5/8</button><button class="choice-btn" onclick="checkAnswer(this,false)">Both equal</button><button class="choice-btn" onclick="checkAnswer(this,false)">Cannot compare</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q2. To compare fractions easily, we make their __ the same:</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">Numerators</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">Denominators</button><button class="choice-btn" onclick="checkAnswer(this,false)">Values</button><button class="choice-btn" onclick="checkAnswer(this,false)">Both</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q3. Which is greater: 4/5 or 7/9? (Hint: LCM = 45)</div><div class="answer-choices"><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">4/5 (= 36/45)</button><button class="choice-btn" onclick="checkAnswer(this,false)">7/9 (= 35/45)</button><button class="choice-btn" onclick="checkAnswer(this,false)">Both equal</button><button class="choice-btn" onclick="checkAnswer(this,false)">Cannot compare</button></div><div class="feedback"></div></div>
+</div>`;}
+
+function sec78(){return `
+<div class="sec-heading" style="color:#db2777">&#x2795; 7.8 Addition and Subtraction of Fractions</div>
+<p>Adding and subtracting fractions — <strong>same denominator</strong> makes it easy!</p>
+<div class="india-example">
+  <div class="ie-label">&#x1F1EE;&#x1F1F3; Indian Example</div>
+  <p><strong>Rahim</strong> mixes 2/3 litre yellow paint + 3/4 litre blue paint for <strong>green paint</strong>. Total = 2/3 + 3/4. <strong>Geeta</strong> buys 2/5 m lace, <strong>Shamim</strong> buys 3/4 m — together do they have enough for a 1m border? This is fraction addition — <strong>Brahmagupta's method</strong> from 628 CE works perfectly!</p>
+</div>
+<div class="concept-box">
+  <div class="cb-title">Brahmagupta's Method</div>
+  <p><strong>Same denominator:</strong> Just add/subtract numerators!<br/>
+  2/7 + 5/7 = 7/7 = 1<br/><br/>
+  <strong>Different denominators:</strong> First make same, then add!<br/>
+  2/3 + 1/5: LCM=15<br/>
+  = 10/15 + 3/15 = 13/15</p>
+</div>
+<div class="pattern-box" style="background:#fff1f2; border-color:#fda4af;">
+  <div class="pline" style="color:#1e293b;">Rahim's paint: 2/3 + 3/4 = ?</div>
+  <div class="pline" style="color:#64748b; font-size:12px;">LCM of 3 and 4 = 12</div>
+  <div class="pline">2/3 = 8/12 &nbsp;&nbsp;&nbsp; 3/4 = 9/12</div>
+  <div class="pline">8/12 + 9/12 = <span class="res">17/12 = 1 5/12 litres!</span></div>
+</div>
+<div class="fig-out">
+  <div class="fo-hdr">&#x2699; Figure it Out</div>
+  <ol>
+    <li>Add: 2/7 + 5/7, 3/4 + 1/3, 2/3 + 4/5</li>
+    <li>Subtract: 5/7 − 2/7, 3/4 − 1/3</li>
+    <li>Geeta: 2/5m lace + Shamim: 3/4m lace. Total = ? Is it more than 1m?</li>
+  </ol>
+</div>
+<div class="practice-section">
+  <div class="ps-hdr">&#x1F3AF; Practice Time!</div>
+  <div class="practice-q"><div class="pq-text">Q1. 2/7 + 5/7 = ?</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">7/14</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">7/7 = 1</button><button class="choice-btn" onclick="checkAnswer(this,false)">10/49</button><button class="choice-btn" onclick="checkAnswer(this,false)">7/49</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q2. 1/6 + 1/3 = ? (Hint: LCM = 6)</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">2/9</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">3/6 = ½</button><button class="choice-btn" onclick="checkAnswer(this,false)">2/6</button><button class="choice-btn" onclick="checkAnswer(this,false)">1/2 wrong</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q3. Geeta: 2/5m, Shamim: 3/4m lace. Total = ?</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">5/9 m</button><button class="choice-btn" onclick="checkAnswer(this,false)">1 m exactly</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">23/20 = 1 3/20 m (more than 1m!)</button><button class="choice-btn" onclick="checkAnswer(this,false)">Less than 1m</button></div><div class="feedback"></div></div>
+</div>
+<div class="math-talk">&#x1F3C6; <strong>Chapter 7 — Complete!</strong>&nbsp; Fractional units, parts of whole, measuring, number line, mixed fractions, equivalent fractions, comparing, and addition/subtraction — Brahmagupta proud hota! &#x1F4AF;</div>`;}
 
 function sec16(){return `
 <div class="sec-heading" style="color:#2563eb">&#x1F9E9; 1.6 Relation to Number Sequences</div>
