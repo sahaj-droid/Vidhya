@@ -440,7 +440,7 @@ body { font-family: 'Nunito', sans-serif; background: #f0f9ff; color: #1e293b; m
         <span class="ch-badge">&#x2705; Available</span>
       </div>
       <div class="chapter-card ch-8" onclick="openChapter(8)"><span class="ch-icon">&#x1F4D0;</span><div class="ch-num">8</div><div class="ch-name">Playing with Constructions</div><span class="ch-badge">&#x2705; Available</span></div>
-      <div class="chapter-card ch-9 locked"><span class="ch-icon">&#x25C6;</span><div class="ch-num">9</div><div class="ch-name">Symmetry</div><span class="ch-badge">&#x1F512; Soon</span></div>
+      <div class="chapter-card ch-9" onclick="openChapter(9)"><span class="ch-icon">&#x25C6;</span><div class="ch-num">9</div><div class="ch-name">Symmetry</div><span class="ch-badge">&#x2705; Available</span></div>
       <div class="chapter-card ch-10 locked"><span class="ch-icon">&#x2B07;</span><div class="ch-num">10</div><div class="ch-name">The Other Side of Zero</div><span class="ch-badge">&#x1F512; Soon</span></div>
     </div>
     <div class="vidhya-footer">&#x1FA94; Vidhya &bull; Your Learning Mitra</div>
@@ -587,6 +587,16 @@ var CHAPTERS = [{
     {id:"8.4", title:"An Exploration in Rectangles",      type:"Concept + Activity + Practice"},
     {id:"8.5", title:"Constructing with Compass",         type:"Steps + Visual + Practice"},
   ]
+},{
+  id:9, title:"Symmetry",
+  color:"#7c3aed", bg:"linear-gradient(135deg,#4c1d95,#7c3aed)",
+  available:true,
+  sections:[
+    {id:"9.1", title:"Line of Symmetry",                  type:"Concept + Indian Examples + Practice"},
+    {id:"9.2", title:"Lines of Symmetry in Regular Polygons", type:"Concept + Visual + Practice"},
+    {id:"9.3", title:"Rotational Symmetry",               type:"Concept + Visual + Practice"},
+    {id:"9.4", title:"Angles of Symmetry",                type:"Concept + Visual + Practice"},
+  ]
 }];
 
 function goBack() {
@@ -682,7 +692,8 @@ function buildContent(id){
     '5.1':sec51,'5.2':sec52,'5.3':sec53,'5.4':sec54,'5.5':sec55,
     '6.1':sec61,'6.2':sec62,'6.3':sec63,'6.4':sec64,'6.5':sec65,'6.6':sec66,
     '7.1':sec71,'7.2':sec72,'7.3':sec73,'7.4':sec74,'7.5':sec75,'7.6':sec76,'7.7':sec77,'7.8':sec78,
-    '8.1':sec81,'8.2':sec82,'8.3':sec83,'8.4':sec84,'8.5':sec85
+    '8.1':sec81,'8.2':sec82,'8.3':sec83,'8.4':sec84,'8.5':sec85,
+    '9.1':sec91,'9.2':sec92,'9.3':sec93,'9.4':sec94
   };
   return map[id]?map[id]():'<p style="padding:40px;text-align:center;color:#94a3b8">Coming soon!</p>';
 }
@@ -3696,6 +3707,158 @@ function sec85(){return `
   <div class="practice-q"><div class="pq-text">Q3. Why draw an arc instead of full circle when constructing?</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">Arcs are more accurate</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">Saves time — we only need the intersection point</button><button class="choice-btn" onclick="checkAnswer(this,false)">Full circles are not allowed</button><button class="choice-btn" onclick="checkAnswer(this,false)">Arcs have smaller radius</button></div><div class="feedback"></div></div>
 </div>
 <div class="math-talk">&#x1F3C6; <strong>Chapter 8 — Complete!</strong>&nbsp; Compass artwork, circle parts, rectangle/square construction, rectangle exploration, and compass techniques — Sulba Sutras proud! &#x1F4AF;</div>`;}
+
+// ── CHAPTER 9 ──
+
+function sec91(){return `
+<div class="sec-heading" style="color:#7c3aed">&#x1FA9E; 9.1 Line of Symmetry</div>
+<p>A shape has a <strong>line of symmetry</strong> when you can fold it along that line and both halves match perfectly!</p>
+<div class="india-example">
+  <div class="ie-label">&#x1F1EE;&#x1F1F3; Indian Example</div>
+  <p>A <strong>butterfly</strong> has one line of symmetry — fold it down the middle and both wings match! A <strong>Rangoli pattern</strong> has many lines of symmetry. The <strong>Taj Mahal</strong> has a vertical line of symmetry — left and right sides are mirror images! Even your own face has approximate symmetry!</p>
+</div>
+<div class="concept-box">
+  <div class="cb-title">Line of Symmetry (Axis of Symmetry)</div>
+  <p>A line that divides a figure into two parts that are <strong>mirror images</strong> of each other. When folded along this line, both halves overlap exactly.<br/><br/>
+  <strong>Some shapes have multiple lines of symmetry!</strong><br/>
+  Equilateral triangle → 3 lines<br/>
+  Square → 4 lines<br/>
+  Circle → infinite lines!</p>
+</div>
+<div class="visual-wrap">
+<svg viewBox="0 0 340 120" xmlns="http://www.w3.org/2000/svg">
+  <text x="170" y="16" text-anchor="middle" font-family="Baloo 2,cursive" font-size="12" font-weight="700" fill="#1e293b">Lines of Symmetry in common shapes</text>
+  <rect x="20" y="34" width="56" height="56" rx="2" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+  <line x1="48" y1="28" x2="48" y2="96" stroke="#7c3aed" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <line x1="14" y1="62" x2="82" y2="62" stroke="#7c3aed" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <line x1="20" y1="34" x2="76" y2="90" stroke="#a78bfa" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <line x1="76" y1="34" x2="20" y2="90" stroke="#a78bfa" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <text x="48" y="108" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" font-weight="700" fill="#7c3aed">Square: 4 lines</text>
+  <polygon points="148,34 178,90 118,90" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+  <line x1="148" y1="28" x2="148" y2="96" stroke="#7c3aed" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <line x1="118" y1="90" x2="163" y2="55" stroke="#a78bfa" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <line x1="178" y1="90" x2="133" y2="55" stroke="#a78bfa" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <text x="148" y="108" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" font-weight="700" fill="#7c3aed">Triangle: 3 lines</text>
+  <circle cx="260" cy="62" r="38" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+  <line x1="260" y1="24" x2="260" y2="100" stroke="#7c3aed" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <line x1="222" y1="62" x2="298" y2="62" stroke="#a78bfa" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <text x="260" y="108" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" font-weight="700" fill="#7c3aed">Circle: infinite!</text>
+</svg>
+</div>
+<div class="practice-section">
+  <div class="ps-hdr">&#x1F3AF; Practice Time!</div>
+  <div class="practice-q"><div class="pq-text">Q1. A butterfly's line of symmetry goes:</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">Horizontally (left-right)</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">Vertically (top-bottom, through the body)</button><button class="choice-btn" onclick="checkAnswer(this,false)">Diagonally</button><button class="choice-btn" onclick="checkAnswer(this,false)">No line of symmetry</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q2. How many lines of symmetry does a square have?</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">2</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">4</button><button class="choice-btn" onclick="checkAnswer(this,false)">1</button><button class="choice-btn" onclick="checkAnswer(this,false)">0</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q3. The Taj Mahal has symmetry along a:</div><div class="answer-choices"><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">Vertical line through the centre</button><button class="choice-btn" onclick="checkAnswer(this,false)">Horizontal line</button><button class="choice-btn" onclick="checkAnswer(this,false)">Diagonal line</button><button class="choice-btn" onclick="checkAnswer(this,false)">No symmetry</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q4. Which letter has a horizontal line of symmetry?</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">A</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">B</button><button class="choice-btn" onclick="checkAnswer(this,false)">F</button><button class="choice-btn" onclick="checkAnswer(this,false)">G</button></div><div class="feedback"></div></div>
+</div>`;}
+
+function sec92(){return `
+<div class="sec-heading" style="color:#7c3aed">&#x2B1F; 9.2 Lines of Symmetry in Regular Polygons</div>
+<p>Regular polygons have a beautiful pattern — <strong>number of lines of symmetry = number of sides!</strong></p>
+<div class="india-example">
+  <div class="ie-label">&#x1F1EE;&#x1F1F3; Indian Example</div>
+  <p>The <strong>Ashoka Chakra</strong> has 24 spokes — it has 24 lines of symmetry! A <strong>rangoli star</strong> with 6 points has 6 lines of symmetry. The <strong>new Parliament Building</strong> in Delhi has a triangular plan — 3 lines of symmetry! Even a <strong>snowflake</strong> (inspired by Indian crystal art) has 6 lines of symmetry.</p>
+</div>
+<div class="num-table" style="background:#f5f3ff; border-color:#c4b5fd;">
+  <div class="nt-title" style="color:#5b21b6;">Lines of Symmetry in Regular Polygons</div>
+  <div class="seq-row"><span class="seq-nums">Equilateral Triangle (3 sides)</span><span class="seq-name" style="background:#ede9fe;color:#5b21b6;">3 lines of symmetry</span></div>
+  <div class="seq-row"><span class="seq-nums">Square (4 sides)</span><span class="seq-name" style="background:#ede9fe;color:#5b21b6;">4 lines of symmetry</span></div>
+  <div class="seq-row"><span class="seq-nums">Regular Pentagon (5 sides)</span><span class="seq-name" style="background:#ede9fe;color:#5b21b6;">5 lines of symmetry</span></div>
+  <div class="seq-row"><span class="seq-nums">Regular Hexagon (6 sides)</span><span class="seq-name" style="background:#ede9fe;color:#5b21b6;">6 lines of symmetry</span></div>
+  <div class="seq-row"><span class="seq-nums">Ashoka Chakra (24 spokes)</span><span class="seq-name" style="background:#ede9fe;color:#5b21b6;">24 lines of symmetry!</span></div>
+</div>
+<div class="fig-out">
+  <div class="fo-hdr">&#x2699; Figure it Out</div>
+  <ol>
+    <li>How many lines of symmetry does a regular octagon have?</li>
+    <li>The Ashoka Chakra has 24 spokes. How many lines of symmetry?</li>
+    <li>A rectangle (not a square) — how many lines of symmetry? Why is it different from a square?</li>
+  </ol>
+</div>
+<div class="practice-section">
+  <div class="ps-hdr">&#x1F3AF; Practice Time!</div>
+  <div class="practice-q"><div class="pq-text">Q1. A regular hexagon has how many lines of symmetry?</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">3</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">6</button><button class="choice-btn" onclick="checkAnswer(this,false)">4</button><button class="choice-btn" onclick="checkAnswer(this,false)">12</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q2. A rectangle (not square) has how many lines of symmetry?</div><div class="answer-choices"><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">2 (only through midpoints of sides)</button><button class="choice-btn" onclick="checkAnswer(this,false)">4</button><button class="choice-btn" onclick="checkAnswer(this,false)">0</button><button class="choice-btn" onclick="checkAnswer(this,false)">1</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q3. Pattern: sides of regular polygon vs lines of symmetry is:</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">Always double</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">Always equal (n sides = n lines)</button><button class="choice-btn" onclick="checkAnswer(this,false)">Always half</button><button class="choice-btn" onclick="checkAnswer(this,false)">No pattern</button></div><div class="feedback"></div></div>
+</div>`;}
+
+function sec93(){return `
+<div class="sec-heading" style="color:#7c3aed">&#x1F300; 9.3 Rotational Symmetry</div>
+<p>A shape has <strong>rotational symmetry</strong> if it looks exactly the same after being rotated by less than 360°!</p>
+<div class="india-example">
+  <div class="ie-label">&#x1F1EE;&#x1F1F3; Indian Example</div>
+  <p>A <strong>pinwheel (chakri)</strong> looks the same after rotating 90° — it has rotational symmetry! The <strong>swastika</strong> symbol (ancient Indian) looks the same after 90° rotation. A <strong>windmill</strong> has rotational symmetry. The <strong>rotating fan</strong> — after each blade passes, it looks the same!</p>
+</div>
+<div class="concept-box">
+  <div class="cb-title">Order of Rotational Symmetry</div>
+  <p>The <strong>order</strong> = how many times the shape looks the same during one full 360° rotation.<br/>
+  Square: looks same at 90°, 180°, 270°, 360° → <strong>order 4</strong><br/>
+  Equilateral triangle: looks same at 120°, 240°, 360° → <strong>order 3</strong><br/>
+  Every shape has order at least 1 (at 360°).</p>
+</div>
+<div class="visual-wrap">
+<svg viewBox="0 0 340 115" xmlns="http://www.w3.org/2000/svg">
+  <text x="170" y="16" text-anchor="middle" font-family="Baloo 2,cursive" font-size="12" font-weight="700" fill="#1e293b">Square — 4 angles of rotational symmetry</text>
+  <rect x="20" y="32" width="52" height="52" rx="2" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+  <text x="46" y="62" text-anchor="middle" font-family="Baloo 2,cursive" font-size="13" font-weight="800" fill="#7c3aed">90°</text>
+  <text x="46" y="96" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" fill="#64748b">looks same</text>
+  <rect x="92" y="32" width="52" height="52" rx="2" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+  <text x="118" y="62" text-anchor="middle" font-family="Baloo 2,cursive" font-size="13" font-weight="800" fill="#7c3aed">180°</text>
+  <text x="118" y="96" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" fill="#64748b">looks same</text>
+  <rect x="164" y="32" width="52" height="52" rx="2" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+  <text x="190" y="62" text-anchor="middle" font-family="Baloo 2,cursive" font-size="13" font-weight="800" fill="#7c3aed">270°</text>
+  <text x="190" y="96" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" fill="#64748b">looks same</text>
+  <rect x="236" y="32" width="52" height="52" rx="2" fill="#7c3aed" stroke="#4c1d95" stroke-width="2"/>
+  <text x="262" y="62" text-anchor="middle" font-family="Baloo 2,cursive" font-size="13" font-weight="800" fill="white">360°</text>
+  <text x="262" y="96" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" fill="#64748b">back to start</text>
+  <text x="170" y="112" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" font-weight="700" fill="#7c3aed">Order of rotational symmetry = 4!</text>
+</svg>
+</div>
+<div class="practice-section">
+  <div class="ps-hdr">&#x1F3AF; Practice Time!</div>
+  <div class="practice-q"><div class="pq-text">Q1. A square has rotational symmetry of order:</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">2</button><button class="choice-btn" onclick="checkAnswer(this,false)">3</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">4</button><button class="choice-btn" onclick="checkAnswer(this,false)">1</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q2. A pinwheel (chakri) looks same after rotating:</div><div class="answer-choices"><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">90° (quarter turn)</button><button class="choice-btn" onclick="checkAnswer(this,false)">45°</button><button class="choice-btn" onclick="checkAnswer(this,false)">180° only</button><button class="choice-btn" onclick="checkAnswer(this,false)">360° only</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q3. Every shape has rotational symmetry of at least order:</div><div class="answer-choices"><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">1 (at 360°)</button><button class="choice-btn" onclick="checkAnswer(this,false)">2</button><button class="choice-btn" onclick="checkAnswer(this,false)">4</button><button class="choice-btn" onclick="checkAnswer(this,false)">0</button></div><div class="feedback"></div></div>
+</div>`;}
+
+function sec94(){return `
+<div class="sec-heading" style="color:#7c3aed">&#x2220; 9.4 Angles of Symmetry</div>
+<p>The <strong>angles of rotational symmetry</strong> are the specific angles at which a shape looks the same!</p>
+<div class="india-example">
+  <div class="ie-label">&#x1F1EE;&#x1F1F3; Indian Example</div>
+  <p>The <strong>Ashoka Chakra</strong> has 24 spokes. Smallest angle of symmetry = 360° ÷ 24 = <strong>15°</strong>! The <strong>new Parliament Building</strong> (triangular) has rotational symmetry at 120°, 240°, 360°. A <strong>6-petalled flower</strong> (like marigold in rangoli) has angles of symmetry at 60°, 120°, 180°, 240°, 300°, 360°!</p>
+</div>
+<div class="concept-box">
+  <div class="cb-title">Finding Angles of Symmetry</div>
+  <p>For a shape with <strong>n-fold rotational symmetry</strong>:<br/>
+  Smallest angle = 360° ÷ n<br/>
+  All angles of symmetry = multiples of this smallest angle.<br/><br/>
+  <strong>Square (n=4):</strong> 360÷4 = 90°. Angles: 90°, 180°, 270°, 360°<br/>
+  <strong>Equilateral triangle (n=3):</strong> 360÷3 = 120°. Angles: 120°, 240°, 360°</p>
+</div>
+<div class="num-table" style="background:#f5f3ff; border-color:#c4b5fd;">
+  <div class="nt-title" style="color:#5b21b6;">Angles of Symmetry</div>
+  <div class="seq-row"><span class="seq-nums">Square (order 4)</span><span class="seq-name" style="background:#ede9fe;color:#5b21b6;">90°, 180°, 270°, 360°</span></div>
+  <div class="seq-row"><span class="seq-nums">Equilateral triangle (order 3)</span><span class="seq-name" style="background:#ede9fe;color:#5b21b6;">120°, 240°, 360°</span></div>
+  <div class="seq-row"><span class="seq-nums">Regular hexagon (order 6)</span><span class="seq-name" style="background:#ede9fe;color:#5b21b6;">60°, 120°, 180°, 240°, 300°, 360°</span></div>
+  <div class="seq-row"><span class="seq-nums">Ashoka Chakra (order 24)</span><span class="seq-name" style="background:#ede9fe;color:#5b21b6;">15°, 30°, 45°... 360°</span></div>
+</div>
+<div class="fig-out">
+  <div class="fo-hdr">&#x2699; Figure it Out</div>
+  <ol>
+    <li>Find all angles of symmetry for a regular pentagon.</li>
+    <li>Ashoka Chakra has 24 spokes. What is the smallest angle of symmetry?</li>
+    <li>New Parliament Building (triangular plan) — what are its angles of rotational symmetry?</li>
+  </ol>
+</div>
+<div class="practice-section">
+  <div class="ps-hdr">&#x1F3AF; Practice Time!</div>
+  <div class="practice-q"><div class="pq-text">Q1. Ashoka Chakra has 24 spokes. Smallest angle of symmetry = ?</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">24°</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">15°</button><button class="choice-btn" onclick="checkAnswer(this,false)">30°</button><button class="choice-btn" onclick="checkAnswer(this,false)">12°</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q2. A shape with order 6 rotational symmetry. Smallest angle = ?</div><div class="answer-choices"><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">60°</button><button class="choice-btn" onclick="checkAnswer(this,false)">6°</button><button class="choice-btn" onclick="checkAnswer(this,false)">36°</button><button class="choice-btn" onclick="checkAnswer(this,false)">90°</button></div><div class="feedback"></div></div>
+  <div class="practice-q"><div class="pq-text">Q3. Parliament Building (triangular). Angles of rotational symmetry:</div><div class="answer-choices"><button class="choice-btn" onclick="checkAnswer(this,false)">90°, 180°, 270°, 360°</button><button class="choice-btn" data-correct="true" onclick="checkAnswer(this,true)">120°, 240°, 360°</button><button class="choice-btn" onclick="checkAnswer(this,false)">60°, 120°, 360°</button><button class="choice-btn" onclick="checkAnswer(this,false)">180°, 360°</button></div><div class="feedback"></div></div>
+</div>
+<div class="math-talk">&#x1F3C6; <strong>Chapter 9 — Complete!</strong>&nbsp; Line of symmetry, regular polygons, rotational symmetry, angles of symmetry — Rangoli, Butterfly, Ashoka Chakra, Parliament Building — sab covered! &#x1F4AF;</div>`;}
 
 function sec16(){return `
 <div class="sec-heading" style="color:#2563eb">&#x1F9E9; 1.6 Relation to Number Sequences</div>
