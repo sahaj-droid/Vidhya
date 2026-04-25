@@ -1016,12 +1016,20 @@ async function sendAI(){
 
 // ── GUJARATI TRANSLATE ──
 async function translateToGuj(){
+  // gujOverlay dynamically create thay che — null hoy to create karo
   var ov=document.getElementById('gujOverlay');
-  if(!ov) return;
+  if(!ov){
+    var cb=document.getElementById('contentBody');
+    if(!cb) return;
+    ov=document.createElement('div'); ov.id='gujOverlay';
+    ov.innerHTML='<div class="guj-hdr"><span>&#x1F1EE;&#x1F1F3; Gujarati Anuvad</span><button onclick="document.getElementById(\'gujOverlay\').style.display=\'none\'" style="background:none;border:none;font-size:16px;cursor:pointer;">&#x2715;</button></div><div id="gujContent" style="font-size:13px;line-height:1.8;color:#431407;"></div>';
+    cb.insertBefore(ov, cb.firstChild);
+  }
   if(ov.style.display==='block'){ ov.style.display='none'; document.getElementById('gujBtn').textContent='🇮🇳 Gujarati ma Juo'; return; }
   if(!checkApiKey()) return;
   document.getElementById('gujBtn').textContent='⏳ Translating...';
   var secId=window._currentSecId;
+  if(!secId){ document.getElementById('gujBtn').textContent='🇮🇳 Gujarati ma Juo'; alert('Pehla koi section kholo!'); return; }
   var rawHtml=buildSciContent(secId);
   var tmp=document.createElement('div'); tmp.innerHTML=rawHtml;
   var plainText=tmp.textContent.slice(0,1500);
@@ -1030,7 +1038,9 @@ async function translateToGuj(){
       'You are a Gujarati translator for Class 6 Science. Translate the given English science content to simple, clear Gujarati (Gujarati script). Keep scientific terms in English with Gujarati explanation in brackets. Use simple everyday Gujarati that a 6th standard student can understand. Only output the Gujarati translation, nothing else.',
       'Translate this to Gujarati:\n'+plainText, 1200
     );
-    document.getElementById('gujContent').textContent=translation;
+    // gujContent fresh fetch karo — DOM change thayo hoi shake
+    var gc=document.getElementById('gujContent');
+    if(gc) gc.textContent=translation;
     ov.style.display='block';
     document.getElementById('gujBtn').textContent='🇮🇳 Gujarati Band Karo';
   } catch(e){
