@@ -1030,17 +1030,88 @@ async function translateToGuj(){
   document.getElementById('gujBtn').textContent='⏳ Translating...';
   var secId=window._currentSecId;
   if(!secId){ document.getElementById('gujBtn').textContent='🇮🇳 Gujarati ma Juo'; alert('Pehla koi section kholo!'); return; }
+
+  // ── Smart extraction — MCQ skip, faqt content extract ──
   var rawHtml=buildSciContent(secId);
   var tmp=document.createElement('div'); tmp.innerHTML=rawHtml;
-  var plainText=tmp.textContent.slice(0,1500);
+
+  // Practice section (MCQ) completely remove karo
+  var practiceEls=tmp.querySelectorAll('.practice-section,.practice-q,.answer-choices,.feedback,.math-talk');
+  practiceEls.forEach(function(el){ el.remove(); });
+
+  // Hu structured lines banavu — darak element alag line
+  var lines=[];
+  var selectors=[
+    '.sec-heading',
+    'p',
+    '.sci-box .sb-title',
+    '.sci-box p',
+    '.india-example .ie-label',
+    '.india-example p',
+    '.did-you-know .dyk-hdr',
+    '.did-you-know p',
+    '.sci-green .sg-title',
+    '.sci-green p',
+    '.sci-activity .sa-hdr',
+    '.sci-activity p',
+    '.concept-box .cb-title',
+    '.concept-box p',
+    '.num-table .nt-title',
+  ];
+  // Unique elements collect karo — duplicate avoid
+  var seen=new Set();
+  tmp.querySelectorAll(selectors.join(',')).forEach(function(el){
+    var t=el.textContent.trim();
+    if(t && t.length>2 && !seen.has(t)){
+      seen.add(t);
+      lines.push(t);
+    }
+  });
+
+  // seq-row labels pan add karo
+  tmp.querySelectorAll('.seq-row').forEach(function(el){
+    var t=el.textContent.trim().replace(/\s+/g,' ');
+    if(t && !seen.has(t)){ seen.add(t); lines.push(t); }
+  });
+
+  var structuredText=lines.join('\n');
+  if(!structuredText){ document.getElementById('gujBtn').textContent='🇮🇳 Gujarati ma Juo'; return; }
+
+  var systemPrompt='You are an expert Gujarati translator for Class 6 Science students in Gujarat, India. '
+    +'Translate each line of the given content to Gujarati (Gujarati script). '
+    +'Rules: '
+    +'1. Translate EVERY line separately — output same number of lines as input. '
+    +'2. Keep scientific/English terms in English, add Gujarati meaning in brackets. Example: Photosynthesis (પ્રકાશ સંશ્લેષણ). '
+    +'3. Keep emojis exactly as they are. '
+    +'4. Use simple Gujarati that a 6th standard student understands. '
+    +'5. Do NOT add any extra lines, headings, or explanations — only translated lines. '
+    +'6. Output must be in Gujarati script only.';
+
+  var userPrompt='Translate each line to Gujarati (keep same line count):\n\n'+structuredText;
+
   try {
-    var translation=await groqCall(
-      'You are a Gujarati translator for Class 6 Science. Translate the given English science content to simple, clear Gujarati (Gujarati script). Keep scientific terms in English with Gujarati explanation in brackets. Use simple everyday Gujarati that a 6th standard student can understand. Only output the Gujarati translation, nothing else.',
-      'Translate this to Gujarati:\n'+plainText, 1200
-    );
-    // gujContent fresh fetch karo — DOM change thayo hoi shake
+    var translation=await groqCall(systemPrompt, userPrompt, 1500);
+
+    // Output ne structured HTML ma render karo
     var gc=document.getElementById('gujContent');
-    if(gc) gc.textContent=translation;
+    if(gc){
+      var translatedLines=translation.split('\n').filter(function(l){ return l.trim(); });
+      var originalLines=lines;
+      var html='';
+      translatedLines.forEach(function(line, i){
+        var orig=originalLines[i]||'';
+        // Heading detect karo
+        if(orig && (orig.includes('🔬')||orig.includes('🌍')||orig.includes('💡')||
+           orig.includes('⭐')||orig.match(/^[\d]+\.[\d]+/)||orig.length<60)){
+          html+='<div style="font-weight:800;color:#92400e;margin:10px 0 4px;font-size:14px;">'+line+'</div>';
+        } else if(orig && orig.includes('🇮🇳')){
+          html+='<div style="background:#fef9c3;border-radius:8px;padding:6px 10px;margin:6px 0;font-size:13px;">'+line+'</div>';
+        } else {
+          html+='<div style="margin:4px 0;font-size:13px;">'+line+'</div>';
+        }
+      });
+      gc.innerHTML=html||translation;
+    }
     ov.style.display='block';
     document.getElementById('gujBtn').textContent='🇮🇳 Gujarati Band Karo';
   } catch(e){
