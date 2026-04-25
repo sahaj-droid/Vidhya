@@ -925,13 +925,15 @@ function openSciSection(secId){
   document.getElementById('topbarSub').textContent=curSciCh.title;
   var gujOv=document.getElementById('gujOverlay');
   if(gujOv) gujOv.style.display='none';
+  // Science ma Gujarati button show karo
+  document.getElementById('gujBtn').style.display='flex';
   document.getElementById('gujBtn').textContent='🇮🇳 Gujarati ma Juo';
   window._currentSecId=secId;
   document.getElementById('contentBody').innerHTML=buildSciContent(secId);
   // inject guj overlay div
   var cb=document.getElementById('contentBody');
   var ov=document.createElement('div'); ov.id='gujOverlay';
-  ov.innerHTML='<div class="guj-hdr"><span>&#x1F1EE;&#x1F1F3; Gujarati Anuvad</span><button onclick="document.getElementById(\'gujOverlay\').style.display=\'none\'" style="background:none;border:none;font-size:16px;cursor:pointer;">&#x2715;</button></div><div id="gujContent" style="font-size:13px;line-height:1.8;color:#431407;"></div></div>';
+  ov.innerHTML='<div class="guj-hdr"><span>&#x1F1EE;&#x1F1F3; Gujarati Anuvad</span><button onclick="document.getElementById(\'gujOverlay\').style.display=\'none\'" style="background:none;border:none;font-size:16px;cursor:pointer;">&#x2715;</button></div><div id="gujContent" style="font-size:13px;line-height:1.8;color:#431407;"></div>';
   cb.insertBefore(ov,cb.firstChild);
   switchTo('contentScreen');
 }
@@ -1031,8 +1033,10 @@ async function translateToGuj(){
   var secId=window._currentSecId;
   if(!secId){ document.getElementById('gujBtn').textContent='🇮🇳 Gujarati ma Juo'; alert('Pehla koi section kholo!'); return; }
 
-  // ── Smart extraction — MCQ skip, faqt content extract ──
-  var rawHtml=buildSciContent(secId);
+  // ── Maths ke Science — correct builder use karo ──
+  var isMaths = secId.startsWith('maths_');
+  var actualId = isMaths ? secId.replace('maths_','') : secId;
+  var rawHtml = isMaths ? buildContent(actualId) : buildSciContent(actualId);
   var tmp=document.createElement('div'); tmp.innerHTML=rawHtml;
 
   // Practice section (MCQ) completely remove karo
@@ -1180,6 +1184,16 @@ function openSection(secId){
   document.getElementById('topbarTitle').textContent='Section '+secId;
   document.getElementById('topbarSub').textContent=curCh.title;
   document.getElementById('contentBody').innerHTML=buildContent(secId);
+  // Maths ma pan Gujarati button show karo
+  document.getElementById('gujBtn').style.display='flex';
+  document.getElementById('gujBtn').textContent='🇮🇳 Gujarati ma Juo';
+  window._currentSecId='maths_'+secId;
+  window._currentSecContent=document.getElementById('contentBody').innerHTML;
+  // gujOverlay inject karo
+  var cb=document.getElementById('contentBody');
+  var ov=document.createElement('div'); ov.id='gujOverlay';
+  ov.innerHTML='<div class="guj-hdr"><span>&#x1F1EE;&#x1F1F3; Gujarati Anuvad</span><button onclick="document.getElementById(\'gujOverlay\').style.display=\'none\'" style="background:none;border:none;font-size:16px;cursor:pointer;">&#x2715;</button></div><div id="gujContent" style="font-size:13px;line-height:1.8;color:#431407;"></div>';
+  cb.insertBefore(ov,cb.firstChild);
   switchTo('contentScreen');
 }
 function switchTo(id){
