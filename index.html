@@ -610,7 +610,7 @@ body { font-family: 'Nunito', sans-serif; background: #f0f9ff; color: #1e293b; m
 <div class="screen" id="contentScreen">
   <div style="background:white;border-bottom:2px solid #e2e8f0;padding:8px 12px;display:flex;gap:8px;position:sticky;top:54px;z-index:80;">
     <button onclick="openAI()" style="flex:1;background:linear-gradient(135deg,#1e3a8a,#0d9488);border:none;color:white;padding:8px 12px;border-radius:10px;font-family:'Baloo 2',cursive;font-weight:700;font-size:12px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;">&#x2728; Vidhya AI ne Pucho</button>
-    <button onclick="translateToGuj()" id="gujBtn" style="flex:1;background:linear-gradient(135deg,#f97316,#f59e0b);border:none;color:white;padding:8px 12px;border-radius:10px;font-family:'Baloo 2',cursive;font-weight:700;font-size:12px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;">&#x1F1EE;&#x1F1F3; Gujarati ma Juo</button>
+    <button onclick="translateToGuj()" id="gujBtn" style="flex:1;background:linear-gradient(135deg,#f97316,#f59e0b);border:none;color:white;padding:8px 12px;border-radius:10px;font-family:'Baloo 2',cursive;font-weight:700;font-size:12px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;">&#x1F1EE;&#x1F1F3; Translate in Gujarati</button>
   </div>
   <div class="content-body" id="contentBody"></div>
   <div class="vidhya-footer">&#x1FA94; Vidhya &bull; Your Learning Mitra</div>
@@ -919,7 +919,7 @@ function openSciSection(secId){
   if(gujOv) gujOv.style.display='none';
   // Science ma Gujarati button show karo
   document.getElementById('gujBtn').style.display='flex';
-  document.getElementById('gujBtn').textContent='🇮🇳 Gujarati ma Juo';
+  document.getElementById('gujBtn').textContent='Translate in Gujarati';
   window._currentSecId=secId;
   document.getElementById('contentBody').innerHTML=buildSciContent(secId);
   // inject guj overlay div
@@ -1087,13 +1087,13 @@ async function translateToGuj(){
     ov.innerHTML='<div class="guj-hdr"><span>&#x1F1EE;&#x1F1F3; Gujarati Anuvad</span><button onclick="document.getElementById(\'gujOverlay\').style.display=\'none\'" style="background:none;border:none;font-size:16px;cursor:pointer;">&#x2715;</button></div><div id="gujContent" style="font-size:13px;line-height:1.8;color:#431407;"></div>';
     cb.insertBefore(ov, cb.firstChild);
   }
-  if(ov.style.display==='block'){ ov.style.display='none'; document.getElementById('gujBtn').textContent='🇮🇳 Gujarati ma Juo'; return; }
+  if(ov.style.display==='block'){ ov.style.display='none'; document.getElementById('gujBtn').textContent='Translate in Gujarati'; return; }
   
   if(!checkGeminiKey()) return;
   
   document.getElementById('gujBtn').textContent='⏳ Translating...';
   var secId=window._currentSecId;
-  if(!secId){ document.getElementById('gujBtn').textContent='🇮🇳 Gujarati ma Juo'; alert('Pehla koi section kholo!'); return; }
+  if(!secId){ document.getElementById('gujBtn').textContent='Translate in Gujarati'; alert('Pehla koi section kholo!'); return; }
 
   var isMaths = secId.startsWith('maths_');
   var actualId = isMaths ? secId.replace('maths_','') : secId;
@@ -1127,7 +1127,7 @@ async function translateToGuj(){
   });
 
   var structuredText=lines.join('\n');
-  if(!structuredText){ document.getElementById('gujBtn').textContent='🇮🇳 Gujarati ma Juo'; return; }
+  if(!structuredText){ document.getElementById('gujBtn').textContent='Translate in Gujarati'; return; }
 
   var systemPrompt='You are an expert Gujarati translator for Class 6 Science and Math students in Gujarat, India. '
     +'Translate each line of the given content to Gujarati (Gujarati script). '
@@ -1164,9 +1164,9 @@ async function translateToGuj(){
       gc.innerHTML=html||translation;
     }
     ov.style.display='block';
-    document.getElementById('gujBtn').textContent='🇮🇳 Gujarati Band Karo';
+    document.getElementById('gujBtn').textContent='Translate in Gujarati';
   } catch(e){
-    document.getElementById('gujBtn').textContent='🇮🇳 Gujarati ma Juo';
+    document.getElementById('gujBtn').textContent='Translate in Gujarati';
     alert('Error: ' + e.message);
   }
 }
@@ -1229,7 +1229,7 @@ function openSection(secId){
   document.getElementById('contentBody').innerHTML=buildContent(secId);
   // Maths ma pan Gujarati button show karo
   document.getElementById('gujBtn').style.display='flex';
-  document.getElementById('gujBtn').textContent='🇮🇳 Gujarati ma Juo';
+  document.getElementById('gujBtn').textContent='Translate in Gujarati';
   window._currentSecId='maths_'+secId;
   window._currentSecContent=document.getElementById('contentBody').innerHTML;
   // gujOverlay inject karo
